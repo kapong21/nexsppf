@@ -24,6 +24,8 @@ Last Updated: 2026-05-05T11:14:36+00:00
 
 3. Guardrails
 - no unapproved public claims
+- no public pricing in v1 until Tor S / NEXS admin approval
+- no dealer price / factory cost / margin / discount structure on public pages
 - no full customer data on public warranty page
 - no hardcoded 3-product limit
 - supports BEGIN / PRIME / PRO / ULTIMATE
@@ -64,6 +66,7 @@ Last Updated: 2026-05-05T11:14:36+00:00
 - admin support request management
 - admin inspection request management
 - product/warranty policy management
+- pricing approval policy/config with visibility control, after Tor S / NEXS admin approval only
 
 ## สิ่งที่ต้องแก้
 
@@ -82,11 +85,23 @@ Last Updated: 2026-05-05T11:14:36+00:00
 5. Integration
 - Current logic is service-level POC; must be wired to real routes, DB, session, and access control.
 
+6. Pricing visibility
+- v1 public pages must use CTA instead of price.
+- Pricing must not be hardcoded into public pages.
+- If pricing is added later, it must come from approved config/admin policy with public/dealer/admin visibility control.
+
 ## สิ่งที่ต้องให้ Tor S / NEXS admin ตัดสินใจ
 
 1. Final product copy and tone.
 2. Whether approved nexslabs.com assets are confirmed NEXS-owned and allowed for nexppf.com.
 3. Product color direction approval.
+4. Pricing approval before public/dealer rollout:
+   - dealer roll price final by tier
+   - retail installed price and XL/XXL surcharge
+   - dealer tier discount
+   - promotion policy
+   - dealer-to-customer discount rule
+   - public website pricing rule
 3. PRO 7.5 / PRO 8.5 public visibility or internal-only grouping.
 4. Maintenance quota per product tier.
 5. Maintenance interval policy.

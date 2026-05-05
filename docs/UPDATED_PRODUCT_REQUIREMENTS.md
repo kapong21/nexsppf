@@ -77,7 +77,53 @@ Prohibited until explicitly approved by Tor S / NEXS admin:
 - dealer price
 - specific unapproved performance claims
 
-## 4. Public Product Groups
+## 4. Pricing Approval Gate
+
+Pricing is not final approved for public website or dealer rollout.
+
+For v1, public pages must not show:
+- public retail installed price
+- dealer roll price
+- factory cost
+- margin
+- discount structure
+- internal promotion rules
+- cost assumptions
+- supplier cost
+- dealer tier price
+
+Use CTA instead of price:
+- สอบถามราคา
+- ติดต่อ Dealer
+- ตรวจสอบบัตรรับประกัน
+- สมัครตัวแทนจำหน่าย
+
+Pricing items requiring Tor S / NEXS admin approval before use:
+1. Dealer roll price final for BEGIN / PRIME / PRO / ULTIMATE / PRO 7.5 / PRO 8.5 if separated internally.
+2. Retail installed price final for standard size, XL surcharge, and XXL surcharge.
+3. Dealer tier discount final for Tier 1, Tier 2, and TOP / ULTIMATE eligibility.
+4. Promotion policy for launch promotion, opening bill campaign, training package, and dealer starter package.
+5. Dealer-to-customer discount rule:
+   - whether dealers may discount to customers
+   - allowed discount percentage
+   - minimum advertised installed price if any
+   - whether discount requires approval
+6. Public website pricing rule:
+   - v1 must not show public price until approved
+   - use CTA instead of price
+
+Visibility rule:
+- Public users must not see dealer roll price, factory cost, margin, discount structure, internal promotion rule, cost assumptions, supplier cost, or retail installed price unless approved.
+- Dealer users may see only pricing information NEXS admin explicitly allows. v1 does not need dealer pricing if not approved.
+- Admin may have pricing policy/config in the future, but pricing must not be hardcoded into public pages.
+
+Implementation rule:
+- Pricing content must not be hardcoded into public pages.
+- If pricing is added later, it must come from approved config/admin policy and include visibility control for public / dealer / admin.
+- For v1, Products page shows product tier, warranty year, positioning, and CTA only.
+- For v1, Products page must not show price, discount, promotion, or dealer tier price.
+
+## 5. Public Product Groups
 
 The public website must show 4 product groups.
 
@@ -115,7 +161,7 @@ Important: PRO must be public as a main product group even if it comes from anot
 - Public text: NEXS ULTIMATE — Flagship protection for customers who want the highest NEXS tier.
 - Thai: ฟิล์มปกป้องสีรถรุ่นสูงสุดของ NEXS สำหรับลูกค้าที่ต้องการตัวเลือกระดับเรือธง
 
-## 5. Product Code / QR / Serial Rules
+## 6. Product Code / QR / Serial Rules
 
 QR format:
 `https://nexppf.com/r/[serial]`
@@ -139,7 +185,7 @@ Important rules:
 - Do not hardcode only 3 products.
 - Must support BEGIN / PRIME / PRO / ULTIMATE from the start.
 
-## 6. Core Functional Scope
+## 7. Core Functional Scope
 
 Public:
 - Home
@@ -171,7 +217,7 @@ Admin:
 - Warranty policy
 - Export CSV
 
-## 7. Digital Warranty Card
+## 8. Digital Warranty Card
 
 The QR landing page `/r/[serial]` must be a Digital Warranty Card, not just a status page.
 
@@ -184,7 +230,7 @@ Statuses:
 
 Public page must not expose full customer personal data.
 
-## 8. Maintenance Requirement
+## 9. Maintenance Requirement
 
 The system must support maintenance records per warranty/car.
 
@@ -208,7 +254,7 @@ Maintenance policy must be editable/config-driven where possible. Draft assumpti
 
 Do not show these as final public policy until approved.
 
-## 9. Lost Warranty / Lost QR Support
+## 10. Lost Warranty / Lost QR Support
 
 Public users must not search openly by phone/license plate. Instead, they submit a support request.
 
@@ -234,7 +280,7 @@ After submit:
 - NEXS contacts customer back
 - no warranty details are revealed immediately on public page
 
-## 10. Claim / Inspection Request
+## 11. Claim / Inspection Request
 
 URL:
 `/support/inspection`
@@ -259,7 +305,7 @@ Workflow:
 5. Admin marks need_inspection / approved / rejected / more_info_required
 6. Customer is contacted back
 
-## 11. Current POC Assets to Keep
+## 12. Current POC Assets to Keep
 
 Keep and build on:
 - QR serial logic
@@ -270,7 +316,7 @@ Keep and build on:
 - database foundation
 - photo storage POC
 
-## 12. Required Changes Before More Feature Implementation
+## 13. Required Changes Before More Feature Implementation
 
 Before more implementation, create/approve:
 1. UX flow for factory/dealer/customer/admin/maintenance/support/inspection

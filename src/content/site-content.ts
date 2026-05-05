@@ -67,6 +67,13 @@ export const FORBIDDEN_PUBLIC_CLAIM_TERMS = [
   'PCU',
   'factory cost',
   'dealer price',
+  'retail installed price',
+  'dealer roll price',
+  'margin',
+  'discount',
+  'promotion',
+  'supplier cost',
+  'minimum advertised installed price',
 ] as const;
 
 export const PUBLIC_PRODUCT_GROUPS: readonly PublicProductGroup[] = [

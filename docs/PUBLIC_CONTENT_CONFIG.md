@@ -72,6 +72,23 @@ Examples of blocked terms:
 - PCU
 - factory cost
 - dealer price
+- retail installed price
+- dealer roll price
+- margin
+- discount
+- promotion
+- supplier cost
+- minimum advertised installed price
+
+## Pricing Approval Gate
+
+Current public content config intentionally contains no product prices.
+
+For v1:
+- Products page shows product tier, warranty year, positioning, and CTA only.
+- Public UI must not show price, discount, promotion, dealer tier price, dealer roll price, factory cost, margin, supplier cost, or cost assumptions.
+- Use CTA such as `สอบถามราคา`, `ติดต่อ Dealer`, `ตรวจสอบบัตรรับประกัน`, or `สมัครตัวแทนจำหน่าย` instead of price.
+- If pricing is added later, it must come from approved config/admin policy with visibility control.
 
 ## Tests
 

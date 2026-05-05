@@ -71,6 +71,17 @@ Mitigation:
 - Avoid risky images in v1 unless explicitly approved and context-controlled.
 - Product content and image usage must be reviewed by NEXS admin before production.
 
+### Pricing / Commercial Risks
+- Public pages may accidentally show unapproved retail price, dealer price, factory cost, margin, discount, or promotion rules.
+- Dealer-facing pricing may be exposed before Tor S / NEXS admin approves final dealer rollout.
+- Hardcoded pricing in UI would create stale or unauthorized commercial information.
+
+Mitigation:
+- v1 public pages must use CTA instead of price.
+- Do not show public price, dealer roll price, factory cost, margin, discount structure, or promotion policy until approved.
+- If pricing is added later, source it from approved config/admin policy with explicit visibility control for public / dealer / admin.
+- Keep pricing terms in claim/content guardrail tests.
+
 ### Privacy / PDPA Risks
 - Public warranty page could leak personal data.
 - Support forms collect sensitive data.
@@ -120,6 +131,17 @@ Mitigation:
 - Add monitoring/audit before production.
 
 ## 3. Open Decisions for Tor S / NEXS Admin
+
+### Pricing Approval
+1. Final dealer roll price for BEGIN / PRIME / PRO / ULTIMATE.
+2. Whether PRO 7.5 / PRO 8.5 have separate internal dealer roll prices.
+3. Final retail installed price for standard size.
+4. XL and XXL surcharge policy.
+5. Dealer tier discount rules for Tier 1 / Tier 2 / TOP / ULTIMATE eligibility.
+6. Promotion policy for launch promotion, opening bill campaign, training package, and dealer starter package.
+7. Whether dealers may discount to customers, allowed percentage, minimum advertised installed price, and whether discount requires approval.
+8. Whether public website can ever show retail installed price, and if yes which approved price source controls it.
+9. Which dealer-facing pricing fields may be visible after login.
 
 ### Product / Brand
 1. Final approved public copy for each product tier.

@@ -63,6 +63,14 @@ describe('site content policy', () => {
         'chemical resistance',
         '1000+ colors',
         'made in USA',
+        'factory cost',
+        'dealer price',
+        'retail installed price',
+        'dealer roll price',
+        'margin',
+        'discount',
+        'promotion',
+        'supplier cost',
       ]),
     );
   });
@@ -71,6 +79,14 @@ describe('site content policy', () => {
     expect(findForbiddenPublicClaimTerms('Made with Bayer material and self-healing performance.')).toEqual([
       'Bayer',
       'self-healing',
+    ]);
+  });
+
+  it('detects forbidden pricing terms in arbitrary content', () => {
+    expect(findForbiddenPublicClaimTerms('Dealer roll price includes margin and launch promotion.')).toEqual([
+      'dealer roll price',
+      'margin',
+      'promotion',
     ]);
   });
 });
