@@ -194,7 +194,7 @@ Mitigation:
 
 ### Product / Brand
 1. Final approved public copy for each product tier.
-2. Whether approved nexslabs.com image assets may be reused on nexppf.com and whether the rights are confirmed.
+2. Whether approved nexslabs.com image assets may be reused on nexsppf.com and whether the rights are confirmed.
 3. Whether product color directions are approved:
    - BEGIN: Silver / Light Grey / White
    - PRIME: Graphite / Blue Silver / Premium Grey

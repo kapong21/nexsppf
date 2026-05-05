@@ -1,6 +1,6 @@
 # NEXS PPF Warranty System
 
-POC-first project for nexppf.com.
+POC-first project for nexsppf.com.
 
 ## Local setup
 

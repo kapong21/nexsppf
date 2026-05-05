@@ -7,7 +7,7 @@ Status: Draft for Product Owner / NEXS review before more implementation
 
 ## 1. Product Direction
 
-nexppf.com must be treated as a complete NEXS PPF product + sales + warranty lifecycle platform, not only a programming task, not only a warranty database, and not only a backend dashboard.
+nexsppf.com must be treated as a complete NEXS PPF product + sales + warranty lifecycle platform, not only a programming task, not only a warranty database, and not only a backend dashboard.
 
 The website must sell the product and build trust before purchase, then support warranty and after-sales after purchase.
 
@@ -27,7 +27,7 @@ The site must support:
 
 ## 2. Three-Layer Website Model
 
-nexppf.com must be designed as 3 layers in one website.
+nexsppf.com must be designed as 3 layers in one website.
 
 ### Layer 1: Public Brand & Information Website
 
@@ -242,7 +242,7 @@ Important: PRO must be public as a main product group even if it comes from anot
 ## 7. Product Code / QR / Serial Rules
 
 QR format:
-`https://nexppf.com/r/[serial]`
+`https://nexsppf.com/r/[serial]`
 
 Serial format:
 `[model_code]-[factory_serial]`

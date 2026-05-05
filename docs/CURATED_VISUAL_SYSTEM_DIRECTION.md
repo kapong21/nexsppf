@@ -7,7 +7,7 @@ Status: Source of truth for public website visual/content direction before push/
 
 ## 1. Project Framing
 
-`nexppf.com` is a 3-layer website:
+`nexsppf.com` is a 3-layer website:
 
 1. Information Website — educate customers about NEXS PPF and why paint protection matters.
 2. Sales / Product Website — present products, help customers choose a tier, generate leads, and support dealer applications.
@@ -25,7 +25,7 @@ Meaning:
 - Use reference material only as art direction, storytelling inspiration, product-role inspiration, and layout inspiration.
 - Select only the concepts that fit a premium public website.
 - Recreate visuals specifically for web and mobile UX.
-- Rewrite copy for nexppf.com instead of copying old poster text.
+- Rewrite copy for nexsppf.com instead of copying old poster text.
 - Keep UI/UX clean, trustworthy, premium, and easy to use.
 - Avoid clutter, information overload, oversized text blocks, and claims that are not needed.
 

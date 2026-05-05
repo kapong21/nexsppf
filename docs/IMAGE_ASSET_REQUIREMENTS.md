@@ -28,7 +28,7 @@ The image system must support the Apple-inspired light premium direction:
 7. Every public image role must define source, page/section, crop direction, visual purpose, claim risk, and readiness.
 8. Reference posters/images must be treated as art direction only, not production assets to paste directly.
 9. Do not use poster screenshots, old embedded poster text, or reference layouts as-is.
-10. Recreate web-native visuals and rewrite copy for nexppf.com.
+10. Recreate web-native visuals and rewrite copy for nexsppf.com.
 11. Reject images or poster fragments that create clutter, too much text, unsafe claims, unapproved domains, or poor mobile readability.
 
 ## 3. Approved v1 Assets
@@ -109,7 +109,7 @@ Reference images and posters must not be used for:
 - direct copy extraction
 - unapproved claim reuse
 - crowded comparison/table layouts
-- domains or brand details not approved for nexppf.com
+- domains or brand details not approved for nexsppf.com
 
 Preferred production direction:
 

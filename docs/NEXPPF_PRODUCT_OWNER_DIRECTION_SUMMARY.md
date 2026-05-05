@@ -4,7 +4,7 @@ Last Updated: 2026-05-05T17:40:59+00:00
 
 ## Framing ที่ต้องล็อกใหม่
 
-nexppf.com ไม่ใช่เว็บระบบประกันอย่างเดียว และไม่ใช่ backend dashboard อย่างเดียว
+nexsppf.com ไม่ใช่เว็บระบบประกันอย่างเดียว และไม่ใช่ backend dashboard อย่างเดียว
 
 เว็บต้องเป็น 3 อย่างในเว็บเดียว:
 1. Information Website — ให้ข้อมูล NEXS PPF สำหรับคนที่ยังไม่รู้จักแบรนด์
@@ -138,7 +138,7 @@ Recommended launch policy:
 ## สิ่งที่ต้องให้ Tor S / NEXS admin ตัดสินใจ
 
 1. Final product copy and tone.
-2. Whether approved nexslabs.com assets are confirmed NEXS-owned and allowed for nexppf.com.
+2. Whether approved nexslabs.com assets are confirmed NEXS-owned and allowed for nexsppf.com.
 3. Product color direction approval.
 4. Pricing approval before public/dealer rollout:
    - dealer roll price final by tier

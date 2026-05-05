@@ -3,7 +3,7 @@ import { parseSerialCode, resolveProductFromSerial } from '@/lib/serial';
 
 describe('serial parser', () => {
   it('maps B prefix to BEGIN without storing full URL as identity', () => {
-    const parsed = parseSerialCode('https://nexppf.com/r/B-1196MXY0401175Q');
+    const parsed = parseSerialCode('https://nexsppf.com/r/B-1196MXY0401175Q');
     expect(parsed).toEqual({ serialCode: 'B-1196MXY0401175Q', modelCode: 'B' });
     expect(resolveProductFromSerial(parsed.serialCode)).toEqual({ modelCode: 'B', productName: 'BEGIN', warrantyYears: 5, publicMvp: true });
   });

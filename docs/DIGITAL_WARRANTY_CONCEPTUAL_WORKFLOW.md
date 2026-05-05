@@ -119,14 +119,14 @@ Factory must provide to NEXS:
 
 QR format:
 
-`https://nexppf.com/r/[serial]`
+`https://nexsppf.com/r/[serial]`
 
 Examples:
 
-- `https://nexppf.com/r/B-1196MXY0401175Q`
-- `https://nexppf.com/r/P-1196MXY0401176Q`
-- `https://nexppf.com/r/PRO-1196MXY0401178Q`
-- `https://nexppf.com/r/U-1196MXY0401177Q`
+- `https://nexsppf.com/r/B-1196MXY0401175Q`
+- `https://nexsppf.com/r/P-1196MXY0401176Q`
+- `https://nexsppf.com/r/PRO-1196MXY0401178Q`
+- `https://nexsppf.com/r/U-1196MXY0401177Q`
 
 Important rules:
 
