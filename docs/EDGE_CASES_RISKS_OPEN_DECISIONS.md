@@ -1,6 +1,6 @@
 # Edge Cases, Risks, and Open Decisions — nexppf-web
 
-Last Updated: 2026-05-05T14:42:36+00:00
+Last Updated: 2026-05-05T14:53:21+00:00
 Status: Draft for Tor S / NEXS admin review
 
 ## 1. Edge Cases
@@ -69,6 +69,19 @@ Status: Draft for Tor S / NEXS admin review
 - photos include sensitive information.
 
 ## 2. Risks
+
+### Website Framing / Sales Journey Risks
+- Public website may feel like only a warranty database or backend portal.
+- Customers who have not purchased may not understand what NEXS is, which product tier fits them, or how to contact/buy.
+- Dealer Login may dominate the public website and make it feel operational instead of sales-ready.
+- Warranty system may be presented as the whole product instead of a trust/after-sales feature.
+
+Mitigation:
+- Lock 3-layer model: Information Website + Sales/Product Website + Warranty/After-sales System.
+- Homepage must sell brand/trust/product first, then present warranty as confidence feature.
+- Products page must educate and support product selection.
+- Dealer page must include public recruitment/information before private login workflow.
+- Keep public CTA clear: ดูสินค้า, สอบถามราคา, ติดต่อ Dealer, ขอคำแนะนำเลือกรุ่น, สมัครตัวแทนจำหน่าย, ตรวจสอบบัตรรับประกัน.
 
 ### Product / Brand Risks
 - Public pages might accidentally overclaim product performance.
@@ -170,6 +183,14 @@ Mitigation:
 7. Whether dealers may discount to customers, allowed percentage, minimum advertised installed price, and whether discount requires approval.
 8. Whether public website can ever show retail installed price, and if yes which approved price source controls it.
 9. Which dealer-facing pricing fields may be visible after login.
+
+### Website Framing / Sales Content
+1. Final homepage sales copy and CTA priority.
+2. Whether to add separate `/why-nexs` page or keep Why NEXS as a homepage section in v1.
+3. Whether to add separate `/warranty-info` page or keep Warranty Information as a homepage/products section in v1.
+4. Dealer public page content and dealer application fields.
+5. Lead/contact routing: send to NEXS central, assigned dealer, or both.
+6. Approved wording for “why choose NEXS” without supplier/material/performance claims.
 
 ### Product / Brand
 1. Final approved public copy for each product tier.

@@ -1,6 +1,6 @@
 # Public Content Configuration — nexppf-web
 
-Last Updated: 2026-05-05T12:39:00+00:00
+Last Updated: 2026-05-05T14:53:21+00:00
 Status: Local implementation foundation; not pushed/deployed
 
 ## Purpose
@@ -16,6 +16,30 @@ The goal is to keep public copy, product cards, image slot keys, and claim guard
 - `scripts/check-public-content.ts`
 - `tests/check-public-content.test.ts`
 - `package.json` (`npm run check:content`)
+
+## Three-Layer Public Content Model
+
+Public content must support 3 layers:
+
+1. Information Website
+   - Home / Why NEXS / Warranty information / Contact.
+   - Explains NEXS PPF and safe trust reasons for customers before purchase.
+
+2. Sales / Product Website
+   - Products, comparison, lead/contact CTA, dealer application CTA.
+   - Uses CTA instead of price until approval.
+
+3. Warranty / After-sales System
+   - Warranty check, QR Digital Warranty Card, support warranty, inspection request, dealer/admin login.
+   - Presented as a trust feature for pre-purchase users and as a functional system for post-purchase users.
+
+Safe public CTA examples:
+- ดูสินค้า
+- สอบถามราคา
+- ติดต่อ Dealer
+- ขอคำแนะนำเลือกรุ่น
+- สมัครตัวแทนจำหน่าย
+- ตรวจสอบบัตรรับประกัน
 
 ## Public Product Groups
 

@@ -1,6 +1,17 @@
 # NEXPPF Product Owner Direction Summary
 
-Last Updated: 2026-05-05T14:42:36+00:00
+Last Updated: 2026-05-05T14:53:21+00:00
+
+## Framing ที่ต้องล็อกใหม่
+
+nexppf.com ไม่ใช่เว็บระบบประกันอย่างเดียว และไม่ใช่ backend dashboard อย่างเดียว
+
+เว็บต้องเป็น 3 อย่างในเว็บเดียว:
+1. Information Website — ให้ข้อมูล NEXS PPF สำหรับคนที่ยังไม่รู้จักแบรนด์
+2. Sales / Product Website — ขายสินค้า, ช่วยเลือกรุ่น, เก็บ lead, สมัคร dealer
+3. Warranty / After-sales System — QR verification, Digital Warranty Card, dealer/admin, maintenance, support, inspection
+
+สรุป: เว็บต้องขายของและสร้างความเชื่อมั่นก่อนซื้อ แล้วดูแลหลังการขายต่อด้วยระบบ warranty lifecycle
 
 ## สิ่งที่ทำไปแล้วใช้ต่อได้
 
@@ -42,6 +53,10 @@ Last Updated: 2026-05-05T14:42:36+00:00
 - page copy in Thai/English
 
 2. UX / Pages
+- Home must be sales + trust page, not only warranty portal
+- Why NEXS / trust content using safe claims
+- Contact / lead form
+- Dealer recruitment/information section
 - Home
 - Products
 - Warranty Search
@@ -72,22 +87,26 @@ Last Updated: 2026-05-05T14:42:36+00:00
 
 ## สิ่งที่ต้องแก้
 
-1. Warranty page
+1. Website framing
+- Do not focus only on warranty registration.
+- Public pages must support pre-purchase customer journey: understand NEXS, compare products, ask for price, contact dealer, apply as dealer.
+
+2. Warranty page
 - Change from simple status page to Digital Warranty Card.
 
-2. Lost card flow
+3. Lost card flow
 - Must be support request, not public search by phone/license plate.
 
-3. Claim flow
+4. Claim flow
 - Must be inspection request / under review, not auto-approved claim.
 
-4. Product policy source
+5. Product policy source
 - Current product config works for POC but should move to DB/config repository before production.
 
-5. Integration
+6. Integration
 - Current logic is service-level POC; must be wired to real routes, DB, session, and access control.
 
-6. Pricing visibility
+7. Pricing visibility
 - v1 public pages must use CTA instead of price.
 - Pricing must not be hardcoded into public pages.
 - If pricing is added later, it must come from approved config/admin policy with public/dealer/admin visibility control.

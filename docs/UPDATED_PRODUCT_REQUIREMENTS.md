@@ -1,27 +1,105 @@
 # Updated Product Requirement Document — nexppf-web
 
-Last Updated: 2026-05-05T14:42:36+00:00
+Last Updated: 2026-05-05T14:53:21+00:00
 Owner: Tor S / NEXS admin
 Executor: treee-tech-lead
 Status: Draft for Product Owner / NEXS review before more implementation
 
 ## 1. Product Direction
 
-nexppf.com must be treated as a complete NEXS PPF product + warranty lifecycle platform, not only a programming task and not only a warranty database.
+nexppf.com must be treated as a complete NEXS PPF product + sales + warranty lifecycle platform, not only a programming task, not only a warranty database, and not only a backend dashboard.
+
+The website must sell the product and build trust before purchase, then support warranty and after-sales after purchase.
 
 The site must support:
-1. NEXS PPF product website
-2. QR serial verification
-3. Digital warranty card
-4. Dealer login
-5. Admin login
-6. Dealer warranty registration
-7. Maintenance record
-8. Lost warranty card / lost QR support
-9. Customer inquiry
-10. Claim / inspection request
+1. Information website for customers who do not know NEXS yet.
+2. Sales / product website for people interested in buying PPF or becoming a dealer.
+3. Warranty / after-sales system for customers, dealers, and admins after purchase.
+4. QR serial verification.
+5. Digital warranty card.
+6. Dealer login.
+7. Admin login.
+8. Dealer warranty registration.
+9. Maintenance record.
+10. Lost warranty card / lost QR support.
+11. Customer inquiry / lead generation.
+12. Claim / inspection request.
 
-## 2. Brand / Design Direction
+## 2. Three-Layer Website Model
+
+nexppf.com must be designed as 3 layers in one website.
+
+### Layer 1: Public Brand & Information Website
+
+Audience:
+- People who do not know NEXS yet.
+- Customers researching PPF before purchase.
+
+Goal:
+- Explain what NEXS is.
+- Explain what PPF is in the NEXS context.
+- Show the 4 product groups.
+- Build trust.
+- Explain QR-based warranty as a trust feature.
+- Guide customers to contact, ask for price, or find/request dealer help.
+
+Pages / sections:
+- Home
+- About NEXS / Why NEXS
+- Products
+- Warranty Information
+- Dealer / Installer Network
+- Contact
+
+### Layer 2: Sales / Lead Generation Website
+
+Audience:
+- Customers interested in buying.
+- Dealers/installers interested in becoming NEXS dealers.
+
+Goal:
+- Help customers compare product tiers.
+- Help customers choose a suitable product tier.
+- Generate lead/contact requests for NEXS/dealer.
+- Support dealer application CTA.
+
+Allowed v1 CTA:
+- สอบถามราคา
+- ติดต่อ Dealer
+- ขอคำแนะนำเลือกรุ่น
+- สมัครตัวแทนจำหน่าย
+- ตรวจสอบบัตรรับประกัน
+
+Important:
+- Do not show public price in v1 unless Tor S / NEXS admin approves.
+- Do not show dealer price, margin, discount, factory cost, or promotion publicly.
+
+### Layer 3: Warranty / After-sales System
+
+Audience:
+- Customers who already bought the product.
+- Dealers/installers.
+- Admin/support team.
+
+Goal:
+- QR verification.
+- Digital Warranty Card.
+- Dealer warranty registration.
+- Maintenance records.
+- Lost warranty / lost QR support.
+- Inspection request.
+- Admin serial/dealer/warranty management.
+
+Pages / sections:
+- `/warranty`
+- `/r/[serial]`
+- `/login`
+- `/dealer`
+- `/admin`
+- `/support/warranty`
+- `/support/inspection`
+
+## 3. Brand / Design Direction
 
 Mood & tone should be close to nexslabs while staying correct for NEXS PPF.
 
@@ -45,7 +123,7 @@ Image direction:
 - Avoid risky images that imply self-healing, non-yellowing, color PPF, headlight PPF, 1000+ colors, or unapproved optical/performance claims.
 - Full image policy is documented in `docs/IMAGE_ASSET_REQUIREMENTS.md`.
 
-## 3. Public Claim Rules
+## 4. Public Claim Rules
 
 Allowed public claims for now:
 - NEXS Paint Protection Film
@@ -77,7 +155,7 @@ Prohibited until explicitly approved by Tor S / NEXS admin:
 - dealer price
 - specific unapproved performance claims
 
-## 4. Pricing Approval Gate
+## 5. Pricing Approval Gate
 
 Pricing is not final approved for public website or dealer rollout.
 
@@ -123,7 +201,7 @@ Implementation rule:
 - For v1, Products page shows product tier, warranty year, positioning, and CTA only.
 - For v1, Products page must not show price, discount, promotion, or dealer tier price.
 
-## 5. Public Product Groups
+## 6. Public Product Groups
 
 The public website must show 4 product groups.
 
@@ -161,7 +239,7 @@ Important: PRO must be public as a main product group even if it comes from anot
 - Public text: NEXS ULTIMATE — Flagship protection for customers who want the highest NEXS tier.
 - Thai: ฟิล์มปกป้องสีรถรุ่นสูงสุดของ NEXS สำหรับลูกค้าที่ต้องการตัวเลือกระดับเรือธง
 
-## 6. Product Code / QR / Serial Rules
+## 7. Product Code / QR / Serial Rules
 
 QR format:
 `https://nexppf.com/r/[serial]`
@@ -185,7 +263,47 @@ Important rules:
 - Do not hardcode only 3 products.
 - Must support BEGIN / PRIME / PRO / ULTIMATE from the start.
 
-## 7. Core Functional Scope
+## 8. Public Website and Sales Requirements
+
+Public website must answer pre-purchase customer questions:
+1. What is NEXS?
+2. What NEXS PPF product tiers exist?
+3. How are BEGIN / PRIME / PRO / ULTIMATE different?
+4. Which tier suits which customer/use case?
+5. Why choose NEXS?
+6. How does QR Digital Warranty work?
+7. How can the customer contact, ask for price, or reach a dealer?
+8. How can an installer apply to become a dealer?
+
+Homepage must be a sales + trust page, not only a warranty portal.
+
+Required homepage sections:
+1. Hero: NEXS Paint Protection Film / ฟิล์มปกป้องสีรถ NEXS, with CTA to Products, Warranty Check, and Ask for Price.
+2. Product Line: BEGIN / PRIME / PRO / ULTIMATE cards with warranty years, positioning, short description, and CTA.
+3. Why NEXS: safe trust reasons such as product tier system, QR verification, digital warranty card, dealer workflow, and after-sales support.
+4. Digital Warranty System: explain scan QR, warranty status, maintenance summary, and inspection request.
+5. For Dealers: explain dealer registration workflow and after-sales workflow; CTA for dealer application and Dealer Login.
+6. Contact / Lead Form: collect name, phone, province, interested product, customer type, and message.
+
+Products page must educate and sell:
+- Show all 4 public product groups.
+- Explain positioning, warranty years, recommended customer/use case, visual color system, and CTA.
+- Do not show public price in v1 unless approved.
+- Do not show supplier/material/performance claims unless approved.
+
+Dealer public page/section must support both dealer recruitment and login:
+- Explain dealer benefits.
+- Explain warranty registration workflow.
+- Explain after-sales support workflow.
+- CTA: สมัครตัวแทนจำหน่าย.
+- CTA: Dealer Login.
+- Do not show dealer price or margin publicly.
+
+Warranty page must not replace the homepage:
+- `/warranty` is for customers who already have serial/QR.
+- It should support manual serial check, QR system explanation, lost card support, and inspection request links.
+
+## 9. Core Functional Scope
 
 Public:
 - Home
@@ -217,7 +335,7 @@ Admin:
 - Warranty policy
 - Export CSV
 
-## 8. Digital Warranty Card
+## 10. Digital Warranty Card
 
 The QR landing page `/r/[serial]` must be a Digital Warranty Card, not just a status page.
 
@@ -230,7 +348,7 @@ Statuses:
 
 Public page must not expose full customer personal data.
 
-## 9. Digital Warranty Lifecycle Workflow
+## 11. Digital Warranty Lifecycle Workflow
 
 The system must follow the conceptual workflow in `docs/DIGITAL_WARRANTY_CONCEPTUAL_WORKFLOW.md`.
 
@@ -286,7 +404,7 @@ Protection rules:
 - admin override requires audit trail
 - claim is inspection request, not automatic approval
 
-## 10. Maintenance Requirement
+## 12. Maintenance Requirement
 
 The system must support maintenance records per warranty/car.
 
@@ -310,7 +428,7 @@ Maintenance policy must be editable/config-driven where possible. Draft assumpti
 
 Do not show these as final public policy until approved.
 
-## 11. Lost Warranty / Lost QR Support
+## 13. Lost Warranty / Lost QR Support
 
 Public users must not search openly by phone/license plate. Instead, they submit a support request.
 
@@ -336,7 +454,7 @@ After submit:
 - NEXS contacts customer back
 - no warranty details are revealed immediately on public page
 
-## 12. Claim / Inspection Request
+## 14. Claim / Inspection Request
 
 URL:
 `/support/inspection`
@@ -361,7 +479,7 @@ Workflow:
 5. Admin marks need_inspection / approved / rejected / more_info_required
 6. Customer is contacted back
 
-## 13. Current POC Assets to Keep
+## 15. Current POC Assets to Keep
 
 Keep and build on:
 - QR serial logic
@@ -372,7 +490,7 @@ Keep and build on:
 - database foundation
 - photo storage POC
 
-## 14. Required Changes Before More Feature Implementation
+## 16. Required Changes Before More Feature Implementation
 
 Before more implementation, create/approve:
 1. UX flow for factory/dealer/customer/admin/maintenance/support/inspection

@@ -1,18 +1,23 @@
 # UX Flows, Sitemap, Page Requirements, and Wireframe Descriptions — nexppf-web
 
-Last Updated: 2026-05-05T14:42:36+00:00
+Last Updated: 2026-05-05T14:53:21+00:00
 Status: Draft for review before more implementation
 
 ## 1. Sitemap
 
-### Public
+### Public Brand / Information + Sales
 - `/` Home
 - `/products` Product page
+- `/why-nexs` Why NEXS / trust page or section
+- `/warranty-info` Warranty information page or section
+- `/dealer` Public dealer / installer information + dealer login entry
+- `/contact` Contact / lead form
+
+### Public Warranty / After-sales
 - `/warranty` Warranty check
 - `/r/[serial]` QR landing / Digital warranty card
 - `/support/warranty` Lost warranty / lost QR support request
 - `/support/inspection` Claim / inspection request
-- `/contact` Contact
 
 Image usage v1:
 - Home: `/images/hero-porsche.jpg`, `/images/installer-hood.jpg`, `/images/nexs-ultimate-box.jpg`
@@ -45,7 +50,36 @@ Full image policy: `docs/IMAGE_ASSET_REQUIREMENTS.md`.
 - `/admin/inspection-requests`
 - `/admin/policy`
 
-## 2. UX Flow — Full Digital Warranty Lifecycle
+## 2. UX Flow — Pre-Purchase Customer Journey
+
+Public pages must support customers before purchase.
+
+1. Customer lands on Home.
+2. Customer understands NEXS Paint Protection Film and premium automotive positioning.
+3. Customer sees product line: BEGIN / PRIME / PRO / ULTIMATE.
+4. Customer compares positioning, warranty years, and recommended use case.
+5. Customer reads Why NEXS trust reasons using only approved safe claims.
+6. Customer understands QR-based Digital Warranty as a trust/after-sales feature.
+7. Customer chooses CTA:
+   - ดูสินค้า
+   - สอบถามราคา
+   - ติดต่อ Dealer
+   - ขอคำแนะนำเลือกรุ่น
+   - สมัครตัวแทนจำหน่าย
+   - ตรวจสอบบัตรรับประกัน
+8. Customer submits lead/contact form.
+
+Lead form fields:
+- name
+- phone
+- province
+- interested product
+- customer type: customer / dealer / installer
+- message
+
+Public v1 must not show price unless approved. Use CTA instead.
+
+## 3. UX Flow — Full Digital Warranty Lifecycle
 
 Reference: `docs/DIGITAL_WARRANTY_CONCEPTUAL_WORKFLOW.md`.
 
@@ -65,7 +99,7 @@ Core UX rule:
 - If serial exists but warranty is not active, show Not Registered, not a scary error.
 - If serial is unknown, show Not Found / under-verification wording and offer support request.
 
-## 3. UX Flow — Factory
+## 4. UX Flow — Factory
 
 1. Factory prepares serial list and QR samples.
 2. Factory sends NEXS:
@@ -84,7 +118,7 @@ Core UX rule:
 6. NEXS Admin approves before mass printing.
 7. After goods arrive, NEXS randomly scans QR samples again.
 
-## 4. UX Flow — Dealer
+## 5. UX Flow — Dealer
 
 1. Dealer logs in.
 2. Dealer opens Register New Warranty.
@@ -116,7 +150,7 @@ Dealer must not see:
 - admin-only internal note
 - full system-wide data unless admin grants exception
 
-## 5. UX Flow — Customer
+## 6. UX Flow — Customer
 
 Customer does not need login.
 
@@ -154,7 +188,7 @@ Customer must not see:
 - factory cost
 - supplier/material info
 
-## 6. UX Flow — Maintenance
+## 7. UX Flow — Maintenance
 
 1. Dealer/Admin opens maintenance record for a warranty/car.
 2. Dealer/Admin adds maintenance record.
@@ -178,7 +212,7 @@ Maintenance statuses:
 - rejected
 - under_review
 
-## 7. UX Flow — Lost Warranty / Lost QR
+## 8. UX Flow — Lost Warranty / Lost QR
 
 1. Customer opens `/support/warranty`.
 2. Customer submits name, phone, license plate, vehicle, province, expected dealer if known, approximate install date if known, optional photo, issue type, message.
@@ -189,7 +223,7 @@ Maintenance statuses:
 
 Important: Do not allow open public search by phone/license plate.
 
-## 8. UX Flow — Claim / Inspection Request
+## 9. UX Flow — Claim / Inspection Request
 
 1. Customer opens `/support/inspection`.
 2. Customer submits serial if available, name, phone, license_plate, problem_type, description, photos, preferred contact.
@@ -201,7 +235,7 @@ Important: Do not allow open public search by phone/license plate.
 
 Use inspection language, not automatic claim approval language.
 
-## 9. UX Flow — Admin
+## 10. UX Flow — Admin
 
 1. Admin logs in.
 2. Admin dashboard shows overview: serials, active warranties, pending support, pending inspection, dealer activity.
@@ -213,7 +247,7 @@ Use inspection language, not automatic claim approval language.
 8. Admin handles support and inspection requests.
 9. Admin exports CSV.
 
-## 10. State Machines and Customer-Facing Cases
+## 11. State Machines and Customer-Facing Cases
 
 Serial statuses:
 - `produced_pending_import`
@@ -260,30 +294,41 @@ Customer-facing QR cases:
 4. Not Found: use under-verification wording and offer QR verification request with photo.
 5. Suspended / Under Review: show safe review wording and contact/support CTA.
 
-## 11. Page-by-page Requirements and Wireframe Descriptions
+## 12. Page-by-page Requirements and Wireframe Descriptions
 
 ### Home `/`
-Purpose: premium brand landing page for NEXS PPF.
+Purpose: sales + trust landing page for NEXS PPF, not only a warranty portal.
 Sections:
-- Hero: NEXS Paint Protection Film + QR warranty verification CTA
-- Product tier preview: BEGIN / PRIME / PRO / ULTIMATE
-- Warranty verification CTA
-- Dealer login CTA
-- Trust/process section: professional dealer installation + digital warranty
-- Contact CTA
-Wireframe: dark premium hero, high contrast CTA, product cards with tier colors, QR verification card prominent on mobile.
+1. Hero
+   - Headline: NEXS Paint Protection Film / ฟิล์มปกป้องสีรถ NEXS
+   - Subheadline: Premium paint protection with QR-based digital warranty verification / ฟิล์มปกป้องสีรถ พร้อมระบบบัตรรับประกันดิจิทัลผ่าน QR Code
+   - CTA: ดูสินค้า, ตรวจสอบบัตรรับประกัน, สอบถามราคา
+2. Product Line
+   - BEGIN / PRIME / PRO / ULTIMATE
+   - warranty years, positioning, short description
+   - CTA: ดูรายละเอียด / สอบถามราคา
+3. Why NEXS
+   - safe trust reasons: product tier system, QR verification, digital warranty card, professional dealer workflow, after-sales support
+4. Digital Warranty System
+   - scan QR, check status, view card, maintenance summary, request inspection
+5. For Dealers
+   - dealer registration workflow, customer installation records, maintenance, after-sales workflow
+   - CTA: สมัครตัวแทนจำหน่าย, Dealer Login
+6. Contact / Lead Form
+   - name, phone, province, interested product, customer type, message
+Wireframe: premium dark hero, sales CTA above fold, product cards next, trust/warranty as confidence features, lead form near bottom.
 
 ### Products `/products`
-Purpose: show 4 public product groups.
+Purpose: educate customers and help them choose a NEXS PPF tier.
 Sections:
 - Intro: NEXS PPF product lineup
-- BEGIN card
-- PRIME card
-- PRO card
-- ULTIMATE card
-- Warranty years table
-- Warranty check CTA
-Wireframe: 4 cards in responsive grid, each with color accent and Thai/English text. Avoid unapproved material/performance claims.
+- BEGIN card: 5 years, entry/value protection, recommended customer/use case
+- PRIME card: 6 years, core/hero SKU, recommended customer/use case
+- PRO card: 8 years, premium performance positioning, recommended customer/use case
+- ULTIMATE card: 9 years, flagship/top-tier positioning, recommended customer/use case
+- Comparison table using safe fields only
+- CTA: สอบถามราคา / ติดต่อ Dealer / ขอคำแนะนำเลือกรุ่น
+Wireframe: 4 cards in responsive grid, each with color accent and Thai/English text. Avoid public price and unapproved material/performance claims.
 
 ### Warranty Search `/warranty`
 Purpose: manual serial check.
@@ -315,15 +360,21 @@ Behavior:
 - dealer -> /dealer
 Wireframe: premium dark card, minimal fields, no customer login.
 
-### Dealer Dashboard `/dealer`
-Purpose: dealer work hub.
-Cards:
+### Dealer Public + Dashboard `/dealer`
+Purpose: support dealer recruitment/information and private dealer workflow entry.
+Public section:
+- Explain dealer benefits
+- Explain warranty registration workflow
+- Explain after-sales support workflow
+- CTA: สมัครตัวแทนจำหน่าย
+- CTA: Dealer Login
+Private dashboard cards after login:
 - Register New Warranty
 - Search Own Warranty Records
 - My Registered Cars
 - Maintenance
 - Profile
-Wireframe: simple operational dashboard, fast actions, uncluttered.
+Wireframe: public sales/recruitment content first for non-logged-in users; operational dashboard after authenticated dealer session.
 
 ### Dealer Register Warranty `/dealer/register-warranty`
 Purpose: activate warranty.
@@ -370,7 +421,7 @@ Form fields:
 - serial optional, name, phone, license plate, problem type, description, photos, preferred contact
 Wireframe: guided form with “under review” wording.
 
-## 12. UI Notes
+## 13. UI Notes
 
 - Mobile-first QR page is highest priority.
 - Public pages must feel premium, not admin-like.
