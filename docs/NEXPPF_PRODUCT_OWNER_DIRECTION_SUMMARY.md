@@ -1,6 +1,6 @@
 # NEXPPF Product Owner Direction Summary
 
-Last Updated: 2026-05-05T11:14:36+00:00
+Last Updated: 2026-05-05T14:42:36+00:00
 
 ## สิ่งที่ทำไปแล้วใช้ต่อได้
 
@@ -54,6 +54,8 @@ Last Updated: 2026-05-05T11:14:36+00:00
 - Inspection Request
 
 3. Lifecycle workflows
+- Full Digital Warranty Conceptual Workflow in `docs/DIGITAL_WARRANTY_CONCEPTUAL_WORKFLOW.md`
+- QR scans anytime, but Active only after authorized Dealer/Admin registration
 - Factory handoff flow
 - Maintenance workflow
 - Lost warranty / lost QR support
@@ -90,6 +92,22 @@ Last Updated: 2026-05-05T11:14:36+00:00
 - Pricing must not be hardcoded into public pages.
 - If pricing is added later, it must come from approved config/admin policy with public/dealer/admin visibility control.
 
+## Conceptual Workflow Decision Summary
+
+หัวใจของระบบ:
+- QR เป็น serial key สำหรับตรวจสอบและเริ่ม lifecycle ได้ทุกเวลา
+- ลูกค้าสแกนก่อน dealer ลงทะเบียนได้ แต่ต้องเห็น Not Registered ไม่ใช่ error
+- ลูกค้า activate warranty เองไม่ได้
+- Digital Warranty Card Active ได้เฉพาะหลัง Dealer/Admin ลงทะเบียนถูกต้อง
+- Not Found ต้องใช้คำว่าอยู่ระหว่างตรวจสอบได้ ไม่ควรเรียกว่าปลอมทันที
+- Duplicate registration ต้องถูก block และ admin override ต้องมี audit trail
+
+Recommended launch policy:
+- Dealer assignment ใช้ flexible launch mode ได้: allow valid unused serial + flag admin review
+- หลัง stock/dealer operation เสถียร ค่อยเปลี่ยนเป็น strict assignment
+- Dealer edit window แนะนำ 72 ชั่วโมงสำหรับ non-critical fields; หลังจากนั้น admin-only
+- Cross-dealer maintenance แนะนำ limited + log + admin visibility
+
 ## สิ่งที่ต้องให้ Tor S / NEXS admin ตัดสินใจ
 
 1. Final product copy and tone.
@@ -123,4 +141,5 @@ Last Updated: 2026-05-05T11:14:36+00:00
 3. `docs/EDGE_CASES_RISKS_OPEN_DECISIONS.md`
 4. `docs/NEXPPF_PRODUCT_OWNER_DIRECTION_SUMMARY.md`
 5. `docs/IMAGE_ASSET_REQUIREMENTS.md`
+6. `docs/DIGITAL_WARRANTY_CONCEPTUAL_WORKFLOW.md`
 

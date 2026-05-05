@@ -1,6 +1,6 @@
 # Edge Cases, Risks, and Open Decisions — nexppf-web
 
-Last Updated: 2026-05-05T11:14:36+00:00
+Last Updated: 2026-05-05T14:42:36+00:00
 Status: Draft for Tor S / NEXS admin review
 
 ## 1. Edge Cases
@@ -18,6 +18,20 @@ Status: Draft for Tor S / NEXS admin review
 - duplicate serial in import file.
 - duplicate serial already in database.
 - serial model_code mismatch, e.g. serial starts B but CSV model_code says P.
+
+### Factory / Import / Activation
+- Factory produced serial but NEXS has not imported it yet.
+- Serial exists in a pending/import context but batch is not approved/opened yet (`not_activated`).
+- QR sample path/domain is wrong.
+- Packing list quantity does not match serial CSV quantity.
+- Serial is from a test batch.
+- Serial model_code is unknown or mismatched with CSV tier.
+
+### Customer Scan Timing
+- Customer scans before Dealer registers warranty; show Not Registered, not error.
+- Customer scans valid in-stock serial before dealer assignment; show Not Registered without exposing stock state.
+- Customer scans serial not found; use Not Found / under-verification wording and support request, do not call it fake immediately.
+- Customer scans active serial but says the vehicle is not theirs; route to support/admin review.
 
 ### Dealer
 - dealer tries to access another dealer’s records.
@@ -107,6 +121,20 @@ Mitigation:
 - Role-based access controls.
 - Existing service-level tests must be backed by integration tests.
 
+### Lifecycle / Workflow Risks
+- Customer may receive warranty card before Dealer registers warranty.
+- Launch dealers may have real stock that is valid but not correctly assigned in system yet.
+- Strict dealer assignment could block real installations during launch.
+- Flexible launch assignment could weaken stock control if not flagged/audited.
+- Not Found wording could alarm customers if it implies fake immediately.
+
+Mitigation:
+- Show Not Registered for known valid unused serials.
+- Add recommended `not_activated` status for known pending/not-approved serials.
+- Use flexible launch mode only with `assignment_review_required` and audit trail.
+- Move to strict dealer assignment after launch operations stabilize.
+- Not Found page should offer verification request with QR/card photo.
+
 ### Data Integrity Risks
 - Duplicate registration race condition.
 - DB schema/migration drift.
@@ -154,6 +182,20 @@ Mitigation:
 3. Whether PRO 7.5 / PRO 8.5 should ever be visible publicly or always grouped under PRO.
 4. Final warranty policy text shown on public pages.
 5. Film care guide content.
+
+### Digital Warranty Lifecycle
+1. Should customer QR page show dealer name before warranty is Active?
+   - Recommendation: no, show dealer only after Active unless NEXS approves otherwise.
+2. Should serial pending import/batch approval have explicit `not_activated` status?
+   - Recommendation: yes, to separate known-but-not-opened from truly not found.
+3. Launch dealer assignment policy:
+   - Option A Strict: block serial not assigned to current dealer.
+   - Option B Flexible launch: allow valid unused serial registration, flag admin review, audit assignment.
+   - Recommendation: Option B during launch, Option A long term.
+4. Dealer edit window after registration.
+   - Recommendation: 72 hours for non-critical fields; admin-only after that; serial/vehicle identity admin-only.
+5. Not Found wording.
+   - Recommendation: “ไม่พบข้อมูล / ส่งคำขอตรวจสอบ” and do not call it fake immediately.
 
 ### Maintenance Policy
 1. Maintenance quota per product tier.

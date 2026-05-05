@@ -1,6 +1,6 @@
 # UX Flows, Sitemap, Page Requirements, and Wireframe Descriptions — nexppf-web
 
-Last Updated: 2026-05-05T11:14:36+00:00
+Last Updated: 2026-05-05T14:42:36+00:00
 Status: Draft for review before more implementation
 
 ## 1. Sitemap
@@ -45,7 +45,27 @@ Full image policy: `docs/IMAGE_ASSET_REQUIREMENTS.md`.
 - `/admin/inspection-requests`
 - `/admin/policy`
 
-## 2. UX Flow — Factory
+## 2. UX Flow — Full Digital Warranty Lifecycle
+
+Reference: `docs/DIGITAL_WARRANTY_CONCEPTUAL_WORKFLOW.md`.
+
+Timeline:
+1. T0 Factory produces film + QR + serial.
+2. T1 NEXS Admin imports serial CSV and validates batch.
+3. T2 NEXS approves batch and serial becomes `issued_in_stock`.
+4. T3 NEXS assigns serial batch to dealer or keeps stockกลาง.
+5. T4 Dealer installs film and gives warranty card / door sticker / QR.
+6. T5 Dealer/Admin registers warranty and activates Digital Warranty Card.
+7. T6 Customer scans QR and sees status-appropriate page.
+8. T7 Dealer/Admin records maintenance.
+9. T8 Customer submits lost card/lost QR support or inspection request when needed.
+
+Core UX rule:
+- QR must never feel broken to the customer.
+- If serial exists but warranty is not active, show Not Registered, not a scary error.
+- If serial is unknown, show Not Found / under-verification wording and offer support request.
+
+## 3. UX Flow — Factory
 
 1. Factory prepares serial list and QR samples.
 2. Factory sends NEXS:
@@ -64,7 +84,7 @@ Full image policy: `docs/IMAGE_ASSET_REQUIREMENTS.md`.
 6. NEXS Admin approves before mass printing.
 7. After goods arrive, NEXS randomly scans QR samples again.
 
-## 3. UX Flow — Dealer
+## 4. UX Flow — Dealer
 
 1. Dealer logs in.
 2. Dealer opens Register New Warranty.
@@ -96,7 +116,7 @@ Dealer must not see:
 - admin-only internal note
 - full system-wide data unless admin grants exception
 
-## 4. UX Flow — Customer
+## 5. UX Flow — Customer
 
 Customer does not need login.
 
@@ -134,7 +154,7 @@ Customer must not see:
 - factory cost
 - supplier/material info
 
-## 5. UX Flow — Maintenance
+## 6. UX Flow — Maintenance
 
 1. Dealer/Admin opens maintenance record for a warranty/car.
 2. Dealer/Admin adds maintenance record.
@@ -158,7 +178,7 @@ Maintenance statuses:
 - rejected
 - under_review
 
-## 6. UX Flow — Lost Warranty / Lost QR
+## 7. UX Flow — Lost Warranty / Lost QR
 
 1. Customer opens `/support/warranty`.
 2. Customer submits name, phone, license plate, vehicle, province, expected dealer if known, approximate install date if known, optional photo, issue type, message.
@@ -169,7 +189,7 @@ Maintenance statuses:
 
 Important: Do not allow open public search by phone/license plate.
 
-## 7. UX Flow — Claim / Inspection Request
+## 8. UX Flow — Claim / Inspection Request
 
 1. Customer opens `/support/inspection`.
 2. Customer submits serial if available, name, phone, license_plate, problem_type, description, photos, preferred contact.
@@ -181,7 +201,7 @@ Important: Do not allow open public search by phone/license plate.
 
 Use inspection language, not automatic claim approval language.
 
-## 8. UX Flow — Admin
+## 9. UX Flow — Admin
 
 1. Admin logs in.
 2. Admin dashboard shows overview: serials, active warranties, pending support, pending inspection, dealer activity.
@@ -193,7 +213,54 @@ Use inspection language, not automatic claim approval language.
 8. Admin handles support and inspection requests.
 9. Admin exports CSV.
 
-## 9. Page-by-page Requirements and Wireframe Descriptions
+## 10. State Machines and Customer-Facing Cases
+
+Serial statuses:
+- `produced_pending_import`
+- `issued_in_stock`
+- `assigned_to_dealer`
+- `registered_active`
+- `suspended`
+- `invalid`
+
+Warranty statuses:
+- `not_registered`
+- `active`
+- `expired`
+- `under_review`
+- `cancelled`
+
+Support request statuses:
+- `pending_review`
+- `in_progress`
+- `matched`
+- `not_matched`
+- `closed`
+
+Inspection statuses:
+- `submitted`
+- `under_review`
+- `need_inspection`
+- `approved`
+- `rejected`
+- `more_info_required`
+- `closed`
+
+Maintenance statuses:
+- `scheduled`
+- `completed`
+- `no_show`
+- `cancelled`
+- `under_review`
+
+Customer-facing QR cases:
+1. Active: show Digital Warranty Card with PDPA-safe fields.
+2. Not Registered: show product and serial only, no customer data, no customer self-activation.
+3. Not Activated: recommended for serial/batch known but not approved/opened yet.
+4. Not Found: use under-verification wording and offer QR verification request with photo.
+5. Suspended / Under Review: show safe review wording and contact/support CTA.
+
+## 11. Page-by-page Requirements and Wireframe Descriptions
 
 ### Home `/`
 Purpose: premium brand landing page for NEXS PPF.
@@ -303,7 +370,7 @@ Form fields:
 - serial optional, name, phone, license plate, problem type, description, photos, preferred contact
 Wireframe: guided form with “under review” wording.
 
-## 10. UI Notes
+## 12. UI Notes
 
 - Mobile-first QR page is highest priority.
 - Public pages must feel premium, not admin-like.

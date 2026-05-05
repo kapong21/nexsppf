@@ -1,6 +1,6 @@
 # Updated Product Requirement Document — nexppf-web
 
-Last Updated: 2026-05-05T11:14:36+00:00
+Last Updated: 2026-05-05T14:42:36+00:00
 Owner: Tor S / NEXS admin
 Executor: treee-tech-lead
 Status: Draft for Product Owner / NEXS review before more implementation
@@ -230,7 +230,63 @@ Statuses:
 
 Public page must not expose full customer personal data.
 
-## 9. Maintenance Requirement
+## 9. Digital Warranty Lifecycle Workflow
+
+The system must follow the conceptual workflow in `docs/DIGITAL_WARRANTY_CONCEPTUAL_WORKFLOW.md`.
+
+Core principle:
+- QR can be scanned at any time.
+- QR/serial becomes Active only after an authorized Dealer or Admin registers the real installation.
+- Customer self-activation is not allowed.
+
+Required lifecycle:
+1. Factory produces film + QR + serial.
+2. Factory sends serial list, QR sample, product code, batch, quantity, product tier, production date if available, sample photo, and packing list to NEXS.
+3. NEXS Admin imports serials and validates duplicate, malformed serial, unknown model_code, batch, quantity, and QR sample scan.
+4. NEXS Admin approves batch; serial status becomes `issued_in_stock`.
+5. NEXS assigns serial batch to dealer or keeps stockกลาง.
+6. Dealer installs film.
+7. Dealer/Admin registers warranty with customer, vehicle, installation, coverage, and optional photo data.
+8. Digital Warranty Card becomes Active.
+9. Dealer/Admin records maintenance.
+10. Customer can submit lost card/lost QR support or inspection request.
+
+Serial status state machine:
+- `produced_pending_import`
+- `issued_in_stock`
+- `assigned_to_dealer`
+- `registered_active`
+- `suspended`
+- `invalid`
+
+Warranty status state machine:
+- `not_registered`
+- `active`
+- `expired`
+- `under_review`
+- `cancelled`
+
+Important customer scan cases:
+- Active: show Digital Warranty Card with PDPA-safe fields.
+- Not Registered: serial exists but warranty is not active; show product/serial/status only and provide Contact NEXS / Dealer Login / support CTA.
+- Not Found: do not call it fake immediately; allow QR verification support request with photo.
+- Not Activated: recommended explicit status when serial/batch is known but not approved/opened yet.
+
+Dealer assignment policy:
+- Strict mode blocks registration if serial is not assigned to current dealer.
+- Flexible launch mode allows valid unused serial registration but flags admin review.
+- Recommendation: use flexible launch mode during launch, then strict mode after operations stabilize.
+
+Protection rules:
+- one serial = one active warranty
+- no customer self-activation
+- no public lookup by phone/license plate
+- dealer sees own records only
+- public PDPA masking
+- admin override requires audit trail
+- claim is inspection request, not automatic approval
+
+## 10. Maintenance Requirement
 
 The system must support maintenance records per warranty/car.
 
@@ -254,7 +310,7 @@ Maintenance policy must be editable/config-driven where possible. Draft assumpti
 
 Do not show these as final public policy until approved.
 
-## 10. Lost Warranty / Lost QR Support
+## 11. Lost Warranty / Lost QR Support
 
 Public users must not search openly by phone/license plate. Instead, they submit a support request.
 
@@ -280,7 +336,7 @@ After submit:
 - NEXS contacts customer back
 - no warranty details are revealed immediately on public page
 
-## 11. Claim / Inspection Request
+## 12. Claim / Inspection Request
 
 URL:
 `/support/inspection`
@@ -305,7 +361,7 @@ Workflow:
 5. Admin marks need_inspection / approved / rejected / more_info_required
 6. Customer is contacted back
 
-## 12. Current POC Assets to Keep
+## 13. Current POC Assets to Keep
 
 Keep and build on:
 - QR serial logic
@@ -316,7 +372,7 @@ Keep and build on:
 - database foundation
 - photo storage POC
 
-## 13. Required Changes Before More Feature Implementation
+## 14. Required Changes Before More Feature Implementation
 
 Before more implementation, create/approve:
 1. UX flow for factory/dealer/customer/admin/maintenance/support/inspection
