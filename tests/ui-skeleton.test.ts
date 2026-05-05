@@ -47,12 +47,23 @@ describe('ui skeleton content contract', () => {
     expect(SITE_COPY.homeHero.subtitle).toContain('บัตรรับประกันดิจิทัลผ่าน QR Code');
     expect(SITE_COPY.homeHero.eyebrow).toBe('NEXS Paint Protection Film');
     expect(SITE_COPY.homeHero.primaryCta).toBe('ดูสินค้า');
+    expect(SITE_COPY.homeHero.secondaryCta).toBe('สอบถามราคา');
+    expect(SITE_COPY.homeHero.tertiaryCta).toBe('ตรวจสอบบัตรรับประกัน');
   });
 
   it('defines lead generation copy for the public contact flow', () => {
     expect(SITE_COPY.leadForm.title).toBe('ติดต่อ NEXS');
     expect(SITE_COPY.leadForm.customerTypes).toEqual(['customer', 'dealer', 'installer']);
-    expect(SITE_COPY.leadForm.fields).toEqual(['name', 'phone', 'province', 'interestedProduct', 'customerType', 'message']);
+    expect(SITE_COPY.leadForm.fields).toEqual([
+      'name',
+      'phone',
+      'lineId',
+      'province',
+      'carModel',
+      'interestedProduct',
+      'customerType',
+      'message',
+    ]);
   });
 
   it('defines digital warranty card mock states without exposing sensitive data', () => {

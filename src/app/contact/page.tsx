@@ -23,8 +23,12 @@ export default function ContactPage() {
             <input id="contact-name" placeholder="ชื่อผู้ติดต่อ" />
             <label htmlFor="contact-phone">เบอร์โทร</label>
             <input id="contact-phone" placeholder="เช่น 081-xxx-1234" />
+            <label htmlFor="contact-line">LINE ID ถ้ามี</label>
+            <input id="contact-line" placeholder="LINE ID สำหรับติดต่อกลับ" />
             <label htmlFor="contact-province">จังหวัด</label>
             <input id="contact-province" placeholder="จังหวัด" />
+            <label htmlFor="contact-car">รุ่นรถ ถ้ามี</label>
+            <input id="contact-car" placeholder="เช่น Porsche 911 / Tesla Model 3" />
             <label htmlFor="contact-product">รุ่นที่สนใจ</label>
             <select id="contact-product">
               {PUBLIC_PRODUCT_GROUPS.map((product) => (

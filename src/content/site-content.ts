@@ -53,7 +53,7 @@ export type SiteCopy = {
   readonly leadForm: {
     readonly title: string;
     readonly description: string;
-    readonly fields: readonly ['name', 'phone', 'province', 'interestedProduct', 'customerType', 'message'];
+    readonly fields: readonly ['name', 'phone', 'lineId', 'province', 'carModel', 'interestedProduct', 'customerType', 'message'];
     readonly customerTypes: readonly ['customer', 'dealer', 'installer'];
   };
 };
@@ -159,8 +159,8 @@ export const SITE_COPY: SiteCopy = {
     thaiTitle: 'ฟิล์มปกป้องสีรถ NEXS',
     subtitle: 'ฟิล์มปกป้องสีรถ พร้อมระบบบัตรรับประกันดิจิทัลผ่าน QR Code',
     primaryCta: 'ดูสินค้า',
-    secondaryCta: 'ตรวจสอบบัตรรับประกัน',
-    tertiaryCta: 'สอบถามราคา',
+    secondaryCta: 'สอบถามราคา',
+    tertiaryCta: 'ตรวจสอบบัตรรับประกัน',
   },
   warranty: {
     title: 'QR-based warranty verification',
@@ -197,7 +197,7 @@ export const SITE_COPY: SiteCopy = {
   leadForm: {
     title: 'ติดต่อ NEXS',
     description: 'ส่งข้อมูลเพื่อสอบถามราคา ขอคำแนะนำเลือกรุ่น หรือติดต่อเรื่องการเป็นตัวแทนจำหน่าย',
-    fields: ['name', 'phone', 'province', 'interestedProduct', 'customerType', 'message'],
+    fields: ['name', 'phone', 'lineId', 'province', 'carModel', 'interestedProduct', 'customerType', 'message'],
     customerTypes: ['customer', 'dealer', 'installer'],
   },
 } as const;

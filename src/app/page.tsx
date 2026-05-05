@@ -94,8 +94,12 @@ function LeadForm() {
       <input id="lead-name" placeholder="ชื่อผู้ติดต่อ" />
       <label htmlFor="lead-phone">เบอร์โทร</label>
       <input id="lead-phone" placeholder="เช่น 081-xxx-1234" />
+      <label htmlFor="lead-line">LINE ID ถ้ามี</label>
+      <input id="lead-line" placeholder="LINE ID สำหรับติดต่อกลับ" />
       <label htmlFor="lead-province">จังหวัด</label>
       <input id="lead-province" placeholder="จังหวัดที่ต้องการรับบริการ" />
+      <label htmlFor="lead-car">รุ่นรถ ถ้ามี</label>
+      <input id="lead-car" placeholder="เช่น Porsche 911 / Tesla Model 3" />
       <label htmlFor="lead-product">รุ่นที่สนใจ</label>
       <select id="lead-product">
         {PUBLIC_PRODUCT_GROUPS.map((product) => (
@@ -135,10 +139,10 @@ export default function HomePage() {
             <a className="button primary" href="/products">
               {SITE_COPY.homeHero.primaryCta}
             </a>
-            <a className="button secondary" href="/warranty">
+            <a className="button secondary" href="/contact">
               {SITE_COPY.homeHero.secondaryCta}
             </a>
-            <a className="button secondary" href="/contact">
+            <a className="button text-link" href="/warranty">
               {SITE_COPY.homeHero.tertiaryCta}
             </a>
           </div>
@@ -212,7 +216,7 @@ export default function HomePage() {
         <div className="grid two">
           <div className="card">
             <p className="eyebrow">{SITE_COPY.productProof.title}</p>
-            <h2>QR & Serial Proof</h2>
+            <h2>ตรวจสอบสินค้าและบัตรรับประกันผ่าน QR Code</h2>
             <p>{SITE_COPY.productProof.description}</p>
             <p>ระบบใช้ serial_code เป็น identity หลัก ไม่ใช้ full URL เป็น primary identity</p>
           </div>

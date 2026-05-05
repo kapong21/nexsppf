@@ -1,6 +1,6 @@
 # UI Skeleton Result — nexppf-web
 
-Last Updated: 2026-05-05T15:21:38+00:00
+Last Updated: 2026-05-05T16:08:21+00:00
 Status: Local implementation; not pushed/deployed yet
 
 ## Summary
@@ -51,7 +51,7 @@ This is not connected to real PostgreSQL/auth yet.
 
 ### Home
 
-Premium dark automotive sales + trust landing page with:
+Apple-inspired light premium sales + trust landing page with:
 - NEXS logo/header navigation
 - sales-first hero headline and 3 CTAs
 - product line section for BEGIN / PRIME / PRO / ULTIMATE
@@ -102,11 +102,20 @@ Dealer page now includes public dealer recruitment/information with สมัค
 
 ### Contact / Lead Form
 
-Public contact page and homepage lead form collect name, phone, province, interested product, customer type, and message. Current submit button is static and does not send production/customer data.
+Public contact page and homepage lead form collect name, phone, optional LINE ID, province, optional car model, interested product, customer type, and message. Current submit button is static and does not send production/customer data.
 
 ### Admin Dashboard
 
 Static admin dashboard skeleton showing intended admin-only modules: serial import, dealer oversight, support triage, and future approved policy configuration.
+
+## Visual Direction
+
+Current public UI uses Apple-inspired light premium theme:
+- White / soft grey / graphite base palette
+- clean white cards with subtle shadow
+- product cards carry BEGIN / PRIME / PRO / ULTIMATE accents
+- Digital Warranty System appears as premium support/status card
+- Dealer Login remains visible but secondary
 
 ## Guardrails
 
@@ -128,7 +137,7 @@ Run before completion:
 - `npm run build`
 - `npm audit --audit-level=moderate`
 - Local HTTP 200 check for `/`, `/products`, `/contact`, `/dealer`, `/warranty`, `/support/warranty`, `/support/inspection`, `/admin`, and `/r/PRO-1196MXY0401178Q`
-- Browser visual check screenshot: `/opt/data/profiles/treee-tech-lead/cache/screenshots/browser_screenshot_725dcabc555340349092fa4c85e0eea6.png`
+- Browser visual check screenshot: `/opt/data/profiles/treee-tech-lead/cache/screenshots/browser_screenshot_ca290dc26ee249a9b74ceea0e33574a6.png`
 
 ## Limitations
 

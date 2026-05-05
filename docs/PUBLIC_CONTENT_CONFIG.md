@@ -1,6 +1,6 @@
 # Public Content Configuration — nexppf-web
 
-Last Updated: 2026-05-05T15:21:38+00:00
+Last Updated: 2026-05-05T16:08:21+00:00
 Status: Local implementation foundation; not pushed/deployed
 
 ## Purpose
@@ -61,7 +61,7 @@ The configuration includes safe copy for:
 - Home hero
 - Product sales guidance and recommended use cases
 - Why NEXS trust section
-- Lead generation form copy
+- Lead generation form copy including optional LINE ID and car model fields
 - Warranty / QR verification section
 - Dealer workflow section
 - Product proof / serial record section
