@@ -17,21 +17,21 @@ export default async function DigitalWarrantyCardPage({ params }: { params: Prom
             <span className={`status-pill ${card.status}`}>{card.status}</span>
             <h1>{card.title}</h1>
             <p>{card.description}</p>
-            <p>Serial: {card.serialCode ?? decodedSerial}</p>
-            {card.productName && <p>Product: {card.productName}</p>}
-            {card.warrantyYears && <p>Warranty: {card.warrantyYears} years</p>}
-            {card.installDate && <p>Install date: {card.installDate}</p>}
-            {card.expiryDate && <p>Expiry date: {card.expiryDate}</p>}
-            {card.dealerName && <p>Dealer: {card.dealerName}</p>}
-            {card.vehicle && <p>Vehicle: {card.vehicle}</p>}
-            {card.licensePlateMasked && <p>License: {card.licensePlateMasked}</p>}
-            {card.customerPhoneMasked && <p>Phone: {card.customerPhoneMasked}</p>}
+            <p>หมายเลข Serial: {card.serialCode ?? decodedSerial}</p>
+            {card.productName && <p>รุ่นสินค้า: {card.productName}</p>}
+            {card.warrantyYears && <p>ระยะรับประกัน: {card.warrantyYears} ปี</p>}
+            {card.installDate && <p>วันที่ติดตั้ง: {card.installDate}</p>}
+            {card.expiryDate && <p>วันหมดอายุ: {card.expiryDate}</p>}
+            {card.dealerName && <p>ตัวแทนจำหน่าย: {card.dealerName}</p>}
+            {card.vehicle && <p>รถ: {card.vehicle}</p>}
+            {card.licensePlateMasked && <p>ทะเบียน: {card.licensePlateMasked}</p>}
+            {card.customerPhoneMasked && <p>เบอร์โทร: {card.customerPhoneMasked}</p>}
             <div className="actions">
               <a className="button secondary" href="/support/inspection">
-                Request inspection
+                ขอให้ตรวจสอบปัญหา
               </a>
               <a className="button secondary" href="/support/warranty">
-                Lost warranty support
+                แจ้งบัตรรับประกันหรือ QR หาย
               </a>
             </div>
           </div>

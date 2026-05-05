@@ -379,6 +379,38 @@ h3 {
   margin-top: 1rem;
 }
 
+.product-badge {
+  background: color-mix(in srgb, var(--accent-2) 28%, #ffffff);
+  border: 1px solid color-mix(in srgb, var(--accent-1) 30%, var(--line));
+  border-radius: 999px;
+  color: var(--text) !important;
+  display: inline-flex;
+  font-size: 0.82rem;
+  font-weight: 900;
+  margin: 0 0 1rem;
+  padding: 0.42rem 0.72rem;
+}
+
+.warranty-label {
+  color: var(--text);
+  font-weight: 900;
+}
+
+.benefit-list {
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 1.1rem 0 0;
+  padding-left: 1.1rem;
+}
+
+.benefit-list li + li {
+  margin-top: 0.4rem;
+}
+
+.compact-list {
+  min-height: 88px;
+}
+
 .mock-phone {
   background: linear-gradient(180deg, #ffffff, #f5f5f7);
   border: 1px solid var(--line);
@@ -392,6 +424,89 @@ h3 {
 .status-card {
   background: var(--panel);
   box-shadow: none;
+}
+
+.branded-warranty-card {
+  background: linear-gradient(180deg, #ffffff, #eef1f5);
+}
+
+.warranty-card-topline,
+.warranty-brand-row {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.warranty-card-topline {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 800;
+  padding: 0.2rem 0.25rem 0.8rem;
+}
+
+.warranty-card-topline img {
+  height: 28px;
+  width: auto;
+}
+
+.warranty-card-body {
+  border-top: 8px solid var(--accent-2);
+}
+
+.qr-placeholder {
+  align-items: center;
+  background: repeating-linear-gradient(45deg, #111 0 5px, #fff 5px 10px);
+  border: 8px solid #fff;
+  border-radius: 18px;
+  box-shadow: var(--shadow-soft);
+  color: transparent;
+  display: inline-flex;
+  flex: 0 0 auto;
+  height: 74px;
+  justify-content: center;
+  width: 74px;
+}
+
+.warranty-detail-list {
+  display: grid;
+  gap: 0.7rem;
+  margin: 1rem 0 0;
+}
+
+.warranty-detail-list div {
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 0.65rem;
+}
+
+.warranty-detail-list dt {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.warranty-detail-list dd {
+  color: var(--text);
+  font-weight: 800;
+  margin: 0;
+  text-align: right;
+}
+
+.flow-steps {
+  display: grid;
+  gap: 0.65rem;
+  margin-top: 1.25rem;
+}
+
+.flow-steps span {
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  color: var(--text);
+  font-weight: 800;
+  padding: 0.78rem 0.9rem;
 }
 
 .status-pill {
@@ -476,11 +591,75 @@ h3 {
   resize: vertical;
 }
 
+.checkbox-row {
+  align-items: flex-start;
+  display: flex;
+  gap: 0.65rem;
+  line-height: 1.45;
+}
+
+.checkbox-row input {
+  flex: 0 0 auto;
+  margin-top: 0.2rem;
+  width: auto;
+}
+
+.checkbox-row a {
+  color: #0066cc;
+  font-weight: 800;
+}
+
+.required-mark,
+.form-error {
+  color: #b42323;
+  font-weight: 900;
+}
+
+.form-note,
+.form-success,
+.form-error {
+  font-size: 0.9rem;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.form-note {
+  color: var(--muted);
+}
+
+.form-success {
+  color: var(--green);
+  font-weight: 800;
+}
+
 .footer {
   background: var(--bg-soft);
   border-top: 1px solid var(--line);
   color: var(--muted);
   padding: 2rem clamp(1rem, 5vw, 4rem);
+}
+
+.rich-footer {
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.rich-footer p {
+  margin: 0.4rem 0 0;
+}
+
+.rich-footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  justify-content: flex-end;
+}
+
+.rich-footer a {
+  color: var(--text);
+  font-weight: 700;
 }
 
 @media (max-width: 900px) {

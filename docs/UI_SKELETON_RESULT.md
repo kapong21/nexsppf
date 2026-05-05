@@ -117,6 +117,22 @@ Current public UI uses Apple-inspired light premium theme:
 - Digital Warranty System appears as premium support/status card
 - Dealer Login remains visible but secondary
 
+## Launch Readiness Polish Pass
+
+Completed after Nex reviewed design direction but did not approve final go-live:
+
+- Removed internal/product-management words from public page source: `warranty years`, `positioning`, `CTA`, compliance notes, and database identity wording.
+- Product Line intro changed to customer-facing Thai: `เลือก NEXS PPF จาก 4 รุ่นหลัก ตามระดับการปกป้อง อายุการรับประกัน และงบประมาณที่เหมาะกับคุณ`.
+- Why NEXS description changed to: `มั่นใจได้ด้วยระบบลงทะเบียนสินค้า ตรวจสอบสถานะรับประกัน และติดตามประวัติการดูแลหลังติดตั้ง`.
+- Product cards now show Thai warranty labels, badges, short benefit bullets, and lead-first CTA order.
+- Warranty section now includes 4-step flow: install with dealer → Dealer registers Serial/car → customer scans QR → customer sees Digital Warranty Card and care history.
+- Warranty mockup now has NEXS logo, `NEXS Digital Warranty`, QR placeholder, product accent, Thai labels, Dealer name, install date, and `ตัวอย่างข้อมูล` note.
+- Contact form now has Thai customer-type dropdowns, required markers, PDPA consent checkbox, Privacy Policy link placeholder, success/error messages, and validation/anti-spam readiness note.
+- Footer now includes brand/contact/warranty/dealer/privacy/warranty-policy/login/copyright links.
+- Image asset rights remain unconfirmed; all nexslabs-derived images are marked placeholder/staging until NEXS commercial-use confirmation.
+
+Details: `docs/LAUNCH_READINESS_POLISH_RESULT.md`.
+
 ## Copy Cleanup + Image Composition Pass
 
 Completed before production approval:

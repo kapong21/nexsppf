@@ -19,7 +19,7 @@ export default function ProductsPage() {
           <p className="eyebrow">Products</p>
           <h1>เลือก NEXS PPF ให้เหมาะกับรถของคุณ</h1>
           <p className="lead">
-            เปรียบเทียบ BEGIN / PRIME / PRO / ULTIMATE ด้วย positioning, warranty years และ use case ที่ช่วยให้ลูกค้าคุยกับ NEXS หรือ Dealer ได้ง่ายขึ้น
+            เลือกฟิล์ม NEXS PPF ให้เหมาะกับการใช้งาน งบประมาณ และระดับการปกป้องที่ต้องการ
           </p>
           <div className="actions">
             <a className="button primary" href="/contact">
@@ -35,8 +35,8 @@ export default function ProductsPage() {
 
       <section className="section">
         <div className="section-head">
-          <h2>Product tier guide</h2>
-          <p>ข้อมูลนี้เป็น public sales guidance แบบไม่โชว์ราคา และไม่ใช้คำกล่าวอ้างที่ยังไม่อนุมัติ</p>
+          <h2>เลือกรุ่นที่เหมาะกับคุณ</h2>
+          <p>ทั้ง 4 รุ่นมีจุดเด่นและระยะรับประกันที่ต่างกัน เพื่อช่วยให้เลือกตามการใช้งานและระดับการดูแลที่ต้องการ</p>
         </div>
         <div className="grid four">
           {PUBLIC_PRODUCT_GROUPS.map((product) => {
@@ -47,20 +47,22 @@ export default function ProductsPage() {
                 key={product.name}
                 style={{ '--accent-1': accent1, '--accent-2': accent2 } as CSSProperties}
               >
-                <p className="eyebrow">{product.positioning}</p>
+                <p className="product-badge">{product.badge}</p>
                 <h2>{product.headline}</h2>
                 <div className="product-meta">
-                  <span>{product.warrantyYears} years</span>
+                  <span className="warranty-label">{product.warrantyLabel}</span>
                   <span>{product.modelCode}</span>
                 </div>
-                <p>{product.thaiDescription}</p>
-                <p>{product.recommendedUseCase}</p>
-                <p>Visual direction: {product.colorDirection.join(' / ')}</p>
+                <ul className="benefit-list compact-list">
+                  {product.benefits.map((benefit) => (
+                    <li key={benefit}>{benefit}</li>
+                  ))}
+                </ul>
                 <div className="actions small-actions">
-                  <a className="button secondary" href="/contact">
+                  <a className="button primary" href="/contact">
                     {product.primaryCta}
                   </a>
-                  <a className="button secondary" href="/dealer">
+                  <a className="button secondary" href="/products">
                     {product.secondaryCta}
                   </a>
                 </div>

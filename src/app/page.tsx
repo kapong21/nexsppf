@@ -32,7 +32,22 @@ function Header() {
 }
 
 function Footer() {
-  return <footer className="footer">NEXS Paint Protection Film · Product website · Digital warranty card · Dealer workflow</footer>;
+  return (
+    <footer className="footer rich-footer">
+      <div>
+        <strong>NEXS Paint Protection Film</strong>
+        <p>© 2026 NEXS. All rights reserved.</p>
+      </div>
+      <nav aria-label="Footer navigation">
+        <a href="/contact">ติดต่อเรา</a>
+        <a href="/warranty">บัตรรับประกัน</a>
+        <a href="/dealer">สำหรับตัวแทนจำหน่าย</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/warranty-policy">Warranty Policy</a>
+        <a href="/login">Dealer Login</a>
+      </nav>
+    </footer>
+  );
 }
 
 function ProductCards() {
@@ -46,20 +61,23 @@ function ProductCards() {
             key={product.name}
             style={{ '--accent-1': accent1, '--accent-2': accent2 } as CSSProperties}
           >
-            <p className="eyebrow">{product.positioning}</p>
+            <p className="product-badge">{product.badge}</p>
             <h3>{product.headline}</h3>
             <div className="product-meta">
-              <span>{product.warrantyYears} years</span>
+              <span className="warranty-label">{product.warrantyLabel}</span>
               <span>{product.modelCode}</span>
             </div>
-            <p>{product.thaiDescription}</p>
-            <p>{product.recommendedUseCase}</p>
+            <ul className="benefit-list compact-list">
+              {product.benefits.map((benefit) => (
+                <li key={benefit}>{benefit}</li>
+              ))}
+            </ul>
             <div className="actions small-actions">
-              <a className="button secondary" href="/products">
-                ดูรายละเอียด
-              </a>
-              <a className="button secondary" href="/contact">
+              <a className="button primary" href="/contact">
                 {product.primaryCta}
+              </a>
+              <a className="button secondary" href="/products">
+                {product.secondaryCta}
               </a>
             </div>
           </article>
@@ -72,31 +90,51 @@ function ProductCards() {
 function WarrantyMock() {
   const active = DIGITAL_WARRANTY_CARD_MOCKS[0];
   return (
-    <div className="mock-phone">
-      <div className="status-card">
-        <span className={`status-pill ${active.status}`}>{active.status}</span>
-        <h3>{active.title}</h3>
+    <div className="mock-phone branded-warranty-card">
+      <div className="warranty-card-topline">
+        <img src="/nexs-logo.png" alt="NEXS" />
+        <span>ตัวอย่างข้อมูล</span>
+      </div>
+      <div className="status-card warranty-card-body" style={{ '--accent-1': productAccents.PRO[0], '--accent-2': productAccents.PRO[1] } as CSSProperties}>
+        <div className="warranty-brand-row">
+          <div>
+            <p className="eyebrow">NEXS Digital Warranty</p>
+            <h3>{active.title}</h3>
+          </div>
+          <div className="qr-placeholder" aria-label="QR placeholder">QR</div>
+        </div>
+        <span className={`status-pill ${active.status}`}>สถานะ: Active</span>
         <p>{active.description}</p>
-        <p>Serial: {active.serialCode}</p>
-        <p>Product: {active.productName}</p>
-        <p>Vehicle: {active.vehicle}</p>
-        <p>Phone: {active.customerPhoneMasked}</p>
-        <p>Expiry: {active.expiryDate}</p>
+        <dl className="warranty-detail-list">
+          <div><dt>รุ่นสินค้า</dt><dd>{active.productName}</dd></div>
+          <div><dt>หมายเลข Serial</dt><dd>{active.serialCode}</dd></div>
+          <div><dt>รถ</dt><dd>{active.vehicle}</dd></div>
+          <div><dt>ตัวแทนจำหน่าย</dt><dd>{active.dealerName}</dd></div>
+          <div><dt>วันที่ติดตั้ง</dt><dd>{active.installDate}</dd></div>
+          <div><dt>วันหมดอายุ</dt><dd>{active.expiryDate}</dd></div>
+        </dl>
       </div>
     </div>
   );
 }
 
+const warrantySteps = [
+  'ติดตั้งกับตัวแทนจำหน่าย',
+  'Dealer ลงทะเบียน Serial และข้อมูลรถ',
+  'ลูกค้าสแกน QR Code',
+  'ดู Digital Warranty Card และประวัติการดูแลได้',
+] as const;
+
 function LeadForm() {
   return (
     <div className="form-shell compact">
-      <label htmlFor="lead-name">ชื่อ</label>
+      <label htmlFor="lead-name">ชื่อ <span className="required-mark">*</span></label>
       <input id="lead-name" placeholder="ชื่อผู้ติดต่อ" />
-      <label htmlFor="lead-phone">เบอร์โทร</label>
+      <label htmlFor="lead-phone">เบอร์โทร <span className="required-mark">*</span></label>
       <input id="lead-phone" placeholder="เช่น 081-xxx-1234" />
       <label htmlFor="lead-line">LINE ID ถ้ามี</label>
       <input id="lead-line" placeholder="LINE ID สำหรับติดต่อกลับ" />
-      <label htmlFor="lead-province">จังหวัด</label>
+      <label htmlFor="lead-province">จังหวัด <span className="required-mark">*</span></label>
       <input id="lead-province" placeholder="จังหวัดที่ต้องการรับบริการ" />
       <label htmlFor="lead-car">รุ่นรถ ถ้ามี</label>
       <input id="lead-car" placeholder="เช่น Porsche 911 / Tesla" />
@@ -106,17 +144,25 @@ function LeadForm() {
           <option key={product.name}>{product.name}</option>
         ))}
       </select>
-      <label htmlFor="lead-type">ประเภทผู้ติดต่อ</label>
+      <label htmlFor="lead-type">ประเภทผู้ติดต่อ <span className="required-mark">*</span></label>
       <select id="lead-type">
-        <option>customer</option>
-        <option>dealer</option>
-        <option>installer</option>
+        {SITE_COPY.leadForm.customerTypes.map((type) => (
+          <option key={type}>{type}</option>
+        ))}
       </select>
       <label htmlFor="lead-message">ข้อความ</label>
       <textarea id="lead-message" placeholder="สอบถามราคา ขอคำแนะนำเลือกรุ่น หรือสมัครตัวแทนจำหน่าย" />
+      <label className="checkbox-row" htmlFor="lead-pdpa">
+        <input id="lead-pdpa" type="checkbox" />
+        <span>{SITE_COPY.leadForm.pdpaConsentLabel} <a href={SITE_COPY.leadForm.privacyPolicyHref}>Privacy Policy</a></span>
+      </label>
+      <p className="form-note">ช่องจำเป็น: ชื่อ, เบอร์โทร, จังหวัด, ประเภทผู้ติดต่อ และการยินยอมให้ติดต่อกลับ</p>
+      <p className="form-note">เมื่อเปิดใช้งานฟอร์มจริง ระบบจะตรวจรูปแบบเบอร์โทร แสดงข้อความสำเร็จ และช่วยลดสแปมก่อนส่งข้อมูล</p>
       <button className="button primary" type="button">
-        ส่งข้อมูลให้ติดต่อกลับ
+        {SITE_COPY.leadForm.submitCta}
       </button>
+      <p className="form-success" hidden>{SITE_COPY.leadForm.successMessage}</p>
+      <p className="form-error" hidden>{SITE_COPY.leadForm.errorMessage}</p>
     </div>
   );
 }
@@ -153,7 +199,7 @@ export default function HomePage() {
       <section className="section" id="products">
         <div className="section-head">
           <h2>Product Line</h2>
-          <p>เลือก NEXS PPF จาก 4 กลุ่มสินค้า พร้อม warranty years, positioning และ CTA เพื่อสอบถามข้อมูลก่อนตัดสินใจ</p>
+          <p>เลือก NEXS PPF จาก 4 รุ่นหลัก ตามระดับการปกป้อง อายุการรับประกัน และงบประมาณที่เหมาะกับคุณ</p>
         </div>
         <ProductCards />
       </section>
@@ -161,7 +207,7 @@ export default function HomePage() {
       <section className="section" id="why-nexs">
         <div className="section-head">
           <h2>{SITE_COPY.whyNexs.title}</h2>
-          <p>เหตุผลด้านระบบและการดูแลที่สื่อสารได้อย่างปลอดภัย โดยไม่ใช้คำกล่าวอ้างที่ยังไม่อนุมัติ</p>
+          <p>{SITE_COPY.whyNexs.description}</p>
         </div>
         <div className="grid five">
           {SITE_COPY.whyNexs.points.map((point) => (
@@ -178,8 +224,13 @@ export default function HomePage() {
             <p className="eyebrow">{SITE_COPY.warranty.title}</p>
             <h2>Digital Warranty System</h2>
             <p>{SITE_COPY.warranty.description}</p>
-            <p>ลูกค้าสามารถสแกน QR Code เพื่อตรวจสอบสถานะบัตรรับประกัน ดูข้อมูลสินค้า รถที่ลงทะเบียน และประวัติการดูแลหลังการติดตั้งได้อย่างปลอดภัย</p>
+            <p>หลังติดตั้ง ลูกค้าจะได้รับบัตรรับประกันดิจิทัลที่เชื่อมกับ Serial Number ของสินค้า สามารถสแกน QR Code เพื่อตรวจสอบรุ่นสินค้า สถานะรับประกัน วันที่ติดตั้ง และข้อมูลตัวแทนจำหน่ายได้ทุกเวลา</p>
             <p>หากพบปัญหา สามารถส่งคำขอให้ Dealer หรือทีม NEXS ตรวจสอบได้ โดยไม่ถือเป็นการอนุมัติเคลมอัตโนมัติ</p>
+            <div className="flow-steps">
+              {warrantySteps.map((step, index) => (
+                <span key={step}>{index + 1}. {step}</span>
+              ))}
+            </div>
             <div className="actions">
               <a className="button secondary" href="/warranty">
                 เปิดหน้าตรวจสอบ
@@ -203,7 +254,11 @@ export default function HomePage() {
               <span>และร้านติดตั้ง</span>
             </h2>
             <p>{SITE_COPY.dealer.description}</p>
-            <p>Dealer สามารถลงทะเบียนบัตรรับประกัน ดูข้อมูลของร้านตัวเอง และติดตามงานดูแลหลังการติดตั้งผ่านระบบที่แยกสิทธิ์การใช้งานชัดเจน</p>
+            <ul className="benefit-list">
+              {SITE_COPY.dealer.benefits.map((benefit) => (
+                <li key={benefit}>{benefit}</li>
+              ))}
+            </ul>
             <div className="actions">
               <a className="button primary" href="/contact">
                 {SITE_COPY.dealer.primaryCta}
@@ -234,7 +289,7 @@ export default function HomePage() {
             <p className="eyebrow">Lead Generation</p>
             <h2>{SITE_COPY.leadForm.title}</h2>
             <p>{SITE_COPY.leadForm.description}</p>
-            <p>กรอกข้อมูลเบื้องต้น แล้วทีม NEXS หรือผู้เกี่ยวข้องจะใช้ข้อมูลนี้เพื่อติดต่อกลับเมื่อเชื่อมต่อระบบรับ lead จริง</p>
+            <p>กรอกข้อมูลเบื้องต้น แล้วทีมงาน NEXS จะใช้ข้อมูลนี้เพื่อติดต่อกลับ ให้คำแนะนำ และประสานตัวแทนจำหน่ายที่เหมาะสม</p>
             <div className="lead-support-list">
               <span>ลูกค้าที่สนใจติดตั้ง</span>
               <span>ร้านที่ต้องการสมัครตัวแทนจำหน่าย</span>

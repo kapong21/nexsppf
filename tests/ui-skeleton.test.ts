@@ -44,7 +44,8 @@ describe('ui skeleton content contract', () => {
 
   it('uses sales-first safe site copy for the home hero', () => {
     expect(SITE_COPY.homeHero.title).toBe('NEXS Paint Protection Film');
-    expect(SITE_COPY.homeHero.subtitle).toContain('บัตรรับประกันดิจิทัลผ่าน QR Code');
+    expect(SITE_COPY.homeHero.subtitle).toContain('บัตรรับประกันดิจิทัล');
+    expect(SITE_COPY.homeHero.subtitle).toContain('ตรวจสอบได้ผ่าน QR Code');
     expect(SITE_COPY.homeHero.eyebrow).toBe('NEXS Paint Protection Film');
     expect(SITE_COPY.homeHero.primaryCta).toBe('ดูสินค้า');
     expect(SITE_COPY.homeHero.secondaryCta).toBe('สอบถามราคา');
@@ -53,7 +54,12 @@ describe('ui skeleton content contract', () => {
 
   it('defines lead generation copy for the public contact flow', () => {
     expect(SITE_COPY.leadForm.title).toBe('ติดต่อ NEXS');
-    expect(SITE_COPY.leadForm.customerTypes).toEqual(['customer', 'dealer', 'installer']);
+    expect(SITE_COPY.leadForm.customerTypes).toEqual([
+      'ลูกค้าสนใจติดตั้ง',
+      'ร้านค้าสนใจสมัครตัวแทนจำหน่าย',
+      'สอบถามเรื่องบัตรรับประกัน',
+      'อื่น ๆ',
+    ]);
     expect(SITE_COPY.leadForm.fields).toEqual([
       'name',
       'phone',
@@ -63,6 +69,7 @@ describe('ui skeleton content contract', () => {
       'interestedProduct',
       'customerType',
       'message',
+      'pdpaConsent',
     ]);
   });
 

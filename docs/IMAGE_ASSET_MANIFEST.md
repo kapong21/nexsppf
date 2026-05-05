@@ -7,14 +7,14 @@ Status: v1 allowed assets copied locally; production use still requires NEXS rig
 
 ## Copied v1 Assets
 
-| Destination | Source | SHA256 | Intended Usage |
-|---|---|---|---|
-| `public/nexs-logo.png` | `nexslabs-web/repo/public/nexs-logo.png` | `21d0ba3f52515e21cf24ee0d170907f8b8f037f268923546f398e018ea6f2eee` | Header, Footer, Login, Digital Warranty Card, Dealer/Admin dashboard |
-| `public/images/hero-porsche.jpg` | `nexslabs-web/repo/public/images/hero-porsche.jpg` | `1baa679f1f73d0afdfa3357949537e96851a258ca6a343ed9312576fab04a3b6` | `hero_brand_visual`: home hero / product overview; wide aspirational crop |
-| `public/images/installer-hood.jpg` | `nexslabs-web/repo/public/images/installer-hood.jpg` | `1780185ee1941b0cb7545ad6a4ecfe3f3b2f513b1b4d3766db739eb9212296f8` | `dealer_installation_visual`, `maintenance_after_sales_visual`: editorial crop around hands/tool/vehicle surface |
-| `public/images/nexs-ultimate-box.jpg` | `nexslabs-web/repo/public/images/nexs-ultimate-box.jpg` | `71edf9520f13366e349217ac22096bf3f5b6742127be4c7f7e33f1832f8a560f` | `warranty_qr_visual`, `packaging_product_proof_visual`: product proof with breathing space; avoid readable risky copy |
-| `public/images/matte-bmw-full.jpg` | `nexslabs-web/repo/public/images/matte-bmw-full.jpg` | `c6ec29dc724b88337fe8203e4977e6fe71055bc2616a571d1460bffc8b95aab3` | `contact_lead_visual`: mood only; do not imply matte-only product scope |
-| `public/images/matte-bmw-closeup.jpg` | `nexslabs-web/repo/public/images/matte-bmw-closeup.jpg` | `374da8f90d997ca897d075aaff588a8254a27f3ab56ce1ca8e6a69fdd81497c3` | `product_line_visual`: detail/surface mood only; do not label as product proof |
+| Destination | Source | SHA256 | Intended Usage | Rights / Launch Status |
+|---|---|---|---|---|
+| `public/nexs-logo.png` | `nexslabs-web/repo/public/nexs-logo.png` | `21d0ba3f52515e21cf24ee0d170907f8b8f037f268923546f398e018ea6f2eee` | Header, Footer, Login, Digital Warranty Card, Dealer/Admin dashboard | Need NEXS commercial-use confirmation before go-live |
+| `public/images/hero-porsche.jpg` | `nexslabs-web/repo/public/images/hero-porsche.jpg` | `1baa679f1f73d0afdfa3357949537e96851a258ca6a343ed9312576fab04a3b6` | `hero_brand_visual`: home hero / product overview; wide aspirational crop | Placeholder/staging until rights confirmed |
+| `public/images/installer-hood.jpg` | `nexslabs-web/repo/public/images/installer-hood.jpg` | `1780185ee1941b0cb7545ad6a4ecfe3f3b2f513b1b4d3766db739eb9212296f8` | `dealer_installation_visual`, `maintenance_after_sales_visual`: editorial crop around hands/tool/vehicle surface | Placeholder/staging until rights confirmed |
+| `public/images/nexs-ultimate-box.jpg` | `nexslabs-web/repo/public/images/nexs-ultimate-box.jpg` | `71edf9520f13366e349217ac22096bf3f5b6742127be4c7f7e33f1832f8a560f` | `warranty_qr_visual`, `packaging_product_proof_visual`: product proof with breathing space; avoid readable risky copy | Placeholder/staging until rights confirmed |
+| `public/images/matte-bmw-full.jpg` | `nexslabs-web/repo/public/images/matte-bmw-full.jpg` | `c6ec29dc724b88337fe8203e4977e6fe71055bc2616a571d1460bffc8b95aab3` | `contact_lead_visual`: mood only; do not imply matte-only product scope | Placeholder/staging until rights confirmed |
+| `public/images/matte-bmw-closeup.jpg` | `nexslabs-web/repo/public/images/matte-bmw-closeup.jpg` | `374da8f90d997ca897d075aaff588a8254a27f3ab56ce1ca8e6a69fdd81497c3` | `product_line_visual`: detail/surface mood only; do not label as product proof | Placeholder/staging until rights confirmed |
 
 ## Image Role Map
 

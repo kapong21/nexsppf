@@ -39,8 +39,10 @@ describe('site content policy', () => {
   it('defines safe sales guidance for each product group', () => {
     for (const product of PUBLIC_PRODUCT_GROUPS) {
       expect(product.recommendedUseCase.length).toBeGreaterThan(10);
+      expect(product.benefits.length).toBeGreaterThanOrEqual(2);
+      expect(product.warrantyLabel).toBe(`รับประกัน ${product.warrantyYears} ปี`);
       expect(product.primaryCta).toBe('สอบถามราคา');
-      expect(product.secondaryCta).toBe('ติดต่อ Dealer');
+      expect(product.secondaryCta).toBe('ดูรายละเอียด');
     }
   });
 
