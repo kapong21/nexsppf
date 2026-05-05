@@ -6,6 +6,7 @@ export type UiRoute = {
     | '/r/[serial]'
     | '/support/warranty'
     | '/support/inspection'
+    | '/contact'
     | '/login'
     | '/dealer'
     | '/admin';
@@ -65,6 +66,11 @@ export const UI_ROUTES: readonly UiRoute[] = [
     purpose: 'Public claim and inspection request skeleton with safe intake guidance before backend workflow integration.',
   },
   {
+    path: '/contact',
+    title: 'Contact',
+    purpose: 'Public lead form for customers, dealers, and installers to contact NEXS without showing public pricing.',
+  },
+  {
     path: '/login',
     title: 'Dealer/Admin Login',
     purpose: 'Login entry point for dealer and admin workflows.',
@@ -85,7 +91,8 @@ export const PUBLIC_NAV_ITEMS: readonly NavItem[] = [
   { label: 'หน้าแรก', href: '/' },
   { label: 'สินค้า', href: '/products' },
   { label: 'บัตรรับประกัน', href: '/warranty' },
-  { label: 'เข้าสู่ระบบตัวแทนจำหน่าย', href: '/login' },
+  { label: 'สำหรับตัวแทนจำหน่าย', href: '/dealer' },
+  { label: 'ติดต่อเรา', href: '/contact' },
 ] as const;
 
 export const DIGITAL_WARRANTY_CARD_MOCKS: readonly DigitalWarrantyCardMock[] = [

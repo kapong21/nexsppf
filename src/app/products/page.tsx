@@ -17,13 +17,27 @@ export default function ProductsPage() {
       <section className="hero">
         <div className="hero-copy">
           <p className="eyebrow">Products</p>
-          <h1>BEGIN / PRIME / PRO / ULTIMATE</h1>
-          <p className="lead">กลุ่มสินค้า NEXS PPF สำหรับ public v1 พร้อม warranty years และ color direction ที่เตรียมไว้สำหรับ product card system</p>
+          <h1>เลือก NEXS PPF ให้เหมาะกับรถของคุณ</h1>
+          <p className="lead">
+            เปรียบเทียบ BEGIN / PRIME / PRO / ULTIMATE ด้วย positioning, warranty years และ use case ที่ช่วยให้ลูกค้าคุยกับ NEXS หรือ Dealer ได้ง่ายขึ้น
+          </p>
+          <div className="actions">
+            <a className="button primary" href="/contact">
+              สอบถามราคา
+            </a>
+            <a className="button secondary" href="/warranty">
+              ตรวจสอบบัตรรับประกัน
+            </a>
+          </div>
         </div>
         <div className="hero-visual">{mood.path && <img src={mood.path} alt={mood.alt} />}</div>
       </section>
 
       <section className="section">
+        <div className="section-head">
+          <h2>Product tier guide</h2>
+          <p>ข้อมูลนี้เป็น public sales guidance แบบไม่โชว์ราคา และไม่ใช้คำกล่าวอ้างที่ยังไม่อนุมัติ</p>
+        </div>
         <div className="grid four">
           {PUBLIC_PRODUCT_GROUPS.map((product) => {
             const [accent1, accent2] = productAccents[product.name];
@@ -40,7 +54,16 @@ export default function ProductsPage() {
                   <span>{product.modelCode}</span>
                 </div>
                 <p>{product.thaiDescription}</p>
-                <p>Color direction: {product.colorDirection.join(' / ')}</p>
+                <p>{product.recommendedUseCase}</p>
+                <p>Visual direction: {product.colorDirection.join(' / ')}</p>
+                <div className="actions small-actions">
+                  <a className="button secondary" href="/contact">
+                    {product.primaryCta}
+                  </a>
+                  <a className="button secondary" href="/dealer">
+                    {product.secondaryCta}
+                  </a>
+                </div>
               </article>
             );
           })}

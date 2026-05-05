@@ -16,18 +16,20 @@ describe('ui skeleton content contract', () => {
       '/r/[serial]',
       '/support/warranty',
       '/support/inspection',
+      '/contact',
       '/login',
       '/dealer',
       '/admin',
     ]);
   });
 
-  it('defines main navigation without admin-only routes', () => {
+  it('defines sales-first main navigation without admin-only routes', () => {
     expect(PUBLIC_NAV_ITEMS).toEqual([
       { label: 'หน้าแรก', href: '/' },
       { label: 'สินค้า', href: '/products' },
       { label: 'บัตรรับประกัน', href: '/warranty' },
-      { label: 'เข้าสู่ระบบตัวแทนจำหน่าย', href: '/login' },
+      { label: 'สำหรับตัวแทนจำหน่าย', href: '/dealer' },
+      { label: 'ติดต่อเรา', href: '/contact' },
     ]);
   });
 
@@ -40,9 +42,17 @@ describe('ui skeleton content contract', () => {
     ]);
   });
 
-  it('uses safe site copy for the home hero', () => {
-    expect(SITE_COPY.homeHero.title).toContain('บัตรรับประกันดิจิทัล');
+  it('uses sales-first safe site copy for the home hero', () => {
+    expect(SITE_COPY.homeHero.title).toBe('NEXS Paint Protection Film');
+    expect(SITE_COPY.homeHero.subtitle).toContain('บัตรรับประกันดิจิทัลผ่าน QR Code');
     expect(SITE_COPY.homeHero.eyebrow).toBe('NEXS Paint Protection Film');
+    expect(SITE_COPY.homeHero.primaryCta).toBe('ดูสินค้า');
+  });
+
+  it('defines lead generation copy for the public contact flow', () => {
+    expect(SITE_COPY.leadForm.title).toBe('ติดต่อ NEXS');
+    expect(SITE_COPY.leadForm.customerTypes).toEqual(['customer', 'dealer', 'installer']);
+    expect(SITE_COPY.leadForm.fields).toEqual(['name', 'phone', 'province', 'interestedProduct', 'customerType', 'message']);
   });
 
   it('defines digital warranty card mock states without exposing sensitive data', () => {

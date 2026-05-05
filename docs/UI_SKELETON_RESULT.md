@@ -1,11 +1,11 @@
 # UI Skeleton Result — nexppf-web
 
-Last Updated: 2026-05-05T14:33:34+00:00
+Last Updated: 2026-05-05T15:21:38+00:00
 Status: Local implementation; not pushed/deployed yet
 
 ## Summary
 
-Added static UI skeleton foundation for nexppf-web using the existing content and image-slot configuration.
+Updated static UI skeleton foundation to follow the 3-layer framing: Information Website + Sales/Product Website + Warranty/After-sales System.
 
 This is not connected to real PostgreSQL/auth yet.
 
@@ -13,6 +13,7 @@ This is not connected to real PostgreSQL/auth yet.
 
 - `/` Home
 - `/products` Products page
+- `/contact` public contact / lead form skeleton
 - `/warranty` Warranty search skeleton
 - `/r/[serial]` Digital Warranty Card mock
 - `/support/warranty` lost warranty / lost QR support skeleton
@@ -33,6 +34,7 @@ This is not connected to real PostgreSQL/auth yet.
 - `src/app/globals.css`
 - `src/app/page.tsx`
 - `src/app/products/page.tsx`
+- `src/app/contact/page.tsx`
 - `src/app/warranty/page.tsx`
 - `src/app/r/[serial]/page.tsx`
 - `src/app/support/warranty/page.tsx`
@@ -40,21 +42,24 @@ This is not connected to real PostgreSQL/auth yet.
 - `src/app/login/page.tsx`
 - `src/app/dealer/page.tsx`
 - `src/app/admin/page.tsx`
+- `src/content/site-content.ts`
 - `src/content/ui-skeleton.ts`
+- `tests/site-content.test.ts`
 - `tests/ui-skeleton.test.ts`
 
 ## UI Description
 
 ### Home
 
-Premium dark automotive landing page with:
+Premium dark automotive sales + trust landing page with:
 - NEXS logo/header navigation
-- hero image from approved image slots
-- safe hero copy
-- products overview section
-- digital warranty card mock section
-- dealer workflow section
+- sales-first hero headline and 3 CTAs
+- product line section for BEGIN / PRIME / PRO / ULTIMATE
+- Why NEXS trust section using safe wording
+- Digital Warranty System section as trust/after-sales feature
+- Dealer recruitment / dealer login section
 - QR/serial proof section
+- Contact / lead form section
 
 ### Products
 
@@ -64,7 +69,7 @@ Shows 4 public product groups:
 - PRO
 - ULTIMATE
 
-Each card uses approved warranty years, model code, color direction, and safe product copy.
+Each card uses approved warranty years, model code, color direction, safe product copy, recommended use case, and CTA to ask for price/contact dealer without showing public price.
 
 ### Warranty
 
@@ -91,9 +96,13 @@ Static lost warranty / lost QR support skeleton with safe intake fields and no s
 
 Static inspection request skeleton for initial customer intake before real claim/inspection workflow integration.
 
-### Dealer Dashboard
+### Dealer Public + Dashboard
 
-Static dealer dashboard skeleton showing intended dealer-only modules: warranty registration, own records, and after-sales follow-up. Real backend must bind dealer records to verified session/dealerId.
+Dealer page now includes public dealer recruitment/information with สมัครตัวแทนจำหน่าย and Dealer Login CTA, plus private workflow preview modules: warranty registration, own records, and after-sales follow-up. Real backend must bind dealer records to verified session/dealerId.
+
+### Contact / Lead Form
+
+Public contact page and homepage lead form collect name, phone, province, interested product, customer type, and message. Current submit button is static and does not send production/customer data.
 
 ### Admin Dashboard
 
@@ -102,6 +111,7 @@ Static admin dashboard skeleton showing intended admin-only modules: serial impo
 ## Guardrails
 
 - No supplier/material/performance claims added.
+- Public UI supports pre-purchase sales/education/lead generation before warranty workflows.
 - PRO is public as required.
 - Operational photos are not used as marketing assets.
 - Image references use centralized slots/config.
@@ -117,7 +127,8 @@ Run before completion:
 - `npm run typecheck`
 - `npm run build`
 - `npm audit --audit-level=moderate`
-- Local HTTP 200 check for `/`, `/products`, `/warranty`, `/support/warranty`, `/support/inspection`, `/dealer`, `/admin`, and `/r/PRO-1196MXY0401178Q`
+- Local HTTP 200 check for `/`, `/products`, `/contact`, `/dealer`, `/warranty`, `/support/warranty`, `/support/inspection`, `/admin`, and `/r/PRO-1196MXY0401178Q`
+- Browser visual check screenshot: `/opt/data/profiles/treee-tech-lead/cache/screenshots/browser_screenshot_725dcabc555340349092fa4c85e0eea6.png`
 
 ## Limitations
 

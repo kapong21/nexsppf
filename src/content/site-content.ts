@@ -9,15 +9,20 @@ export type PublicProductGroup = {
   readonly imageSlot: ImageSlotKey;
   readonly headline: string;
   readonly thaiDescription: string;
+  readonly recommendedUseCase: string;
+  readonly primaryCta: 'สอบถามราคา';
+  readonly secondaryCta: 'ติดต่อ Dealer';
 };
 
 export type SiteCopy = {
   readonly homeHero: {
     readonly eyebrow: string;
     readonly title: string;
+    readonly thaiTitle: string;
     readonly subtitle: string;
     readonly primaryCta: string;
     readonly secondaryCta: string;
+    readonly tertiaryCta: string;
   };
   readonly warranty: {
     readonly title: string;
@@ -34,6 +39,22 @@ export type SiteCopy = {
   readonly maintenance: {
     readonly title: string;
     readonly description: string;
+  };
+  readonly whyNexs: {
+    readonly title: string;
+    readonly points: readonly string[];
+  };
+  readonly dealer: {
+    readonly title: string;
+    readonly description: string;
+    readonly primaryCta: string;
+    readonly secondaryCta: string;
+  };
+  readonly leadForm: {
+    readonly title: string;
+    readonly description: string;
+    readonly fields: readonly ['name', 'phone', 'province', 'interestedProduct', 'customerType', 'message'];
+    readonly customerTypes: readonly ['customer', 'dealer', 'installer'];
   };
 };
 
@@ -86,6 +107,9 @@ export const PUBLIC_PRODUCT_GROUPS: readonly PublicProductGroup[] = [
     imageSlot: 'begin_product_visual',
     headline: 'NEXS BEGIN',
     thaiDescription: 'ฟิล์มปกป้องสีรถสำหรับการใช้งานประจำวัน คุ้มค่า เข้าถึงง่าย',
+    recommendedUseCase: 'เหมาะกับลูกค้าที่ต้องการเริ่มต้นดูแลสีรถในชีวิตประจำวัน',
+    primaryCta: 'สอบถามราคา',
+    secondaryCta: 'ติดต่อ Dealer',
   },
   {
     name: 'PRIME',
@@ -96,6 +120,9 @@ export const PUBLIC_PRODUCT_GROUPS: readonly PublicProductGroup[] = [
     imageSlot: 'prime_product_visual',
     headline: 'NEXS PRIME',
     thaiDescription: 'รุ่นหลักของ NEXS สำหรับลูกค้าที่ต้องการความสมดุลระหว่างความใส การปกป้อง และความคุ้มค่า',
+    recommendedUseCase: 'เหมาะกับลูกค้าที่ต้องการตัวเลือกหลักสำหรับรถใช้งานและรถพรีเมียม',
+    primaryCta: 'สอบถามราคา',
+    secondaryCta: 'ติดต่อ Dealer',
   },
   {
     name: 'PRO',
@@ -106,6 +133,9 @@ export const PUBLIC_PRODUCT_GROUPS: readonly PublicProductGroup[] = [
     imageSlot: 'pro_product_visual',
     headline: 'NEXS PRO',
     thaiDescription: 'ฟิล์มปกป้องสีรถระดับพรีเมียม สำหรับลูกค้าที่ต้องการการปกป้องที่สูงขึ้น',
+    recommendedUseCase: 'เหมาะกับลูกค้าที่ต้องการรุ่นพรีเมียมและการดูแลหลังการขายที่ชัดเจน',
+    primaryCta: 'สอบถามราคา',
+    secondaryCta: 'ติดต่อ Dealer',
   },
   {
     name: 'ULTIMATE',
@@ -116,16 +146,21 @@ export const PUBLIC_PRODUCT_GROUPS: readonly PublicProductGroup[] = [
     imageSlot: 'ultimate_product_visual',
     headline: 'NEXS ULTIMATE',
     thaiDescription: 'ฟิล์มปกป้องสีรถรุ่นสูงสุดของ NEXS สำหรับลูกค้าที่ต้องการตัวเลือกระดับเรือธง',
+    recommendedUseCase: 'เหมาะกับลูกค้าที่ต้องการรุ่นสูงสุดของ NEXS พร้อมระยะรับประกันยาวที่สุด',
+    primaryCta: 'สอบถามราคา',
+    secondaryCta: 'ติดต่อ Dealer',
   },
 ] as const;
 
 export const SITE_COPY: SiteCopy = {
   homeHero: {
     eyebrow: 'NEXS Paint Protection Film',
-    title: 'ฟิล์มปกป้องสีรถ NEXS พร้อมระบบบัตรรับประกันดิจิทัล',
-    subtitle: 'ตรวจสอบสถานะสินค้าและการรับประกันผ่าน QR พร้อม workflow สำหรับตัวแทนจำหน่ายและการดูแลหลังการขาย',
-    primaryCta: 'ตรวจสอบบัตรรับประกัน',
-    secondaryCta: 'ดูรุ่นสินค้า',
+    title: 'NEXS Paint Protection Film',
+    thaiTitle: 'ฟิล์มปกป้องสีรถ NEXS',
+    subtitle: 'ฟิล์มปกป้องสีรถ พร้อมระบบบัตรรับประกันดิจิทัลผ่าน QR Code',
+    primaryCta: 'ดูสินค้า',
+    secondaryCta: 'ตรวจสอบบัตรรับประกัน',
+    tertiaryCta: 'สอบถามราคา',
   },
   warranty: {
     title: 'QR-based warranty verification',
@@ -142,6 +177,28 @@ export const SITE_COPY: SiteCopy = {
   maintenance: {
     title: 'Warranty-backed after-sales support',
     description: 'บันทึกการดูแลรักษาช่วยให้ลูกค้าและตัวแทนจำหน่ายติดตามการดูแลหลังการติดตั้งได้ชัดเจน',
+  },
+  whyNexs: {
+    title: 'Why NEXS',
+    points: [
+      'Product tier system',
+      'QR-based warranty verification',
+      'Digital warranty card',
+      'Professional dealer installation workflow',
+      'Warranty-backed after-sales support',
+    ],
+  },
+  dealer: {
+    title: 'สำหรับตัวแทนจำหน่ายและร้านติดตั้ง',
+    description: 'Dealer สามารถลงทะเบียนบัตรรับประกัน ดูแลข้อมูลการติดตั้ง และติดตามงานหลังการขายผ่านระบบที่แยกสิทธิ์ชัดเจน',
+    primaryCta: 'สมัครตัวแทนจำหน่าย',
+    secondaryCta: 'Dealer Login',
+  },
+  leadForm: {
+    title: 'ติดต่อ NEXS',
+    description: 'ส่งข้อมูลเพื่อสอบถามราคา ขอคำแนะนำเลือกรุ่น หรือติดต่อเรื่องการเป็นตัวแทนจำหน่าย',
+    fields: ['name', 'phone', 'province', 'interestedProduct', 'customerType', 'message'],
+    customerTypes: ['customer', 'dealer', 'installer'],
   },
 } as const;
 

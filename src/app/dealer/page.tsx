@@ -1,13 +1,30 @@
-export default function DealerDashboardPage() {
+import { SITE_COPY } from '@/content/site-content';
+
+export default function DealerPage() {
   return (
     <main className="site-shell">
+      <section className="hero single-column-hero">
+        <div className="hero-copy">
+          <p className="eyebrow">Dealer / Installer</p>
+          <h1>ร่วมเป็นตัวแทนจำหน่าย NEXS PPF</h1>
+          <p className="lead">
+            หน้านี้รวม public dealer information และทางเข้าสู่ private dealer workflow สำหรับลงทะเบียน warranty และดูแลงานหลังการขาย
+          </p>
+          <div className="actions">
+            <a className="button primary" href="/contact">
+              {SITE_COPY.dealer.primaryCta}
+            </a>
+            <a className="button secondary" href="/login">
+              {SITE_COPY.dealer.secondaryCta}
+            </a>
+          </div>
+        </div>
+      </section>
+
       <section className="section">
         <div className="section-head">
-          <div>
-            <p className="eyebrow">Dealer Dashboard Skeleton</p>
-            <h1>Dealer workflow preview</h1>
-          </div>
-          <p>หน้านี้เป็น static skeleton ก่อนต่อ auth/session และ dealerId isolation จริง</p>
+          <h2>Dealer workflow preview</h2>
+          <p>แสดงภาพรวม public dealer information และทางเข้าสู่ private dealer workflow สำหรับลงทะเบียน warranty และดูแลงานหลังการขาย</p>
         </div>
         <div className="grid three">
           <article className="card">

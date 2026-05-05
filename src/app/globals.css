@@ -70,6 +70,7 @@ img {
 }
 
 .brand-mark img {
+  filter: invert(1) contrast(1.1);
   height: 32px;
   width: auto;
 }
@@ -128,6 +129,12 @@ h2 {
   letter-spacing: -0.045em;
 }
 
+.hero-thai-title {
+  color: var(--silver);
+  font-size: clamp(1.6rem, 4vw, 3.4rem);
+  margin-top: 0.75rem;
+}
+
 h3 {
   font-size: 1.2rem;
 }
@@ -149,6 +156,7 @@ h3 {
 .button {
   border: 1px solid var(--line);
   border-radius: 999px;
+  cursor: pointer;
   display: inline-flex;
   font-weight: 700;
   justify-content: center;
@@ -218,6 +226,10 @@ h3 {
 
 .grid.four {
   grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.grid.five {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
 .grid.three {
@@ -319,7 +331,8 @@ h3 {
 
 .input-row input,
 .form-shell input,
-.form-shell textarea {
+.form-shell textarea,
+.form-shell select {
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid var(--line);
   border-radius: 999px;
@@ -327,6 +340,17 @@ h3 {
   flex: 1;
   font-size: 1rem;
   padding: 0.95rem 1rem;
+}
+
+.form-shell select option {
+  background: var(--bg-soft);
+  color: var(--text);
+}
+
+.nav-login {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.38rem 0.7rem;
 }
 
 .form-shell.compact {
@@ -358,7 +382,8 @@ h3 {
   .hero,
   .grid.two,
   .grid.three,
-  .grid.four {
+  .grid.four,
+  .grid.five {
     grid-template-columns: 1fr;
   }
 

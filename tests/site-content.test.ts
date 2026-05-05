@@ -36,6 +36,14 @@ describe('site content policy', () => {
     ]);
   });
 
+  it('defines safe sales guidance for each product group', () => {
+    for (const product of PUBLIC_PRODUCT_GROUPS) {
+      expect(product.recommendedUseCase.length).toBeGreaterThan(10);
+      expect(product.primaryCta).toBe('สอบถามราคา');
+      expect(product.secondaryCta).toBe('ติดต่อ Dealer');
+    }
+  });
+
   it('uses safe approved public wording categories', () => {
     expect(APPROVED_PUBLIC_WORDING).toContain('NEXS Paint Protection Film');
     expect(APPROVED_PUBLIC_WORDING).toContain('QR-based warranty verification');

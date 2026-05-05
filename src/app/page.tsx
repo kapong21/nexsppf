@@ -23,13 +23,16 @@ function Header() {
             {item.label}
           </a>
         ))}
+        <a className="nav-login" href="/login">
+          Dealer Login
+        </a>
       </nav>
     </header>
   );
 }
 
 function Footer() {
-  return <footer className="footer">NEXS Paint Protection Film · Digital warranty card · Dealer workflow</footer>;
+  return <footer className="footer">NEXS Paint Protection Film · Product website · Digital warranty card · Dealer workflow</footer>;
 }
 
 function ProductCards() {
@@ -50,7 +53,15 @@ function ProductCards() {
               <span>{product.modelCode}</span>
             </div>
             <p>{product.thaiDescription}</p>
-            <p>Color direction: {product.colorDirection.join(' / ')}</p>
+            <p>{product.recommendedUseCase}</p>
+            <div className="actions small-actions">
+              <a className="button secondary" href="/products">
+                ดูรายละเอียด
+              </a>
+              <a className="button secondary" href="/contact">
+                {product.primaryCta}
+              </a>
+            </div>
           </article>
         );
       })}
@@ -76,6 +87,36 @@ function WarrantyMock() {
   );
 }
 
+function LeadForm() {
+  return (
+    <div className="form-shell compact">
+      <label htmlFor="lead-name">ชื่อ</label>
+      <input id="lead-name" placeholder="ชื่อผู้ติดต่อ" />
+      <label htmlFor="lead-phone">เบอร์โทร</label>
+      <input id="lead-phone" placeholder="เช่น 081-xxx-1234" />
+      <label htmlFor="lead-province">จังหวัด</label>
+      <input id="lead-province" placeholder="จังหวัดที่ต้องการรับบริการ" />
+      <label htmlFor="lead-product">รุ่นที่สนใจ</label>
+      <select id="lead-product">
+        {PUBLIC_PRODUCT_GROUPS.map((product) => (
+          <option key={product.name}>{product.name}</option>
+        ))}
+      </select>
+      <label htmlFor="lead-type">ประเภทผู้ติดต่อ</label>
+      <select id="lead-type">
+        <option>customer</option>
+        <option>dealer</option>
+        <option>installer</option>
+      </select>
+      <label htmlFor="lead-message">ข้อความ</label>
+      <textarea id="lead-message" placeholder="สอบถามราคา ขอคำแนะนำเลือกรุ่น หรือสมัครตัวแทนจำหน่าย" />
+      <button className="button primary" type="button">
+        ส่งข้อมูลให้ติดต่อกลับ
+      </button>
+    </div>
+  );
+}
+
 export default function HomePage() {
   const hero = getImageSlot('hero_image');
   const dealer = getImageSlot('dealer_workflow_visual');
@@ -88,13 +129,17 @@ export default function HomePage() {
         <div className="hero-copy">
           <p className="eyebrow">{SITE_COPY.homeHero.eyebrow}</p>
           <h1>{SITE_COPY.homeHero.title}</h1>
+          <h2 className="hero-thai-title">{SITE_COPY.homeHero.thaiTitle}</h2>
           <p className="lead">{SITE_COPY.homeHero.subtitle}</p>
           <div className="actions">
-            <a className="button primary" href="/warranty">
+            <a className="button primary" href="/products">
               {SITE_COPY.homeHero.primaryCta}
             </a>
-            <a className="button secondary" href="/products">
+            <a className="button secondary" href="/warranty">
               {SITE_COPY.homeHero.secondaryCta}
+            </a>
+            <a className="button secondary" href="/contact">
+              {SITE_COPY.homeHero.tertiaryCta}
             </a>
           </div>
         </div>
@@ -103,35 +148,62 @@ export default function HomePage() {
 
       <section className="section" id="products">
         <div className="section-head">
-          <h2>Products</h2>
-          <p>สินค้า public 4 กลุ่มของ NEXS PPF พร้อม warranty years ตามที่อนุมัติ และเตรียม image slots สำหรับเปลี่ยนรูปจริงภายหลัง</p>
+          <h2>Product Line</h2>
+          <p>เลือก NEXS PPF จาก 4 กลุ่มสินค้า พร้อม warranty years, positioning และ CTA เพื่อสอบถามข้อมูลก่อนตัดสินใจ</p>
         </div>
         <ProductCards />
+      </section>
+
+      <section className="section" id="why-nexs">
+        <div className="section-head">
+          <h2>{SITE_COPY.whyNexs.title}</h2>
+          <p>เหตุผลด้านระบบและการดูแลที่สื่อสารได้อย่างปลอดภัย โดยไม่ใช้คำกล่าวอ้างที่ยังไม่อนุมัติ</p>
+        </div>
+        <div className="grid five">
+          {SITE_COPY.whyNexs.points.map((point) => (
+            <article className="card" key={point}>
+              <h3>{point}</h3>
+            </article>
+          ))}
+        </div>
       </section>
 
       <section className="section">
         <div className="grid two">
           <div className="card">
             <p className="eyebrow">{SITE_COPY.warranty.title}</p>
-            <h2>Digital Warranty Card</h2>
+            <h2>Digital Warranty System</h2>
             <p>{SITE_COPY.warranty.description}</p>
-            <p>Public view จะแสดงเฉพาะข้อมูลที่ปลอดภัย เช่น serial, product, status, install/expiry date และข้อมูลลูกค้าแบบ masked</p>
-            <a className="button secondary" href="/warranty">
-              เปิดหน้าตรวจสอบ
-            </a>
+            <p>หลังติดตั้ง ลูกค้าสแกน QR เพื่อดูสถานะบัตรรับประกัน ตรวจข้อมูลแบบ masked ดู maintenance summary และส่ง request inspection ได้</p>
+            <div className="actions">
+              <a className="button secondary" href="/warranty">
+                เปิดหน้าตรวจสอบ
+              </a>
+              <a className="button secondary" href="/support/inspection">
+                Request Inspection
+              </a>
+            </div>
           </div>
           <WarrantyMock />
         </div>
       </section>
 
-      <section className="section">
+      <section className="section" id="dealer">
         <div className="grid two">
           <div className="image-card">{dealer.path && <img src={dealer.path} alt={dealer.alt} />}</div>
           <div className="card">
             <p className="eyebrow">{SITE_COPY.dealerWorkflow.title}</p>
-            <h2>Dealer Workflow</h2>
-            <p>{SITE_COPY.dealerWorkflow.description}</p>
-            <p>Dealer จะลงทะเบียน warranty, ดู record ของตัวเอง และจัดการ after-sales workflow ผ่านระบบที่มี session/role isolation</p>
+            <h2>{SITE_COPY.dealer.title}</h2>
+            <p>{SITE_COPY.dealer.description}</p>
+            <p>Dealer สามารถลงทะเบียน warranty, ดู record ของตัวเอง และจัดการ after-sales workflow ผ่านระบบที่มี session/role isolation</p>
+            <div className="actions">
+              <a className="button primary" href="/contact">
+                {SITE_COPY.dealer.primaryCta}
+              </a>
+              <a className="button secondary" href="/login">
+                {SITE_COPY.dealer.secondaryCta}
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -145,6 +217,18 @@ export default function HomePage() {
             <p>ระบบใช้ serial_code เป็น identity หลัก ไม่ใช้ full URL เป็น primary identity</p>
           </div>
           <div className="image-card">{packaging.path && <img src={packaging.path} alt={packaging.alt} />}</div>
+        </div>
+      </section>
+
+      <section className="section" id="contact">
+        <div className="grid two">
+          <div className="card">
+            <p className="eyebrow">Lead Generation</p>
+            <h2>{SITE_COPY.leadForm.title}</h2>
+            <p>{SITE_COPY.leadForm.description}</p>
+            <p>กรอกข้อมูลเบื้องต้น แล้วทีม NEXS หรือผู้เกี่ยวข้องจะใช้ข้อมูลนี้เพื่อติดต่อกลับเมื่อเชื่อมต่อระบบรับ lead จริง</p>
+          </div>
+          <LeadForm />
         </div>
       </section>
       <Footer />
