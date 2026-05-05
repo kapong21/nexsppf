@@ -14,6 +14,16 @@ Status: Draft for review before more implementation
 - `/support/inspection` Claim / inspection request
 - `/contact` Contact
 
+Image usage v1:
+- Home: `/images/hero-porsche.jpg`, `/images/installer-hood.jpg`, `/images/nexs-ultimate-box.jpg`
+- Products: product cards + color system for BEGIN/PRIME/PRO/ULTIMATE; optional mood/detail image `/images/matte-bmw-full.jpg` or `/images/matte-bmw-closeup.jpg`
+- Warranty: `/images/nexs-ultimate-box.jpg` or packaging/sticker visual + QR/Digital Warranty Card mockup slot
+- Digital Warranty Card: `/nexs-logo.png`, minimal images, mobile-readable status first
+- Dealer/Login/Maintenance: `/images/installer-hood.jpg` where useful
+- Admin/Dealer dashboard: logo and theme only, minimal heavy imagery
+
+Full image policy: `docs/IMAGE_ASSET_REQUIREMENTS.md`.
+
 ### Login
 - `/login` Dealer/Admin login
 

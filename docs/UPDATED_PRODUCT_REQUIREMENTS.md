@@ -38,6 +38,13 @@ Design mood:
 
 The website must feel like a premium PPF brand, not a generic shop website and not just a back-office system.
 
+Image direction:
+- Selected NEXS-owned assets from nexslabs.com may be used for v1 mood and continuity if NEXS has usage rights.
+- Allowed v1 assets include `/nexs-logo.png`, `/images/hero-porsche.jpg`, `/images/installer-hood.jpg`, `/images/nexs-ultimate-box.jpg`, `/images/matte-bmw-full.jpg`, and `/images/matte-bmw-closeup.jpg`.
+- Do not reuse nexslabs.com claim copy directly.
+- Avoid risky images that imply self-healing, non-yellowing, color PPF, headlight PPF, 1000+ colors, or unapproved optical/performance claims.
+- Full image policy is documented in `docs/IMAGE_ASSET_REQUIREMENTS.md`.
+
 ## 3. Public Claim Rules
 
 Allowed public claims for now:
@@ -45,6 +52,7 @@ Allowed public claims for now:
 - QR-based warranty verification
 - Professional dealer installation workflow
 - Warranty-backed after-sales support
+- Digital warranty card
 - Product tier names
 - Warranty years as defined below
 
@@ -53,10 +61,16 @@ Prohibited until explicitly approved by Tor S / NEXS admin:
 - Wanhua
 - Covestro
 - Lubrizol
+- Ashland
 - supplier/material claims
 - self-healing
 - anti-yellowing
+- non-yellowing
 - chemical resistance
+- 1000+ colors
+- optical clarity performance claim
+- highest quality raw materials
+- made in USA
 - TPU source claim
 - PCU claim
 - factory cost

@@ -35,6 +35,8 @@ Last Updated: 2026-05-05T11:14:36+00:00
 - Product Design System
 - public product content for 4 groups
 - product color system
+- Image Asset System using approved NEXS-owned nexslabs.com assets
+- centralized image slots for hero/product/warranty/dealer/maintenance/support visuals
 - page copy in Thai/English
 
 2. UX / Pages
@@ -83,7 +85,8 @@ Last Updated: 2026-05-05T11:14:36+00:00
 ## สิ่งที่ต้องให้ Tor S / NEXS admin ตัดสินใจ
 
 1. Final product copy and tone.
-2. Product color direction approval.
+2. Whether approved nexslabs.com assets are confirmed NEXS-owned and allowed for nexppf.com.
+3. Product color direction approval.
 3. PRO 7.5 / PRO 8.5 public visibility or internal-only grouping.
 4. Maintenance quota per product tier.
 5. Maintenance interval policy.
@@ -104,4 +107,5 @@ Last Updated: 2026-05-05T11:14:36+00:00
 2. `docs/UX_FLOW_AND_SITEMAP.md`
 3. `docs/EDGE_CASES_RISKS_OPEN_DECISIONS.md`
 4. `docs/NEXPPF_PRODUCT_OWNER_DIRECTION_SUMMARY.md`
+5. `docs/IMAGE_ASSET_REQUIREMENTS.md`
 

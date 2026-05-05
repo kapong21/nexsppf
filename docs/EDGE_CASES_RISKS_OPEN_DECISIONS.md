@@ -60,21 +60,30 @@ Status: Draft for Tor S / NEXS admin review
 - Public pages might accidentally overclaim product performance.
 - Supplier/material claims may be shown before approval.
 - PRO variants may confuse customers if not grouped clearly.
+- Reused nexslabs.com images may imply unapproved NEXS PPF v1 claims if paired with wrong copy.
+- Matte vehicle images may imply all product tiers are matte film if used without context.
+- Color PPF/headlight/self-healing/non-yellowing/optical-clarity images may expand perceived product scope beyond approved v1.
 
 Mitigation:
 - Use only approved public claims.
-- Product content must be reviewed by NEXS admin before production.
+- Do not reuse nexslabs.com public claim copy.
+- Use approved v1 image list from `docs/IMAGE_ASSET_REQUIREMENTS.md`.
+- Avoid risky images in v1 unless explicitly approved and context-controlled.
+- Product content and image usage must be reviewed by NEXS admin before production.
 
 ### Privacy / PDPA Risks
 - Public warranty page could leak personal data.
 - Support forms collect sensitive data.
 - Dealer/Admin exports may include too much data.
+- Operational warranty, maintenance, inspection, plate, customer, document, or claim photos could leak sensitive data if reused publicly.
 
 Mitigation:
 - Mask public data.
 - Never show customer email/chassis/full phone publicly.
 - Route-level access control for Dealer/Admin.
 - Export policy before production.
+- Do not use operational photos as marketing assets by default.
+- Require separate consent/approval before real customer/installation photos are used publicly.
 
 ### Security Risks
 - Auth/session not yet implemented at route level.
@@ -114,7 +123,8 @@ Mitigation:
 
 ### Product / Brand
 1. Final approved public copy for each product tier.
-2. Whether product color directions are approved:
+2. Whether approved nexslabs.com image assets may be reused on nexppf.com and whether the rights are confirmed.
+3. Whether product color directions are approved:
    - BEGIN: Silver / Light Grey / White
    - PRIME: Graphite / Blue Silver / Premium Grey
    - PRO: Carbon Black / Red Accent / Dark Red
