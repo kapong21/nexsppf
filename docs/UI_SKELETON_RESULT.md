@@ -1,11 +1,11 @@
 # UI Skeleton Result — nexppf-web
 
-Last Updated: 2026-05-05T16:30:00+00:00
+Last Updated: 2026-05-05T17:35:00+00:00
 Status: Local implementation; not pushed/deployed yet
 
 ## Summary
 
-Updated static UI skeleton foundation to follow the 3-layer framing: Information Website + Sales/Product Website + Warranty/After-sales System. Latest pass adds Copy Cleanup + Image Composition improvements before push/deploy approval.
+Updated static UI skeleton foundation to follow the 3-layer framing: Information Website + Sales/Product Website + Warranty/After-sales System. Latest pass adds Curated Visual System improvements: web-native Why PPF education, Why NEXS brand story, and reference-poster guardrails before push/deploy approval.
 
 This is not connected to real PostgreSQL/auth yet.
 
@@ -54,8 +54,9 @@ This is not connected to real PostgreSQL/auth yet.
 Apple-inspired light premium sales + trust landing page with:
 - NEXS logo/header navigation
 - sales-first hero headline and 3 CTAs
+- web-native Why PPF education section
 - product line section for BEGIN / PRIME / PRO / ULTIMATE
-- Why NEXS trust section using safe wording
+- curated Why NEXS brand story section using safe wording
 - Digital Warranty System section as trust/after-sales feature
 - Dealer recruitment / dealer login section
 - customer-facing QR / product proof section
@@ -116,6 +117,18 @@ Current public UI uses Apple-inspired light premium theme:
 - product cards carry BEGIN / PRIME / PRO / ULTIMATE accents
 - Digital Warranty System appears as premium support/status card
 - Dealer Login remains visible but secondary
+
+## Curated Visual System Pass
+
+Completed before production approval:
+
+- Added a new `Why PPF` education section immediately after the hero to explain paint protection in four short customer-facing cards.
+- Replaced the older generic Why NEXS grid with a curated brand-story section that connects product selection, surface care, QR/Serial, and Digital Warranty trust.
+- Recreated reference-poster ideas as web-native UI (`paint-layer-stack`, `visual-orbit`, curated cards) instead of placing poster screenshots/images directly on the site.
+- Changed homepage contact eyebrow from internal `Lead Generation` wording to `ปรึกษา NEXS`.
+- Expanded tests and forbidden-term guardrails for reference-derived risks: claim-heavy terms, risky domains, origin/supplier claims, pricing lineups, and long poster-style clutter.
+
+Details: `docs/CURATED_VISUAL_SYSTEM_RESULT.md`.
 
 ## Launch Readiness Polish Pass
 

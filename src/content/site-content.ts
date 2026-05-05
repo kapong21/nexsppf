@@ -47,6 +47,26 @@ export type SiteCopy = {
     readonly description: string;
     readonly points: readonly string[];
   };
+  readonly visualSystem: {
+    readonly whyPpf: {
+      readonly title: string;
+      readonly eyebrow: string;
+      readonly description: string;
+      readonly cards: readonly {
+        readonly title: string;
+        readonly body: string;
+      }[];
+    };
+    readonly brandStory: {
+      readonly title: string;
+      readonly eyebrow: string;
+      readonly description: string;
+      readonly cards: readonly {
+        readonly title: string;
+        readonly body: string;
+      }[];
+    };
+  };
   readonly dealer: {
     readonly title: string;
     readonly description: string;
@@ -105,6 +125,22 @@ export const FORBIDDEN_PUBLIC_CLAIM_TERMS = [
   'promotion',
   'supplier cost',
   'minimum advertised installed price',
+  'uv & stain resistant',
+  'crystal clear finish',
+  'hydrophobicity',
+  'yellowing resistance',
+  'gloss >90',
+  'gloss >94',
+  '10-year warranty',
+  'nexsfilm.com',
+  'germany tpu',
+  'usa tpu',
+  'china tpu',
+  'origin flag',
+  'ซ่อมแซมตัวเอง',
+  'ป้องกันรังสี uv สูงสุด',
+  'ไม่เหลืองง่าย',
+  'ไล่น้ำดี',
 ] as const;
 
 export const PUBLIC_PRODUCT_GROUPS: readonly PublicProductGroup[] = [
@@ -206,6 +242,54 @@ export const SITE_COPY: SiteCopy = {
       'ลงทะเบียนโดย Dealer',
       'มีประวัติการดูแลหลังติดตั้ง',
     ],
+  },
+  visualSystem: {
+    whyPpf: {
+      eyebrow: 'Paint Protection, Explained Simply',
+      title: 'Why PPF',
+      description: 'ทำความเข้าใจ PPF แบบสั้น ชัด และไม่รก ก่อนเลือกรุ่นที่เหมาะกับรถของคุณ',
+      cards: [
+        {
+          title: 'รอยเล็ก ๆ เกิดขึ้นได้ทุกวัน',
+          body: 'การใช้งานจริงมีฝุ่น เศษหิน และการสัมผัสที่อาจทำให้ผิวสีรถเกิดรอยได้',
+        },
+        {
+          title: 'ความสวยของรถค่อย ๆ ลดลง',
+          body: 'สีรถที่เงาและเรียบคือสิ่งที่เจ้าของรถอยากรักษาไว้ตั้งแต่วันแรก',
+        },
+        {
+          title: 'PPF เป็นชั้นปกป้องผิวสีรถ',
+          body: 'ฟิล์มใสช่วยเพิ่มชั้นปกป้องระหว่างผิวสีรถกับการใช้งานประจำวัน',
+        },
+        {
+          title: 'ปกป้องตั้งแต่แรกเพื่อความมั่นใจ',
+          body: 'เริ่มดูแลเร็วช่วยให้รถดูดีต่อเนื่อง และเลือกแผนรับประกันได้ชัดเจน',
+        },
+      ],
+    },
+    brandStory: {
+      eyebrow: 'Curated by NEXS',
+      title: 'Why NEXS',
+      description: 'NEXS จัดวางสินค้า บริการ และระบบรับประกันให้ลูกค้าเข้าใจง่ายตั้งแต่ก่อนติดตั้งจนถึงหลังการขาย',
+      cards: [
+        {
+          title: 'เข้าใจผิวรถจากการใช้งานจริง',
+          body: 'เล่าเรื่องจากปัญหาที่เจ้าของรถเจอจริง ไม่ยัดข้อมูลเทคนิคเกินจำเป็น',
+        },
+        {
+          title: 'ออกแบบให้เลือกรุ่นง่าย',
+          body: 'แบ่งรุ่น BEGIN, PRIME, PRO และ ULTIMATE ตามระดับการดูแลและระยะรับประกัน',
+        },
+        {
+          title: 'ปกป้องโดยไม่ลดทอนความสวย',
+          body: 'ทิศทางภาพเน้นรถ พื้นผิว และรายละเอียดแบบพรีเมียม อ่านง่ายบนมือถือ',
+        },
+        {
+          title: 'มีระบบดูแลหลังติดตั้ง',
+          body: 'เชื่อม Serial, QR Code และบัตรรับประกันดิจิทัลเพื่อช่วยให้ตรวจสอบได้',
+        },
+      ],
+    },
   },
   dealer: {
     title: 'สำหรับตัวแทนจำหน่ายและร้านติดตั้ง',

@@ -125,6 +125,70 @@ const warrantySteps = [
   'ดู Digital Warranty Card และประวัติการดูแลได้',
 ] as const;
 
+function WhyPpfSection() {
+  const section = SITE_COPY.visualSystem.whyPpf;
+
+  return (
+    <section className="curated-section why-ppf-section" id="why-ppf">
+      <div className="section-head curated-head">
+        <div>
+          <p className="eyebrow">{section.eyebrow}</p>
+          <h2>{section.title}</h2>
+        </div>
+        <p>{section.description}</p>
+      </div>
+      <div className="curated-layout">
+        <div className="paint-layer-stack" aria-hidden="true">
+          <span />
+          <span />
+          <span />
+        </div>
+        <div className="curated-card-grid">
+          {section.cards.map((card, index) => (
+            <article className="curated-card" key={card.title}>
+              <span className="curated-number">0{index + 1}</span>
+              <h3>{card.title}</h3>
+              <p>{card.body}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function BrandStorySection() {
+  const section = SITE_COPY.visualSystem.brandStory;
+
+  return (
+    <section className="curated-section brand-story-section" id="why-nexs">
+      <div className="section-head curated-head">
+        <div>
+          <p className="eyebrow">{section.eyebrow}</p>
+          <h2>{section.title}</h2>
+        </div>
+        <p>{section.description}</p>
+      </div>
+      <div className="brand-story-grid">
+        <div className="visual-orbit" aria-hidden="true">
+          <span className="orbit-core">NEXS</span>
+          <span />
+          <span />
+          <span />
+        </div>
+        <div className="curated-card-grid compact-curated-grid">
+          {section.cards.map((card) => (
+            <article className="curated-card" key={card.title}>
+              <h3>{card.title}</h3>
+              <p>{card.body}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function LeadForm() {
   return (
     <div className="form-shell compact">
@@ -196,6 +260,8 @@ export default function HomePage() {
         <div className="hero-visual hero-visual-lead">{hero.path && <img src={hero.path} alt={hero.alt} />}</div>
       </section>
 
+      <WhyPpfSection />
+
       <section className="section" id="products">
         <div className="section-head">
           <h2>Product Line</h2>
@@ -204,19 +270,7 @@ export default function HomePage() {
         <ProductCards />
       </section>
 
-      <section className="section" id="why-nexs">
-        <div className="section-head">
-          <h2>{SITE_COPY.whyNexs.title}</h2>
-          <p>{SITE_COPY.whyNexs.description}</p>
-        </div>
-        <div className="grid five">
-          {SITE_COPY.whyNexs.points.map((point) => (
-            <article className="card" key={point}>
-              <h3>{point}</h3>
-            </article>
-          ))}
-        </div>
-      </section>
+      <BrandStorySection />
 
       <section className="section">
         <div className="grid two">
@@ -286,7 +340,7 @@ export default function HomePage() {
       <section className="section" id="contact">
         <div className="grid two align-start">
           <div className="card lead-info-card">
-            <p className="eyebrow">Lead Generation</p>
+            <p className="eyebrow">ปรึกษา NEXS</p>
             <h2>{SITE_COPY.leadForm.title}</h2>
             <p>{SITE_COPY.leadForm.description}</p>
             <p>กรอกข้อมูลเบื้องต้น แล้วทีมงาน NEXS จะใช้ข้อมูลนี้เพื่อติดต่อกลับ ให้คำแนะนำ และประสานตัวแทนจำหน่ายที่เหมาะสม</p>

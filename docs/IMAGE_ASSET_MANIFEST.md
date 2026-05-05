@@ -1,6 +1,6 @@
 # Image Asset Manifest — nexppf-web
 
-Last Updated: 2026-05-05T16:30:00+00:00
+Last Updated: 2026-05-05T17:35:00+00:00
 Source: `/opt/data/agents/treee-tech-lead/projects/nexslabs-web/repo/public`
 Destination: `/opt/data/agents/treee-tech-lead/projects/nexppf-web/repo/public`
 Status: v1 allowed assets copied locally; production use still requires NEXS rights confirmation.
@@ -46,6 +46,21 @@ These source assets are intentionally not copied/assigned because they may imply
 - `color-ppf-green.jpg`
 - `headlight-install.jpg`
 
+## Reference Poster / Curated Visual System Policy
+
+Latest Curated Visual System Pass uses reference posters/images as art direction only, not as website assets.
+
+Allowed adaptation:
+- Recreate the `Why PPF` education concept as short web-native cards.
+- Recreate the `Why NEXS` brand-story concept as short web-native cards.
+- Use CSS/HTML visuals such as `paint-layer-stack` and `visual-orbit` for premium composition.
+
+Not allowed without explicit NEXS approval:
+- Direct poster screenshots on public pages.
+- Embedded poster text.
+- Claim-heavy blocks such as Self-Healing, UV & Stain Resistant, Crystal Clear Finish, Hydrophobicity, Yellowing Resistance, Gloss >90 / >94, 10-Year Warranty, origin flags, or `nexsfilm.com`.
+- Price/dealer/cost/promotion lineups.
+
 ## Guardrails
 
 - Do not reuse nexslabs public claim copy.
@@ -53,3 +68,4 @@ These source assets are intentionally not copied/assigned because they may imply
 - Do not use operational warranty/maintenance/inspection photos as marketing assets automatically.
 - Keep image references centralized via `src/content/image-assets.ts`.
 - For public pages, every image must have a role, crop direction, visual purpose, claim-risk note, and readiness status.
+- Prefer web-native curated visuals over poster/image dumps.
