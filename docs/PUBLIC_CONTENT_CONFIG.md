@@ -13,6 +13,9 @@ The goal is to keep public copy, product cards, image slot keys, and claim guard
 
 - `src/content/site-content.ts`
 - `tests/site-content.test.ts`
+- `scripts/check-public-content.ts`
+- `tests/check-public-content.test.ts`
+- `package.json` (`npm run check:content`)
 
 ## Public Product Groups
 
@@ -90,6 +93,16 @@ For v1:
 - Use CTA such as `สอบถามราคา`, `ติดต่อ Dealer`, `ตรวจสอบบัตรรับประกัน`, or `สมัครตัวแทนจำหน่าย` instead of price.
 - If pricing is added later, it must come from approved config/admin policy with visibility control.
 
+## Content Scanner
+
+Added `npm run check:content`, which runs `scripts/check-public-content.ts`.
+
+The scanner checks configured public content and `src/app` public route source for:
+- forbidden public claim terms from `FORBIDDEN_PUBLIC_CLAIM_TERMS`
+- explicit price/currency patterns such as `฿...`, `THB ...`, and numeric `...บาท`
+
+This is a guardrail for v1 public UI only. Future approved pricing must still be implemented through approved config/admin policy and visibility control.
+
 ## Tests
 
 `tests/site-content.test.ts` verifies:
@@ -101,12 +114,18 @@ For v1:
 5. Current public site copy/product content contains no forbidden claim terms.
 6. Forbidden terms are explicitly tracked.
 7. The guardrail detects forbidden claim terms in arbitrary content.
+8. The guardrail detects forbidden pricing terms in arbitrary content.
+
+`tests/check-public-content.test.ts` verifies:
+1. `npm run check:content` is exposed.
+2. The scanner includes claim guardrail, pricing pattern checks, and configured public content collection.
 
 ## Verification Snapshot
 
 Latest verification after adding this config:
 
-- `npm test`: 9 files passed, 47 tests passed
+- `npm test`: 11 files passed, 56 tests passed
+- `npm run check:content`: passed
 - `npm run lint`: passed
 - `npm run typecheck`: passed
 - `npm run build`: passed

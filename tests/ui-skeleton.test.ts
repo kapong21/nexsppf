@@ -8,13 +8,17 @@ import {
 } from '../src/content/ui-skeleton';
 
 describe('ui skeleton content contract', () => {
-  it('defines required public and auth routes', () => {
+  it('defines required public, support, dealer, and admin routes', () => {
     expect(UI_ROUTES.map((route) => route.path)).toEqual([
       '/',
       '/products',
       '/warranty',
       '/r/[serial]',
+      '/support/warranty',
+      '/support/inspection',
       '/login',
+      '/dealer',
+      '/admin',
     ]);
   });
 

@@ -220,6 +220,10 @@ h3 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+.grid.three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .card {
   background: var(--panel);
   border: 1px solid var(--line);
@@ -313,7 +317,9 @@ h3 {
   margin-top: 1.5rem;
 }
 
-.input-row input {
+.input-row input,
+.form-shell input,
+.form-shell textarea {
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid var(--line);
   border-radius: 999px;
@@ -321,6 +327,18 @@ h3 {
   flex: 1;
   font-size: 1rem;
   padding: 0.95rem 1rem;
+}
+
+.form-shell.compact {
+  display: grid;
+  gap: 0.85rem;
+  margin-left: 0;
+}
+
+.form-shell textarea {
+  border-radius: 20px;
+  min-height: 120px;
+  resize: vertical;
 }
 
 .footer {
@@ -339,6 +357,7 @@ h3 {
 
   .hero,
   .grid.two,
+  .grid.three,
   .grid.four {
     grid-template-columns: 1fr;
   }

@@ -1,5 +1,14 @@
 export type UiRoute = {
-  readonly path: '/' | '/products' | '/warranty' | '/r/[serial]' | '/login';
+  readonly path:
+    | '/'
+    | '/products'
+    | '/warranty'
+    | '/r/[serial]'
+    | '/support/warranty'
+    | '/support/inspection'
+    | '/login'
+    | '/dealer'
+    | '/admin';
   readonly title: string;
   readonly purpose: string;
 };
@@ -46,9 +55,29 @@ export const UI_ROUTES: readonly UiRoute[] = [
     purpose: 'Mobile-first QR landing page showing warranty status with PDPA-safe data.',
   },
   {
+    path: '/support/warranty',
+    title: 'Lost Warranty Support',
+    purpose: 'Public support request skeleton for lost warranty card or lost QR cases without exposing sensitive record data.',
+  },
+  {
+    path: '/support/inspection',
+    title: 'Inspection Request',
+    purpose: 'Public claim and inspection request skeleton with safe intake guidance before backend workflow integration.',
+  },
+  {
     path: '/login',
     title: 'Dealer/Admin Login',
     purpose: 'Login entry point for dealer and admin workflows.',
+  },
+  {
+    path: '/dealer',
+    title: 'Dealer Dashboard',
+    purpose: 'Dealer dashboard skeleton for own-record warranty registration, after-sales follow-up, and inspection workflow preview.',
+  },
+  {
+    path: '/admin',
+    title: 'Admin Dashboard',
+    purpose: 'Admin dashboard skeleton for serial import, dealer oversight, support triage, and future approved policy configuration.',
   },
 ] as const;
 

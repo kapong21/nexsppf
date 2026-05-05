@@ -1,6 +1,6 @@
 # UI Skeleton Result — nexppf-web
 
-Last Updated: 2026-05-05T13:50:00+00:00
+Last Updated: 2026-05-05T14:33:34+00:00
 Status: Local implementation; not pushed/deployed yet
 
 ## Summary
@@ -15,7 +15,11 @@ This is not connected to real PostgreSQL/auth yet.
 - `/products` Products page
 - `/warranty` Warranty search skeleton
 - `/r/[serial]` Digital Warranty Card mock
+- `/support/warranty` lost warranty / lost QR support skeleton
+- `/support/inspection` inspection request skeleton
 - `/login` Dealer/Admin login skeleton
+- `/dealer` dealer dashboard skeleton
+- `/admin` admin dashboard skeleton
 
 ## Content Sources Used
 
@@ -31,7 +35,11 @@ This is not connected to real PostgreSQL/auth yet.
 - `src/app/products/page.tsx`
 - `src/app/warranty/page.tsx`
 - `src/app/r/[serial]/page.tsx`
+- `src/app/support/warranty/page.tsx`
+- `src/app/support/inspection/page.tsx`
 - `src/app/login/page.tsx`
+- `src/app/dealer/page.tsx`
+- `src/app/admin/page.tsx`
 - `src/content/ui-skeleton.ts`
 - `tests/ui-skeleton.test.ts`
 
@@ -75,6 +83,22 @@ Mock card avoids customer email/chassis and uses masked phone/license only.
 
 Dealer/Admin login skeleton for future server-side auth/session integration.
 
+### Support Warranty
+
+Static lost warranty / lost QR support skeleton with safe intake fields and no sensitive record exposure.
+
+### Support Inspection
+
+Static inspection request skeleton for initial customer intake before real claim/inspection workflow integration.
+
+### Dealer Dashboard
+
+Static dealer dashboard skeleton showing intended dealer-only modules: warranty registration, own records, and after-sales follow-up. Real backend must bind dealer records to verified session/dealerId.
+
+### Admin Dashboard
+
+Static admin dashboard skeleton showing intended admin-only modules: serial import, dealer oversight, support triage, and future approved policy configuration.
+
 ## Guardrails
 
 - No supplier/material/performance claims added.
@@ -88,10 +112,12 @@ Dealer/Admin login skeleton for future server-side auth/session integration.
 Run before completion:
 
 - `npm test`
+- `npm run check:content`
 - `npm run lint`
 - `npm run typecheck`
 - `npm run build`
 - `npm audit --audit-level=moderate`
+- Local HTTP 200 check for `/`, `/products`, `/warranty`, `/support/warranty`, `/support/inspection`, `/dealer`, `/admin`, and `/r/PRO-1196MXY0401178Q`
 
 ## Limitations
 
