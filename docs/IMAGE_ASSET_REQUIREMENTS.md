@@ -1,9 +1,9 @@
 # Image Asset Requirements — nexppf-web
 
-Last Updated: 2026-05-05T16:30:00+00:00
+Last Updated: 2026-05-05T17:40:59+00:00
 Owner: Tor S / NEXS admin
 Executor: treee-tech-lead
-Status: Updated after Copy Cleanup + Image Composition Pass
+Status: Updated after Curated Visual System Direction source-of-truth save
 
 ## 1. Purpose
 
@@ -26,6 +26,10 @@ The image system must support the Apple-inspired light premium direction:
 5. Product page must show 4 public product groups: BEGIN, PRIME, PRO, ULTIMATE.
 6. Image slots must be centralized in `src/content/image-assets.ts` and replaceable later.
 7. Every public image role must define source, page/section, crop direction, visual purpose, claim risk, and readiness.
+8. Reference posters/images must be treated as art direction only, not production assets to paste directly.
+9. Do not use poster screenshots, old embedded poster text, or reference layouts as-is.
+10. Recreate web-native visuals and rewrite copy for nexppf.com.
+11. Reject images or poster fragments that create clutter, too much text, unsafe claims, unapproved domains, or poor mobile readability.
 
 ## 3. Approved v1 Assets
 
@@ -85,7 +89,37 @@ Implemented in `src/content/image-assets.ts`:
 | QR / Product Proof | Use `/images/nexs-ultimate-box.jpg` as product proof block with breathing space. |
 | Contact | Keep form simple; use only calm brand mood if needed. |
 
-## 7. Copy Cleanup Rules
+## 7. Curated Visual System / Reference Image Direction
+
+Source-of-truth detail: `docs/CURATED_VISUAL_SYSTEM_DIRECTION.md`.
+
+Reference images and posters may be used only for:
+
+- art direction
+- storytelling structure
+- section intent
+- product-role inspiration
+- composition inspiration
+
+Reference images and posters must not be used for:
+
+- direct placement on public pages
+- poster screenshots
+- embedded legacy text
+- direct copy extraction
+- unapproved claim reuse
+- crowded comparison/table layouts
+- domains or brand details not approved for nexppf.com
+
+Preferred production direction:
+
+- build web-native sections instead of poster blocks
+- use CSS/abstract product visuals when real image rights or claims are uncertain
+- keep each section short and readable on mobile
+- use one main visual purpose per section
+- choose clean premium composition over showing every available asset
+
+## 8. Copy Cleanup Rules
 
 Public pages must not expose machine/database wording such as:
 
@@ -101,7 +135,7 @@ Customer-facing QR explanation:
 
 Warranty copy must stay Thai-readable and support-style, not backend-style.
 
-## 8. Operational Photos Rule
+## 9. Operational Photos Rule
 
 Operational photos must not become marketing assets automatically.
 
@@ -109,7 +143,7 @@ Operational photos include customer car photos, license plate photos, door stick
 
 If real customer/installation photos are needed for marketing, require separate approval and consent tracking before use.
 
-## 9. Verification Requirements
+## 10. Verification Requirements
 
 After changing image roles/composition, run:
 

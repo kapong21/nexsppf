@@ -1,6 +1,6 @@
 # NEXPPF Product Owner Direction Summary
 
-Last Updated: 2026-05-05T14:53:21+00:00
+Last Updated: 2026-05-05T17:40:59+00:00
 
 ## Framing ที่ต้องล็อกใหม่
 
@@ -41,6 +41,14 @@ nexppf.com ไม่ใช่เว็บระบบประกันอย่
 - no hardcoded 3-product limit
 - supports BEGIN / PRIME / PRO / ULTIMATE
 - model_code may be multi-character
+
+4. Curated Visual System direction
+- `Curated Visual System, Not Asset Dump` is now the locked public website visual principle.
+- Reference posters/images are art direction and storytelling inspiration only; do not paste old posters, embedded text, or legacy claim-heavy layouts directly into the website.
+- Recreate web-native sections with short copy, premium whitespace, mobile-first readability, and clear CTA hierarchy.
+- Global UI direction is Apple-inspired light premium: white / soft grey / graphite, with NEXS red used sparingly and product colors used only as accents.
+- Website story flow must stay: Hero → Why PPF → Product Line → Why NEXS / Brand Story → Digital Warranty → Dealer / Installer → Contact / Lead.
+- Source-of-truth detail: `docs/CURATED_VISUAL_SYSTEM_DIRECTION.md`
 
 ## สิ่งที่ต้องเพิ่ม
 
@@ -161,4 +169,5 @@ Recommended launch policy:
 4. `docs/NEXPPF_PRODUCT_OWNER_DIRECTION_SUMMARY.md`
 5. `docs/IMAGE_ASSET_REQUIREMENTS.md`
 6. `docs/DIGITAL_WARRANTY_CONCEPTUAL_WORKFLOW.md`
+7. `docs/CURATED_VISUAL_SYSTEM_DIRECTION.md`
 
