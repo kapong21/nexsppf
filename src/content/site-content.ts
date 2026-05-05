@@ -164,15 +164,15 @@ export const SITE_COPY: SiteCopy = {
   },
   warranty: {
     title: 'QR-based warranty verification',
-    description: 'สแกน QR เพื่อตรวจสอบสถานะการรับประกันและข้อมูลการลงทะเบียนสินค้า',
+    description: 'สแกน QR Code เพื่อตรวจสอบสถานะบัตรรับประกันและข้อมูลสินค้าอย่างปลอดภัย',
   },
   dealerWorkflow: {
     title: 'Professional dealer installation workflow',
     description: 'ขั้นตอนติดตั้งโดยตัวแทนจำหน่าย พร้อมระบบดูแลหลังการขายและบันทึกการรับประกัน',
   },
   productProof: {
-    title: 'Product registration from approved serial records',
-    description: 'การรับประกันเริ่มจาก serial และ QR ที่ผ่านการลงทะเบียนในระบบ',
+    title: 'QR Code และ Serial Number',
+    description: 'การตรวจสอบเริ่มจาก QR Code และ Serial Number ที่เชื่อมกับข้อมูลการลงทะเบียนสินค้า',
   },
   maintenance: {
     title: 'Warranty-backed after-sales support',
@@ -181,11 +181,11 @@ export const SITE_COPY: SiteCopy = {
   whyNexs: {
     title: 'Why NEXS',
     points: [
-      'Product tier system',
-      'QR-based warranty verification',
-      'Digital warranty card',
-      'Professional dealer installation workflow',
-      'Warranty-backed after-sales support',
+      'เลือกรุ่นง่ายตามการใช้งาน',
+      'ตรวจสอบรับประกันผ่าน QR Code',
+      'บัตรรับประกันดิจิทัล',
+      'ลงทะเบียนโดย Dealer',
+      'มีประวัติการดูแลหลังติดตั้ง',
     ],
   },
   dealer: {

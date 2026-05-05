@@ -1,7 +1,7 @@
 import { getImageSlot } from '@/content/image-assets';
 
 export default function LoginPage() {
-  const visual = getImageSlot('dealer_workflow_visual');
+  const visual = getImageSlot('dealer_installation_visual');
 
   return (
     <main className="site-shell">

@@ -7,19 +7,32 @@ import {
 } from '../src/content/image-assets';
 
 describe('image asset policy', () => {
-  it('defines all required replaceable image slots', () => {
+  it('defines all required replaceable image slots with designer-facing role names', () => {
     expect(Object.keys(IMAGE_SLOTS).sort()).toEqual([
       'begin_product_visual',
-      'dealer_workflow_visual',
-      'hero_image',
-      'maintenance_visual',
-      'packaging_visual',
+      'contact_lead_visual',
+      'dealer_installation_visual',
+      'digital_warranty_card_mockup',
+      'hero_brand_visual',
+      'maintenance_after_sales_visual',
+      'packaging_product_proof_visual',
       'prime_product_visual',
       'pro_product_visual',
-      'qr_warranty_visual',
-      'support_request_visual',
+      'product_line_visual',
       'ultimate_product_visual',
+      'warranty_qr_visual',
     ]);
+  });
+
+  it('documents image role map fields for art direction and claim risk review', () => {
+    for (const slot of Object.values(IMAGE_SLOTS)) {
+      expect(slot.role).toBe(slot.key);
+      expect(slot.section).toBeTruthy();
+      expect(slot.cropDirection).toBeTruthy();
+      expect(slot.visualPurpose).toBeTruthy();
+      expect(slot.claimRisk).toBeTruthy();
+      expect(['public-ready', 'placeholder', 'hold']).toContain(slot.readiness);
+    }
   });
 
   it('uses only v1 approved assets for default slots', () => {
@@ -50,7 +63,7 @@ describe('image asset policy', () => {
   });
 
   it('returns a slot by key and throws for unknown keys', () => {
-    expect(getImageSlot('hero_image').path).toBe('/images/hero-porsche.jpg');
+    expect(getImageSlot('hero_brand_visual').path).toBe('/images/hero-porsche.jpg');
     expect(() => getImageSlot('unknown_slot')).toThrow('Unknown image slot: unknown_slot');
   });
 });

@@ -1,7 +1,7 @@
 import { getImageSlot } from '@/content/image-assets';
 
 export default function LostWarrantySupportPage() {
-  const visual = getImageSlot('support_request_visual');
+  const visual = getImageSlot('warranty_qr_visual');
 
   return (
     <main className="site-shell">

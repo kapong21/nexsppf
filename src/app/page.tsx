@@ -99,7 +99,7 @@ function LeadForm() {
       <label htmlFor="lead-province">จังหวัด</label>
       <input id="lead-province" placeholder="จังหวัดที่ต้องการรับบริการ" />
       <label htmlFor="lead-car">รุ่นรถ ถ้ามี</label>
-      <input id="lead-car" placeholder="เช่น Porsche 911 / Tesla Model 3" />
+      <input id="lead-car" placeholder="เช่น Porsche 911 / Tesla" />
       <label htmlFor="lead-product">รุ่นที่สนใจ</label>
       <select id="lead-product">
         {PUBLIC_PRODUCT_GROUPS.map((product) => (
@@ -122,9 +122,9 @@ function LeadForm() {
 }
 
 export default function HomePage() {
-  const hero = getImageSlot('hero_image');
-  const dealer = getImageSlot('dealer_workflow_visual');
-  const packaging = getImageSlot('packaging_visual');
+  const hero = getImageSlot('hero_brand_visual');
+  const dealer = getImageSlot('dealer_installation_visual');
+  const packaging = getImageSlot('packaging_product_proof_visual');
 
   return (
     <main className="site-shell">
@@ -147,7 +147,7 @@ export default function HomePage() {
             </a>
           </div>
         </div>
-        <div className="hero-visual">{hero.path && <img src={hero.path} alt={hero.alt} />}</div>
+        <div className="hero-visual hero-visual-lead">{hero.path && <img src={hero.path} alt={hero.alt} />}</div>
       </section>
 
       <section className="section" id="products">
@@ -178,13 +178,14 @@ export default function HomePage() {
             <p className="eyebrow">{SITE_COPY.warranty.title}</p>
             <h2>Digital Warranty System</h2>
             <p>{SITE_COPY.warranty.description}</p>
-            <p>หลังติดตั้ง ลูกค้าสแกน QR เพื่อดูสถานะบัตรรับประกัน ตรวจข้อมูลแบบ masked ดู maintenance summary และส่ง request inspection ได้</p>
+            <p>ลูกค้าสามารถสแกน QR Code เพื่อตรวจสอบสถานะบัตรรับประกัน ดูข้อมูลสินค้า รถที่ลงทะเบียน และประวัติการดูแลหลังการติดตั้งได้อย่างปลอดภัย</p>
+            <p>หากพบปัญหา สามารถส่งคำขอให้ Dealer หรือทีม NEXS ตรวจสอบได้ โดยไม่ถือเป็นการอนุมัติเคลมอัตโนมัติ</p>
             <div className="actions">
               <a className="button secondary" href="/warranty">
                 เปิดหน้าตรวจสอบ
               </a>
               <a className="button secondary" href="/support/inspection">
-                Request Inspection
+                ขอให้ตรวจสอบปัญหา
               </a>
             </div>
           </div>
@@ -194,12 +195,15 @@ export default function HomePage() {
 
       <section className="section" id="dealer">
         <div className="grid two">
-          <div className="image-card">{dealer.path && <img src={dealer.path} alt={dealer.alt} />}</div>
+          <div className="image-card image-card-editorial dealer-crop">{dealer.path && <img src={dealer.path} alt={dealer.alt} />}</div>
           <div className="card">
             <p className="eyebrow">{SITE_COPY.dealerWorkflow.title}</p>
-            <h2>{SITE_COPY.dealer.title}</h2>
+            <h2 className="dealer-heading">
+              <span>สำหรับตัวแทนจำหน่าย</span>
+              <span>และร้านติดตั้ง</span>
+            </h2>
             <p>{SITE_COPY.dealer.description}</p>
-            <p>Dealer สามารถลงทะเบียน warranty, ดู record ของตัวเอง และจัดการ after-sales workflow ผ่านระบบที่มี session/role isolation</p>
+            <p>Dealer สามารถลงทะเบียนบัตรรับประกัน ดูข้อมูลของร้านตัวเอง และติดตามงานดูแลหลังการติดตั้งผ่านระบบที่แยกสิทธิ์การใช้งานชัดเจน</p>
             <div className="actions">
               <a className="button primary" href="/contact">
                 {SITE_COPY.dealer.primaryCta}
@@ -218,19 +222,24 @@ export default function HomePage() {
             <p className="eyebrow">{SITE_COPY.productProof.title}</p>
             <h2>ตรวจสอบสินค้าและบัตรรับประกันผ่าน QR Code</h2>
             <p>{SITE_COPY.productProof.description}</p>
-            <p>ระบบใช้ serial_code เป็น identity หลัก ไม่ใช้ full URL เป็น primary identity</p>
+            <p>QR Code และ Serial Number ช่วยให้ลูกค้าตรวจสอบสถานะสินค้าและบัตรรับประกันได้อย่างชัดเจน เมื่อ Dealer ลงทะเบียนการติดตั้งแล้ว ลูกค้าจะสามารถสแกนเพื่อดูข้อมูลบัตรรับประกันดิจิทัลได้ทันที</p>
           </div>
-          <div className="image-card">{packaging.path && <img src={packaging.path} alt={packaging.alt} />}</div>
+          <div className="image-card image-card-product-proof packaging-crop">{packaging.path && <img src={packaging.path} alt={packaging.alt} />}</div>
         </div>
       </section>
 
       <section className="section" id="contact">
-        <div className="grid two">
-          <div className="card">
+        <div className="grid two align-start">
+          <div className="card lead-info-card">
             <p className="eyebrow">Lead Generation</p>
             <h2>{SITE_COPY.leadForm.title}</h2>
             <p>{SITE_COPY.leadForm.description}</p>
             <p>กรอกข้อมูลเบื้องต้น แล้วทีม NEXS หรือผู้เกี่ยวข้องจะใช้ข้อมูลนี้เพื่อติดต่อกลับเมื่อเชื่อมต่อระบบรับ lead จริง</p>
+            <div className="lead-support-list">
+              <span>ลูกค้าที่สนใจติดตั้ง</span>
+              <span>ร้านที่ต้องการสมัครตัวแทนจำหน่าย</span>
+              <span>คำถามเรื่องบัตรรับประกันหรือการดูแลหลังติดตั้ง</span>
+            </div>
           </div>
           <LeadForm />
         </div>

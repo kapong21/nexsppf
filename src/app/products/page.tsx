@@ -10,7 +10,7 @@ const productAccents: Record<string, [string, string]> = {
 };
 
 export default function ProductsPage() {
-  const mood = getImageSlot('hero_image');
+  const mood = getImageSlot('hero_brand_visual');
 
   return (
     <main className="site-shell">

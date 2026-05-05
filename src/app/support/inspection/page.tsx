@@ -1,7 +1,7 @@
 import { getImageSlot } from '@/content/image-assets';
 
 export default function InspectionRequestPage() {
-  const visual = getImageSlot('maintenance_visual');
+  const visual = getImageSlot('maintenance_after_sales_visual');
 
   return (
     <main className="site-shell">

@@ -2,7 +2,7 @@ import { getImageSlot } from '@/content/image-assets';
 import { SITE_COPY } from '@/content/site-content';
 
 export default function WarrantyPage() {
-  const visual = getImageSlot('qr_warranty_visual');
+  const visual = getImageSlot('warranty_qr_visual');
 
   return (
     <main className="site-shell">

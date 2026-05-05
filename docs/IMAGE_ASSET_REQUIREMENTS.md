@@ -1,18 +1,21 @@
 # Image Asset Requirements — nexppf-web
 
-Last Updated: 2026-05-05T12:06:12+00:00
+Last Updated: 2026-05-05T16:30:00+00:00
 Owner: Tor S / NEXS admin
 Executor: treee-tech-lead
-Status: Requirement added before image/UI implementation
+Status: Updated after Copy Cleanup + Image Composition Pass
 
 ## 1. Purpose
 
-nexppf-web may use selected image assets from nexslabs.com if they are NEXS-owned assets and the brand owner confirms usage rights.
+nexppf-web may use selected image assets from nexslabs.com only when they are NEXS-owned assets and the brand owner confirms usage rights.
 
-Goal:
-- Reuse visual mood from nexslabs.com so nexppf.com feels connected to the NEXS brand.
-- Keep nexppf.com content/copy specific to NEXS PPF products, QR verification, Digital Warranty Card, dealer workflow, and after-sales support.
-- Do not copy unapproved public claims from nexslabs.com.
+The image system must support the Apple-inspired light premium direction:
+
+- White / soft grey / graphite page theme
+- Product tier colors as accents only
+- Images as visual storytelling, not random section fillers
+- Centralized, replaceable image slots
+- No unapproved public claim text
 
 ## 2. Hard Rules
 
@@ -20,246 +23,100 @@ Goal:
 2. Do not lift public claims/copy from nexslabs.com into nexppf-web.
 3. Do not use images in a way that implies unapproved claims.
 4. Do not use operational warranty/maintenance/inspection photos as public marketing images by default.
-5. Product page must show 4 public product groups:
-   - BEGIN
-   - PRIME
-   - PRO
-   - ULTIMATE
-6. Image slots must be config-driven or easy to replace later, not buried in layout logic.
+5. Product page must show 4 public product groups: BEGIN, PRIME, PRO, ULTIMATE.
+6. Image slots must be centralized in `src/content/image-assets.ts` and replaceable later.
+7. Every public image role must define source, page/section, crop direction, visual purpose, claim risk, and readiness.
 
 ## 3. Approved v1 Assets
 
 | Asset | Allowed Use |
 |---|---|
 | `/nexs-logo.png` | Header, Footer, Login, Digital Warranty Card, Dealer/Admin dashboard |
-| `/images/hero-porsche.jpg` | Home hero, Warranty hero, Product overview hero |
-| `/images/installer-hood.jpg` | Dealer workflow, Warranty registration, Installation/after-sales, Maintenance placeholder |
-| `/images/nexs-ultimate-box.jpg` | Packaging, Product proof, Warranty/QR explanation |
-| `/images/matte-bmw-full.jpg` | Product mood/detail/supporting image only |
-| `/images/matte-bmw-closeup.jpg` | Film surface/detail/supporting image only |
+| `/images/hero-porsche.jpg` | Hero / brand visual, product overview mood |
+| `/images/installer-hood.jpg` | Dealer installation, after-sales, maintenance/support mood |
+| `/images/nexs-ultimate-box.jpg` | Packaging/product proof, QR/warranty explanation |
+| `/images/matte-bmw-full.jpg` | Contact/brand mood only; do not imply matte-only scope |
+| `/images/matte-bmw-closeup.jpg` | Product/detail mood only; do not label as product proof |
 
-Important: If matte BMW images are used, the copy and layout must not imply that all 4 public product groups are matte film. Use them only as mood/detail visuals.
+## 4. Hold / Avoid v1 Assets
 
-## 4. Assets to Avoid or Use Only with Strong Context Control in v1
-
-Avoid in v1 unless cropped/context-adjusted and explicitly approved:
+Avoid in v1 unless explicitly approved and context-controlled:
 
 | Asset | Risk |
 |---|---|
 | `/images/self-healing-closeup.jpg` | May imply self-healing claim |
 | `/images/non-yellowing.jpg` | May imply anti-yellowing/non-yellowing claim |
-| `/images/optical-clarity-maserati.jpg` | May imply high optical clarity performance claim |
+| `/images/optical-clarity-maserati.jpg` | May imply optical clarity performance claim |
 | `/images/color-ppf-mclaren.jpg` | May imply color PPF scope |
 | `/images/color-1000-swatchbook.jpg` | May imply 1000+ colors |
 | `/images/color-ppf-green.jpg` | May imply color PPF scope |
 | `/images/headlight-install.jpg` | May imply headlight PPF scope |
 
-If any of these are later needed:
-- Use as neutral mood image only.
-- Do not place near unapproved claim text.
-- Do not use filename/alt/caption wording that contains unapproved claims.
-- Require NEXS admin approval before production.
+If any of these are later needed, require NEXS admin approval before production.
 
-## 5. Prohibited Claim Copy from nexslabs.com
+## 5. Required Image Role Map
 
-Do not reuse or imply these claims in nexppf-web public pages until approved:
+Implemented in `src/content/image-assets.ts`:
 
-- Bayer
-- Wanhua
-- Covestro
-- Lubrizol
-- Ashland
-- supplier/material claims
-- self-healing
-- anti-yellowing
-- non-yellowing
-- chemical resistance
-- 1000+ colors
-- highest optical clarity / advanced optical clarity performance claim
-- highest quality raw materials
-- made in USA
-- performance claims not explicitly approved for NEXS PPF v1
+| Role | Source | Section | Crop Direction | Visual Purpose | Readiness |
+|---|---|---|---|---|---|
+| `hero_brand_visual` | `/images/hero-porsche.jpg` | Home hero | Wide editorial crop, car dominant, clean breathing space | Premium vehicle protection lead visual | public-ready |
+| `product_line_visual` | `/images/matte-bmw-closeup.jpg` | Product line support | Surface/detail crop | Premium finish mood without cluttering product cards | public-ready |
+| `begin_product_visual` | none / graphical tile | BEGIN card | Silver/light-grey accent | Entry product identity | placeholder |
+| `prime_product_visual` | none / graphical tile | PRIME card | Graphite/blue-silver accent | Core product identity | placeholder |
+| `pro_product_visual` | none / graphical tile | PRO card | Carbon/red accent | Premium public product identity | placeholder |
+| `ultimate_product_visual` | none / graphical tile | ULTIMATE card | Platinum/gold accent | Flagship identity | placeholder |
+| `warranty_qr_visual` | `/images/nexs-ultimate-box.jpg` | Warranty QR | Product proof crop with negative space | Connect packaging with QR verification | public-ready |
+| `digital_warranty_card_mockup` | UI mockup | Digital Warranty System | Clean card UI | AppleCare-style support/status visual | public-ready |
+| `dealer_installation_visual` | `/images/installer-hood.jpg` | Dealer / installer | Hands/tool/film/surface crop | Professional installation craft | public-ready |
+| `packaging_product_proof_visual` | `/images/nexs-ultimate-box.jpg` | Product proof | Contained product proof with breathing space | Premium physical product proof | public-ready |
+| `maintenance_after_sales_visual` | `/images/installer-hood.jpg` | Support / inspection | Detail workflow crop | After-sales care story | public-ready |
+| `contact_lead_visual` | `/images/matte-bmw-full.jpg` | Contact lead | Calm brand mood crop | Premium context for lead form | public-ready |
 
-## 6. Allowed Public Wording
+## 6. Page-by-Page Image Direction
 
-Use safer wording such as:
-
-- NEXS Paint Protection Film
-- QR-based warranty verification
-- Digital warranty card
-- Professional dealer installation workflow
-- Warranty-backed after-sales support
-- Product tier names
-- Warranty years as approved
-
-Suggested neutral copy examples:
-
-### Home Hero
-- English: `NEXS Paint Protection Film with Digital Warranty Verification`
-- Thai: `ฟิล์มปกป้องสีรถ NEXS พร้อมระบบบัตรรับประกันดิจิทัล`
-
-### Warranty / QR Section
-- English: `Scan QR to verify warranty status and product registration.`
-- Thai: `สแกน QR เพื่อตรวจสอบสถานะการรับประกันและข้อมูลการลงทะเบียนสินค้า`
-
-### Dealer Workflow
-- English: `Professional dealer installation workflow with warranty-backed after-sales support.`
-- Thai: `ขั้นตอนติดตั้งโดยตัวแทนจำหน่าย พร้อมระบบดูแลหลังการขายและบันทึกการรับประกัน`
-
-### Product Proof / Packaging
-- English: `Product registration starts from approved serial and QR records.`
-- Thai: `การรับประกันเริ่มจาก serial และ QR ที่ผ่านการลงทะเบียนในระบบ`
-
-### Maintenance
-- English: `Maintenance records help customers and dealers track after-sales care.`
-- Thai: `บันทึกการดูแลรักษาช่วยให้ลูกค้าและตัวแทนจำหน่ายติดตามการดูแลหลังการติดตั้งได้ชัดเจน`
-
-## 7. Product Page Requirement
-
-`/products` must show 4 public groups:
-
-| Product | Warranty | Color Direction | Image Approach |
-|---|---:|---|---|
-| BEGIN | 5 years | silver / light grey | product card + color system; image slot if available |
-| PRIME | 6 years | graphite / blue silver | product card + color system; image slot if available |
-| PRO | 8 years | carbon black / red accent | product card + color system; image slot if available |
-| ULTIMATE | 9 years | deep black / gold or platinum | product card + color system; image slot if available |
-
-PRO must be shown publicly as a main product group even if manufactured by a different factory. Internal variants may remain grouped under PRO unless NEXS admin approves separate public display.
-
-If specific product photos are not ready, use premium product cards + color system first and reserve image slots for future real assets.
-
-## 8. Page-by-Page Image Usage v1
-
-| Page | Image Usage |
+| Page/Section | Decision |
 |---|---|
-| Home | Hero: `/images/hero-porsche.jpg`; Dealer/workflow: `/images/installer-hood.jpg`; Product proof/packaging: `/images/nexs-ultimate-box.jpg` |
-| Products | Product cards + color system for BEGIN/PRIME/PRO/ULTIMATE; optional supporting image: `/images/matte-bmw-full.jpg` or `/images/matte-bmw-closeup.jpg` with matte-only risk controlled |
-| Warranty | `/images/nexs-ultimate-box.jpg` or packaging/sticker visual; add QR scan / Digital Warranty Card mockup placeholder |
-| Digital Warranty Card | `/nexs-logo.png`; minimal vehicle images; prioritize readable mobile status |
-| Dealer Login / Dealer Section | `/images/installer-hood.jpg` |
-| Maintenance / After-sales | `/images/installer-hood.jpg` as placeholder; reserve slot for real maintenance photo later |
-| Admin / Dealer Dashboard | Logo and theme colors only; avoid heavy images; prioritize speed and readability |
+| Home Hero | Use `/images/hero-porsche.jpg` as larger visual lead with intentional crop. |
+| Product Line | Do not force real photos into every product card. Use Apple-style product tiles with accent colors. |
+| Why NEXS | Keep clean benefit cards, avoid overusing car photos. |
+| Digital Warranty | Use card mockup as main visual. Keep customer data masked. |
+| Dealer / Installer | Use `/images/installer-hood.jpg` with editorial crop around craft/work surface. |
+| QR / Product Proof | Use `/images/nexs-ultimate-box.jpg` as product proof block with breathing space. |
+| Contact | Keep form simple; use only calm brand mood if needed. |
 
-## 9. Crop / Context Adjustments Needed
+## 7. Copy Cleanup Rules
 
-| Asset | Adjustment |
-|---|---|
-| `/images/hero-porsche.jpg` | Crop for responsive hero; add dark gradient overlay for readable copy; avoid claim-heavy captions |
-| `/images/installer-hood.jpg` | Crop to focus on professional installation workflow; do not imply unsupported service scope |
-| `/images/nexs-ultimate-box.jpg` | Use as packaging/product-proof visual; avoid implying only ULTIMATE has QR/warranty if used on general warranty page |
-| `/images/matte-bmw-full.jpg` | Use as supporting mood image only; add neutral context if near products |
-| `/images/matte-bmw-closeup.jpg` | Use for detail/mood only; do not label as product default finish |
+Public pages must not expose machine/database wording such as:
 
-## 10. Required Image Slots
+- `serial_code`
+- `primary identity`
+- `full URL as primary identity`
+- `database logic`
+- placeholder-style machine wording
 
-Prepare image slots that can be changed later:
+Customer-facing QR explanation:
 
-- `hero_image`
-- `begin_product_visual`
-- `prime_product_visual`
-- `pro_product_visual`
-- `ultimate_product_visual`
-- `qr_warranty_visual`
-- `packaging_visual`
-- `dealer_workflow_visual`
-- `maintenance_visual`
-- `support_request_visual`
+`QR Code และ Serial Number ช่วยให้ลูกค้าตรวจสอบสถานะสินค้าและบัตรรับประกันได้อย่างชัดเจน เมื่อ Dealer ลงทะเบียนการติดตั้งแล้ว ลูกค้าจะสามารถสแกนเพื่อดูข้อมูลบัตรรับประกันดิจิทัลได้ทันที`
 
-Implementation note:
-- Prefer config/database-driven asset references before production.
-- For POC/UI prototype, temporary static config is acceptable only if marked as non-production and easy to replace.
-- Do not embed asset paths in many components. Centralize them in one content/config layer.
+Warranty copy must stay Thai-readable and support-style, not backend-style.
 
-## 11. Operational Photos Rule
+## 8. Operational Photos Rule
 
 Operational photos must not become marketing assets automatically.
 
-Operational photos include:
-- customer car photos
-- license plate photos
-- door sticker photos
-- warranty card photos
-- claim/defect photos
-- maintenance photos
-- receipts/pricing documents
-- chassis/VIN documents
-- photos containing faces or personal data
-
-Allowed access:
-- Dealer can see only records belonging to that dealer.
-- Admin can see all records.
-
-Public default:
-- Do not show full license plate publicly.
-- Do not show customer face publicly.
-- Do not show documents publicly.
-- Do not show chassis/VIN publicly.
-- Do not show receipt/price publicly.
-- Do not show claim photos publicly while under review.
+Operational photos include customer car photos, license plate photos, door sticker photos, warranty card photos, claim/defect photos, maintenance photos, receipts/pricing documents, chassis/VIN documents, and photos containing faces or personal data.
 
 If real customer/installation photos are needed for marketing, require separate approval and consent tracking before use.
 
-## 12. Risks
+## 9. Verification Requirements
 
-### Claim Risk
+After changing image roles/composition, run:
 
-Risk:
-- Reusing nexslabs images may accidentally bring nexslabs performance claims into nexppf-web.
-
-Mitigation:
-- Use image-only reuse with new approved copy.
-- Block prohibited claim words in public content review.
-- Require NEXS admin approval before production.
-
-### Product Scope Risk
-
-Risk:
-- Certain images may imply color PPF, headlight PPF, self-healing, non-yellowing, or optical clarity claims.
-
-Mitigation:
-- Avoid risky images in v1.
-- Use product cards + approved product tiers instead.
-- Add clear neutral context for mood images.
-
-### PDPA Risk
-
-Risk:
-- Operational photos can expose plate number, customer data, chassis, documents, claim condition, or faces.
-
-Mitigation:
-- Keep operational photos protected behind auth.
-- Do not create public URLs for sensitive photos by default.
-- Require consent/approval before marketing use.
-
-### Maintainability Risk
-
-Risk:
-- Hardcoding image paths in components makes later replacement difficult.
-
-Mitigation:
-- Centralize image slots in content/config layer.
-- Later move image policy to DB/config table before production.
-
-## 13. Required Output Before Implementation
-
-Before implementing image usage, report:
-
-1. Which images will be used on which pages.
-2. Which images can be used immediately.
-3. Which images should be avoided in v1.
-4. Which images require crop/context adjustment.
-5. Which image slots will be prepared.
-6. Which copy will replace old claim text.
-7. Claim / PDPA / product scope risks.
-
-## 14. Implementation Recommendation
-
-Recommended v1 approach:
-
-1. Add centralized asset/content config.
-2. Add safe copy only from this document and approved product docs.
-3. Build UI using product cards + image slots.
-4. Do not use risky images in v1.
-5. Do not use operational photos for marketing.
-6. Run public-content claim review before production.
+- `npm test`
+- `npm run check:content`
+- `npm run lint`
+- `npm run typecheck`
+- `npm run build`
+- `npm audit --audit-level=moderate`
+- Local route/visual checks for `/`, `/products`, `/contact`, `/dealer`, `/warranty`, `/support/warranty`, `/support/inspection`, `/admin`, `/r/PRO-1196MXY0401178Q`

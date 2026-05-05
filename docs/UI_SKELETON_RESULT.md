@@ -1,11 +1,11 @@
 # UI Skeleton Result — nexppf-web
 
-Last Updated: 2026-05-05T16:08:21+00:00
+Last Updated: 2026-05-05T16:30:00+00:00
 Status: Local implementation; not pushed/deployed yet
 
 ## Summary
 
-Updated static UI skeleton foundation to follow the 3-layer framing: Information Website + Sales/Product Website + Warranty/After-sales System.
+Updated static UI skeleton foundation to follow the 3-layer framing: Information Website + Sales/Product Website + Warranty/After-sales System. Latest pass adds Copy Cleanup + Image Composition improvements before push/deploy approval.
 
 This is not connected to real PostgreSQL/auth yet.
 
@@ -58,7 +58,7 @@ Apple-inspired light premium sales + trust landing page with:
 - Why NEXS trust section using safe wording
 - Digital Warranty System section as trust/after-sales feature
 - Dealer recruitment / dealer login section
-- QR/serial proof section
+- customer-facing QR / product proof section
 - Contact / lead form section
 
 ### Products
@@ -116,6 +116,20 @@ Current public UI uses Apple-inspired light premium theme:
 - product cards carry BEGIN / PRIME / PRO / ULTIMATE accents
 - Digital Warranty System appears as premium support/status card
 - Dealer Login remains visible but secondary
+
+## Copy Cleanup + Image Composition Pass
+
+Completed before production approval:
+
+- Dealer heading changed to two intentional Thai lines: `สำหรับตัวแทนจำหน่าย` / `และร้านติดตั้ง`, avoiding broken Thai line break around `ติดตั้ง`.
+- Public warranty copy no longer uses machine-like wording such as placeholder English phrases or backend workflow labels.
+- Public QR section no longer exposes database-oriented wording such as `serial_code`, primary identity logic, or full-URL identity logic.
+- Homepage QR copy is now customer-facing: QR Code + Serial Number help customers check product and Digital Warranty Card status after Dealer registration.
+- Hero visual uses `/images/hero-porsche.jpg` as a larger visual lead with intentional crop.
+- Dealer visual uses `/images/installer-hood.jpg` with editorial crop around professional installation craft.
+- Packaging visual uses `/images/nexs-ultimate-box.jpg` as a product-proof block with breathing space instead of a random full-card filler.
+- Product cards remain image-light Apple-style tiles with product accent colors, not cluttered photo cards.
+- Image role map is centralized in `src/content/image-assets.ts` and documented in `docs/IMAGE_ASSET_MANIFEST.md`.
 
 ## Guardrails
 
