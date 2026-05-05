@@ -1,3 +1,5 @@
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
 CREATE TABLE dealers (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   dealer_name text NOT NULL,

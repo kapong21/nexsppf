@@ -39,6 +39,20 @@ describe('POC-005 auth and role isolation', () => {
     expect(result).toEqual({ ok: true, session: { userId: 'dealer-user-1', role: 'dealer', dealerId: 'dealer-a', redirectTo: '/dealer' } });
   });
 
+  it('rejects dealer login when dealer_id is missing', async () => {
+    const passwordHash = await createPasswordHash('dealer-password');
+    const repository: AuthRepository = {
+      async findUserByEmailOrPhone() {
+        return { id: 'dealer-user-no-id', name: 'Dealer No ID', email: 'dealer-no-id@nexppf.test', phone: null, passwordHash, role: 'dealer', dealerId: null, status: 'active' };
+      },
+      async listWarrantyRecords() {
+        return warrantyRecords;
+      },
+    };
+
+    await expect(authenticateUser({ identifier: 'dealer-no-id@nexppf.test', password: 'dealer-password' }, repository)).resolves.toEqual({ ok: false, reason: 'Dealer account is not linked to dealer_id' });
+  });
+
   it('rejects wrong password and suspended user', async () => {
     const passwordHash = await createPasswordHash('correct-password');
     const repository: AuthRepository = {

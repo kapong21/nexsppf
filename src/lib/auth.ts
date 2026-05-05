@@ -38,7 +38,7 @@ export type LoginInput = {
 
 export type LoginResult =
   | { ok: true; session: AuthSession }
-  | { ok: false; reason: 'Invalid credentials' | 'User is not active' };
+  | { ok: false; reason: 'Invalid credentials' | 'User is not active' | 'Dealer account is not linked to dealer_id' };
 
 const PASSWORD_SALT_ROUNDS = 10;
 
@@ -60,6 +60,10 @@ export async function authenticateUser(input: LoginInput, repository: AuthReposi
 
   if (user.status !== 'active') {
     return { ok: false, reason: 'User is not active' };
+  }
+
+  if (user.role === 'dealer' && !user.dealerId) {
+    return { ok: false, reason: 'Dealer account is not linked to dealer_id' };
   }
 
   return {

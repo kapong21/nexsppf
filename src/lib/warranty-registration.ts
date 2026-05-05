@@ -1,4 +1,5 @@
 import { parseSerialCode, resolveProductFromSerial } from './serial';
+import type { AuthSession } from './auth';
 
 export type SerialForRegistration = {
   id: string;
@@ -10,8 +11,7 @@ export type SerialForRegistration = {
 };
 
 export type DealerWarrantyRegistrationInput = {
-  dealerId: string;
-  createdBy: string;
+  session: Pick<AuthSession, 'userId' | 'role' | 'dealerId'>;
   serialCode: string;
   customer: {
     customerName: string;
@@ -60,7 +60,15 @@ export type CreatedWarranty = CreateActiveWarrantyPayload & {
   id: string;
 };
 
+export class DuplicateWarrantyRegistrationError extends Error {
+  constructor(message = 'Duplicate warranty registration') {
+    super(message);
+    this.name = 'DuplicateWarrantyRegistrationError';
+  }
+}
+
 export type WarrantyRegistrationRepository = {
+  runInTransaction<T>(work: (transactionRepository: WarrantyRegistrationRepository) => Promise<T>): Promise<T>;
   findSerialForRegistration(serialCode: string): Promise<SerialForRegistration | null>;
   findActiveWarrantyBySerialId(serialId: string): Promise<{ id: string } | null>;
   createActiveWarranty(payload: CreateActiveWarrantyPayload): Promise<CreatedWarranty>;
@@ -78,6 +86,7 @@ export type WarrantyRegistrationResult =
   | {
       ok: false;
       reason:
+        | 'Dealer session required'
         | 'Serial not found'
         | 'Serial already registered'
         | 'Serial assigned to another dealer'
@@ -89,76 +98,101 @@ export async function registerDealerWarranty(
   input: DealerWarrantyRegistrationInput,
   repository: WarrantyRegistrationRepository,
 ): Promise<WarrantyRegistrationResult> {
+  if (input.session.role !== 'dealer' || !input.session.dealerId) {
+    return { ok: false, reason: 'Dealer session required' };
+  }
+
+  const dealerId = input.session.dealerId;
   const parsed = parseSerialCode(input.serialCode);
   const product = resolveProductFromSerial(parsed.serialCode);
-  const serial = await repository.findSerialForRegistration(parsed.serialCode);
 
-  if (!serial) {
-    return { ok: false, reason: 'Serial not found' };
+  try {
+    return await repository.runInTransaction(async (transactionRepository) => {
+      const serial = await transactionRepository.findSerialForRegistration(parsed.serialCode);
+
+      if (!serial) {
+        return { ok: false, reason: 'Serial not found' };
+      }
+
+      if (serial.modelCode !== parsed.modelCode || serial.modelCode !== product.modelCode) {
+        return { ok: false, reason: 'Serial product mismatch' };
+      }
+
+      if (serial.status === 'registered') {
+        return { ok: false, reason: 'Serial already registered' };
+      }
+
+      if (serial.status === 'suspended' || serial.status === 'invalid') {
+        return { ok: false, reason: 'Serial is not registerable' };
+      }
+
+      if (serial.dealerId && serial.dealerId !== dealerId) {
+        return { ok: false, reason: 'Serial assigned to another dealer' };
+      }
+
+      const existingWarranty = await transactionRepository.findActiveWarrantyBySerialId(serial.id);
+      if (existingWarranty) {
+        return { ok: false, reason: 'Serial already registered' };
+      }
+
+      const warrantyStartDate = input.install.installDate;
+      const warrantyEndDate = addYearsToIsoDate(warrantyStartDate, product.warrantyYears);
+
+      const created = await transactionRepository.createActiveWarranty({
+        serialId: serial.id,
+        dealerId,
+        customerName: input.customer.customerName,
+        customerPhone: input.customer.customerPhone,
+        customerEmail: input.customer.customerEmail ?? null,
+        carBrand: input.vehicle.carBrand,
+        carModel: input.vehicle.carModel,
+        carYear: input.vehicle.carYear ?? null,
+        licensePlate: input.vehicle.licensePlate,
+        province: input.vehicle.province ?? null,
+        chassisNo: input.vehicle.chassisNo ?? null,
+        installDate: input.install.installDate,
+        warrantyStartDate,
+        warrantyEndDate,
+        coverageType: input.install.coverageType,
+        carSize: input.install.carSize,
+        status: 'active',
+        notes: input.install.notes ?? null,
+        createdBy: input.session.userId,
+      });
+
+      await transactionRepository.markSerialRegistered(serial.id, dealerId);
+
+      return {
+        ok: true,
+        warrantyId: created.id,
+        serialCode: serial.serialCode,
+        productName: serial.productName,
+        status: 'active',
+      };
+    });
+  } catch (error) {
+    if (error instanceof DuplicateWarrantyRegistrationError) {
+      return { ok: false, reason: 'Serial already registered' };
+    }
+    throw error;
   }
-
-  if (serial.modelCode !== parsed.modelCode || serial.modelCode !== product.modelCode) {
-    return { ok: false, reason: 'Serial product mismatch' };
-  }
-
-  if (serial.status === 'registered') {
-    return { ok: false, reason: 'Serial already registered' };
-  }
-
-  if (serial.status === 'suspended' || serial.status === 'invalid') {
-    return { ok: false, reason: 'Serial is not registerable' };
-  }
-
-  if (serial.dealerId && serial.dealerId !== input.dealerId) {
-    return { ok: false, reason: 'Serial assigned to another dealer' };
-  }
-
-  const existingWarranty = await repository.findActiveWarrantyBySerialId(serial.id);
-  if (existingWarranty) {
-    return { ok: false, reason: 'Serial already registered' };
-  }
-
-  const warrantyStartDate = input.install.installDate;
-  const warrantyEndDate = addYearsToIsoDate(warrantyStartDate, product.warrantyYears);
-
-  const created = await repository.createActiveWarranty({
-    serialId: serial.id,
-    dealerId: input.dealerId,
-    customerName: input.customer.customerName,
-    customerPhone: input.customer.customerPhone,
-    customerEmail: input.customer.customerEmail ?? null,
-    carBrand: input.vehicle.carBrand,
-    carModel: input.vehicle.carModel,
-    carYear: input.vehicle.carYear ?? null,
-    licensePlate: input.vehicle.licensePlate,
-    province: input.vehicle.province ?? null,
-    chassisNo: input.vehicle.chassisNo ?? null,
-    installDate: input.install.installDate,
-    warrantyStartDate,
-    warrantyEndDate,
-    coverageType: input.install.coverageType,
-    carSize: input.install.carSize,
-    status: 'active',
-    notes: input.install.notes ?? null,
-    createdBy: input.createdBy,
-  });
-
-  await repository.markSerialRegistered(serial.id, input.dealerId);
-
-  return {
-    ok: true,
-    warrantyId: created.id,
-    serialCode: serial.serialCode,
-    productName: serial.productName,
-    status: 'active',
-  };
 }
 
 function addYearsToIsoDate(isoDate: string, years: number): string {
-  const [year, month, day] = isoDate.split('-').map(Number);
-  if (!year || !month || !day) {
+  const match = isoDate.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!match) {
     throw new Error(`Invalid install date: ${isoDate}`);
   }
-  const endYear = year + years;
-  return `${endYear.toString().padStart(4, '0')}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+
+  const year = Number(match[1]);
+  const monthIndex = Number(match[2]) - 1;
+  const day = Number(match[3]);
+  const date = new Date(Date.UTC(year, monthIndex, day));
+
+  if (date.getUTCFullYear() !== year || date.getUTCMonth() !== monthIndex || date.getUTCDate() !== day) {
+    throw new Error(`Invalid install date: ${isoDate}`);
+  }
+
+  date.setUTCFullYear(year + years);
+  return date.toISOString().slice(0, 10);
 }

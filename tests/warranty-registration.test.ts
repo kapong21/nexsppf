@@ -1,11 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { registerDealerWarranty } from '@/lib/warranty-registration';
+import { DuplicateWarrantyRegistrationError, registerDealerWarranty } from '@/lib/warranty-registration';
 import type { DealerWarrantyRegistrationInput, WarrantyRegistrationRepository } from '@/lib/warranty-registration';
 
 function baseInput(overrides: Partial<DealerWarrantyRegistrationInput> = {}): DealerWarrantyRegistrationInput {
   return {
-    dealerId: 'dealer-a',
-    createdBy: 'dealer-user-a',
+    session: { userId: 'dealer-user-a', role: 'dealer', dealerId: 'dealer-a' },
     serialCode: 'B-1196MXY0401175Q',
     customer: {
       customerName: 'Somchai Customer',
@@ -30,27 +29,46 @@ function baseInput(overrides: Partial<DealerWarrantyRegistrationInput> = {}): De
   };
 }
 
+function baseRepository(overrides: Partial<WarrantyRegistrationRepository> = {}): WarrantyRegistrationRepository {
+  const repository: WarrantyRegistrationRepository = {
+    async runInTransaction(work) {
+      return work(repository);
+    },
+    async findSerialForRegistration(serialCode) {
+      return { id: 'serial-1', serialCode, modelCode: 'B', productName: 'BEGIN', status: 'issued', dealerId: null };
+    },
+    async findActiveWarrantyBySerialId() {
+      return null;
+    },
+    async createActiveWarranty(payload) {
+      return { id: 'warranty-1', ...payload };
+    },
+    async markSerialRegistered() {},
+  };
+
+  return Object.assign(repository, overrides);
+}
+
 describe('POC-006 dealer warranty registration', () => {
-  it('registers an existing unregistered serial and activates warranty', async () => {
+  it('registers an existing unregistered serial and activates warranty through a transaction', async () => {
     const created: unknown[] = [];
-    const repository: WarrantyRegistrationRepository = {
-      async findSerialForRegistration(serialCode) {
-        return { id: 'serial-1', serialCode, modelCode: 'B', productName: 'BEGIN', status: 'issued', dealerId: null };
-      },
-      async findActiveWarrantyBySerialId() {
-        return null;
-      },
-      async createActiveWarranty(payload) {
-        created.push(payload);
-        return { id: 'warranty-1', ...payload };
-      },
-      async markSerialRegistered(serialId, dealerId) {
-        created.push({ serialId, dealerId, status: 'registered' });
-      },
+    let transactionCalled = false;
+    const repository = baseRepository();
+    repository.runInTransaction = async (work) => {
+      transactionCalled = true;
+      return work(repository);
+    };
+    repository.createActiveWarranty = async (payload) => {
+      created.push(payload);
+      return { id: 'warranty-1', ...payload };
+    };
+    repository.markSerialRegistered = async (serialId, dealerId) => {
+      created.push({ serialId, dealerId, status: 'registered' });
     };
 
     const result = await registerDealerWarranty(baseInput(), repository);
 
+    expect(transactionCalled).toBe(true);
     expect(result).toMatchObject({ ok: true, warrantyId: 'warranty-1', serialCode: 'B-1196MXY0401175Q', status: 'active' });
     expect(created).toHaveLength(2);
     expect(created[0]).toMatchObject({
@@ -61,15 +79,20 @@ describe('POC-006 dealer warranty registration', () => {
       carBrand: 'Toyota',
       warrantyStartDate: '2026-05-05',
       status: 'active',
+      createdBy: 'dealer-user-a',
     });
   });
 
+  it('rejects non-dealer session and dealer session without dealer_id', async () => {
+    const repository = baseRepository();
+
+    await expect(registerDealerWarranty(baseInput({ session: { userId: 'admin-1', role: 'admin', dealerId: null } }), repository)).resolves.toEqual({ ok: false, reason: 'Dealer session required' });
+    await expect(registerDealerWarranty(baseInput({ session: { userId: 'dealer-no-id', role: 'dealer', dealerId: null } }), repository)).resolves.toEqual({ ok: false, reason: 'Dealer session required' });
+  });
+
   it('rejects serial that does not exist', async () => {
-    const repository: WarrantyRegistrationRepository = {
+    const repository = baseRepository({
       async findSerialForRegistration() {
-        return null;
-      },
-      async findActiveWarrantyBySerialId() {
         return null;
       },
       async createActiveWarranty() {
@@ -78,13 +101,13 @@ describe('POC-006 dealer warranty registration', () => {
       async markSerialRegistered() {
         throw new Error('should not write');
       },
-    };
+    });
 
     await expect(registerDealerWarranty(baseInput({ serialCode: 'U-UNKNOWN' }), repository)).resolves.toEqual({ ok: false, reason: 'Serial not found' });
   });
 
   it('rejects serial that already has active warranty', async () => {
-    const repository: WarrantyRegistrationRepository = {
+    const repository = baseRepository({
       async findSerialForRegistration(serialCode) {
         return { id: 'serial-1', serialCode, modelCode: 'B', productName: 'BEGIN', status: 'registered', dealerId: 'dealer-a' };
       },
@@ -94,65 +117,56 @@ describe('POC-006 dealer warranty registration', () => {
       async createActiveWarranty() {
         throw new Error('should not write');
       },
-      async markSerialRegistered() {
-        throw new Error('should not write');
+    });
+
+    await expect(registerDealerWarranty(baseInput(), repository)).resolves.toEqual({ ok: false, reason: 'Serial already registered' });
+  });
+
+  it('maps unique violation during transaction to duplicate registration rejection', async () => {
+    const repository = baseRepository({
+      async createActiveWarranty() {
+        throw new DuplicateWarrantyRegistrationError();
       },
-    };
+    });
 
     await expect(registerDealerWarranty(baseInput(), repository)).resolves.toEqual({ ok: false, reason: 'Serial already registered' });
   });
 
   it('rejects serial assigned to another dealer', async () => {
-    const repository: WarrantyRegistrationRepository = {
+    const repository = baseRepository({
       async findSerialForRegistration(serialCode) {
         return { id: 'serial-1', serialCode, modelCode: 'B', productName: 'BEGIN', status: 'assigned', dealerId: 'dealer-b' };
-      },
-      async findActiveWarrantyBySerialId() {
-        return null;
       },
       async createActiveWarranty() {
         throw new Error('should not write');
       },
-      async markSerialRegistered() {
-        throw new Error('should not write');
-      },
-    };
+    });
 
     await expect(registerDealerWarranty(baseInput(), repository)).resolves.toEqual({ ok: false, reason: 'Serial assigned to another dealer' });
   });
 
   it('rejects mismatched model_code between serial identity and database record', async () => {
-    const repository: WarrantyRegistrationRepository = {
+    const repository = baseRepository({
       async findSerialForRegistration(serialCode) {
         return { id: 'serial-1', serialCode, modelCode: 'P', productName: 'PRIME', status: 'issued', dealerId: null };
-      },
-      async findActiveWarrantyBySerialId() {
-        return null;
       },
       async createActiveWarranty() {
         throw new Error('should not write');
       },
-      async markSerialRegistered() {
-        throw new Error('should not write');
-      },
-    };
+    });
 
     await expect(registerDealerWarranty(baseInput({ serialCode: 'B-1196MXY0401175Q' }), repository)).resolves.toEqual({ ok: false, reason: 'Serial product mismatch' });
   });
 
   it('supports PRO variant serial registration', async () => {
-    const repository: WarrantyRegistrationRepository = {
+    const repository = baseRepository({
       async findSerialForRegistration(serialCode) {
         return { id: 'serial-r75', serialCode, modelCode: 'R75', productName: 'PRO 7.5', status: 'issued', dealerId: null };
-      },
-      async findActiveWarrantyBySerialId() {
-        return null;
       },
       async createActiveWarranty(payload) {
         return { id: 'warranty-r75', ...payload };
       },
-      async markSerialRegistered() {},
-    };
+    });
 
     const result = await registerDealerWarranty(baseInput({ serialCode: 'R75-1196MXY0401178Q' }), repository);
     expect(result).toMatchObject({ ok: true, warrantyId: 'warranty-r75', productName: 'PRO 7.5', status: 'active' });
