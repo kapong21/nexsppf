@@ -3,6 +3,7 @@ export type ProductConfig = {
   productName: string;
   warrantyYears: number;
   publicMvp: boolean;
+  parentModelCode?: string;
 };
 
 export type ParsedSerial = {
@@ -13,11 +14,13 @@ export type ParsedSerial = {
 export const PRODUCT_CONFIG: Record<string, ProductConfig> = {
   B: { modelCode: 'B', productName: 'BEGIN', warrantyYears: 5, publicMvp: true },
   P: { modelCode: 'P', productName: 'PRIME', warrantyYears: 6, publicMvp: true },
-  PRO: { modelCode: 'PRO', productName: 'PRO', warrantyYears: 8, publicMvp: false },
+  PRO: { modelCode: 'PRO', productName: 'PRO', warrantyYears: 8, publicMvp: true },
+  R75: { modelCode: 'R75', productName: 'PRO 7.5', warrantyYears: 8, publicMvp: false, parentModelCode: 'PRO' },
+  R85: { modelCode: 'R85', productName: 'PRO 8.5', warrantyYears: 8, publicMvp: false, parentModelCode: 'PRO' },
   U: { modelCode: 'U', productName: 'ULTIMATE', warrantyYears: 9, publicMvp: true },
 };
 
-const SERIAL_PATTERN = /^([A-Z]+)-[A-Z0-9]+$/;
+const SERIAL_PATTERN = /^([A-Z0-9]+)-[A-Z0-9]+$/;
 
 export function parseSerialCode(input: string): ParsedSerial {
   const value = input.trim();

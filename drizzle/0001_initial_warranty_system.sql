@@ -31,16 +31,19 @@ CREATE TABLE products (
   product_name text NOT NULL,
   warranty_years integer NOT NULL CHECK (warranty_years > 0),
   public_mvp boolean NOT NULL DEFAULT false,
+  parent_model_code text,
   status text NOT NULL DEFAULT 'active',
   created_at timestamptz NOT NULL DEFAULT now(),
   updated_at timestamptz NOT NULL DEFAULT now()
 );
 
-INSERT INTO products (model_code, product_name, warranty_years, public_mvp, status) VALUES
-  ('B', 'BEGIN', 5, true, 'active'),
-  ('P', 'PRIME', 6, true, 'active'),
-  ('PRO', 'PRO', 8, false, 'active'),
-  ('U', 'ULTIMATE', 9, true, 'active');
+INSERT INTO products (model_code, product_name, warranty_years, public_mvp, parent_model_code, status) VALUES
+  ('B', 'BEGIN', 5, true, NULL, 'active'),
+  ('P', 'PRIME', 6, true, NULL, 'active'),
+  ('PRO', 'PRO', 8, true, NULL, 'active'),
+  ('R75', 'PRO 7.5', 8, false, 'PRO', 'active'),
+  ('R85', 'PRO 8.5', 8, false, 'PRO', 'active'),
+  ('U', 'ULTIMATE', 9, true, NULL, 'active');
 
 CREATE TABLE serials (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),

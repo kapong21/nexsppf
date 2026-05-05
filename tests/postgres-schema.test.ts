@@ -13,7 +13,10 @@ describe('PostgreSQL migration contract', () => {
     const sql = readFileSync('drizzle/0001_initial_warranty_system.sql', 'utf8');
     expect(sql).toContain("('B', 'BEGIN', 5, true");
     expect(sql).toContain("('P', 'PRIME', 6, true");
-    expect(sql).toContain("('PRO', 'PRO', 8, false");
-    expect(sql).toContain("('U', 'ULTIMATE', 9, true");
+    expect(sql).toContain('parent_model_code text');
+    expect(sql).toContain("('PRO', 'PRO', 8, true, NULL");
+    expect(sql).toContain("('R75', 'PRO 7.5', 8, false, 'PRO'");
+    expect(sql).toContain("('R85', 'PRO 8.5', 8, false, 'PRO'");
+    expect(sql).toContain("('U', 'ULTIMATE', 9, true, NULL");
   });
 });

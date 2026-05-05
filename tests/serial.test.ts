@@ -16,8 +16,30 @@ describe('serial parser', () => {
     expect(resolveProductFromSerial('U-1196MXY0401177Q')).toMatchObject({ productName: 'ULTIMATE', warrantyYears: 9 });
   });
 
-  it('keeps PRO as config-only and not public MVP', () => {
-    expect(resolveProductFromSerial('PRO-1196MXY0401178Q')).toEqual({ modelCode: 'PRO', productName: 'PRO', warrantyYears: 8, publicMvp: false });
+  it('maps PRO as a public product group', () => {
+    expect(resolveProductFromSerial('PRO-1196MXY0401178Q')).toEqual({
+      modelCode: 'PRO',
+      productName: 'PRO',
+      warrantyYears: 8,
+      publicMvp: true,
+    });
+  });
+
+  it('supports optional PRO internal variants grouped under PRO', () => {
+    expect(resolveProductFromSerial('R75-1196MXY0401178Q')).toEqual({
+      modelCode: 'R75',
+      productName: 'PRO 7.5',
+      warrantyYears: 8,
+      publicMvp: false,
+      parentModelCode: 'PRO',
+    });
+    expect(resolveProductFromSerial('R85-1196MXY0401179Q')).toEqual({
+      modelCode: 'R85',
+      productName: 'PRO 8.5',
+      warrantyYears: 8,
+      publicMvp: false,
+      parentModelCode: 'PRO',
+    });
   });
 
   it('rejects malformed serial codes', () => {
