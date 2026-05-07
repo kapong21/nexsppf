@@ -1,8 +1,8 @@
-# Image Asset Manifest — nexppf-web
+# Image Asset Manifest — nexsppf-web
 
 Last Updated: 2026-05-05T17:35:00+00:00
 Source: `/opt/data/agents/treee-tech-lead/projects/nexslabs-web/repo/public`
-Destination: `/opt/data/agents/treee-tech-lead/projects/nexppf-web/repo/public`
+Destination: `/opt/data/agents/treee-tech-lead/projects/nexsppf-web/repo/public`
 Status: v1 allowed assets copied locally; production use still requires NEXS rights confirmation.
 
 ## Copied v1 Assets

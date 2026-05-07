@@ -1,4 +1,4 @@
-# Edge Cases, Risks, and Open Decisions — nexppf-web
+# Edge Cases, Risks, and Open Decisions — nexsppf-web
 
 Last Updated: 2026-05-05T14:53:21+00:00
 Status: Draft for Tor S / NEXS admin review
@@ -162,7 +162,7 @@ Mitigation:
 
 ### Operational Risks
 - PostgreSQL server is not provisioned yet.
-- No deployment pipeline for nexppf-web yet.
+- No deployment pipeline for nexsppf-web yet.
 - DNS still pending.
 - No monitoring/audit logging yet.
 
@@ -246,7 +246,7 @@ Mitigation:
 4. Initial admin email/phone.
 5. Whether to push current POC commits to GitHub now or wait until PRD/UX docs are also committed.
 6. Storage path for production: local volume vs R2/S3.
-7. Deployment workflow for nexppf-web.
+7. Deployment workflow for nexsppf-web.
 
 ## 4. What is reusable from current POC
 

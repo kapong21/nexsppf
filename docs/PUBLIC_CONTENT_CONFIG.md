@@ -1,11 +1,11 @@
-# Public Content Configuration — nexppf-web
+# Public Content Configuration — nexsppf-web
 
 Last Updated: 2026-05-05T16:08:21+00:00
 Status: Local implementation foundation; not pushed/deployed
 
 ## Purpose
 
-This document describes the safe public content configuration added for nexppf-web.
+This document describes the safe public content configuration added for nexsppf-web.
 
 The goal is to keep public copy, product cards, image slot keys, and claim guardrails centralized before UI implementation.
 

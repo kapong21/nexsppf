@@ -1,4 +1,4 @@
-# Curated Visual System Direction — nexppf-web
+# Curated Visual System Direction — nexsppf-web
 
 Last Updated: 2026-05-05T17:40:59+00:00
 Owner: Tor S / NEXS admin

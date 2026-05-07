@@ -1,4 +1,4 @@
-# UI Skeleton Result — nexppf-web
+# UI Skeleton Result — nexsppf-web
 
 Last Updated: 2026-05-05T17:35:00+00:00
 Status: Local implementation; not pushed/deployed yet

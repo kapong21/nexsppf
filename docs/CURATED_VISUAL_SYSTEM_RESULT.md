@@ -1,4 +1,4 @@
-# Curated Visual System Result — nexppf-web
+# Curated Visual System Result — nexsppf-web
 
 Last Updated: 2026-05-05T17:35:00+00:00
 Status: Local implementation only; not pushed to GitHub; not deployed to production.

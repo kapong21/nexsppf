@@ -12,8 +12,13 @@ export type PublicProductGroup = {
   readonly headline: string;
   readonly thaiDescription: string;
   readonly recommendedUseCase: string;
-  readonly primaryCta: 'สอบถามราคา';
-  readonly secondaryCta: 'ดูรายละเอียด';
+  readonly suitableFor: string;
+  readonly keyDifference: string;
+  readonly protectionLevel: string;
+  readonly packageSuggestion: string;
+  readonly decisionLabel: string;
+  readonly primaryCta: string;
+  readonly secondaryCta: string;
 };
 
 export type SiteCopy = {
@@ -74,6 +79,23 @@ export type SiteCopy = {
     readonly primaryCta: string;
     readonly secondaryCta: string;
   };
+  readonly quickContact: readonly {
+    readonly label: 'LINE OA' | 'โทร' | 'Facebook' | 'เวลาทำการ';
+    readonly value: string;
+    readonly status: string;
+  }[];
+  readonly trustProof: readonly {
+    readonly title: string;
+    readonly body: string;
+  }[];
+  readonly claimProcess: readonly {
+    readonly title: string;
+    readonly body: string;
+  }[];
+  readonly faq: readonly {
+    readonly question: string;
+    readonly answer: string;
+  }[];
   readonly leadForm: {
     readonly title: string;
     readonly description: string;
@@ -156,6 +178,11 @@ export const PUBLIC_PRODUCT_GROUPS: readonly PublicProductGroup[] = [
     headline: 'NEXS BEGIN',
     thaiDescription: 'ฟิล์มปกป้องสีรถสำหรับการใช้งานประจำวัน คุ้มค่า เข้าถึงง่าย',
     recommendedUseCase: 'เหมาะกับลูกค้าที่ต้องการเริ่มต้นดูแลสีรถในชีวิตประจำวัน',
+    suitableFor: 'เหมาะสำหรับรถใช้งานประจำวันและลูกค้าที่เริ่มต้นติดตั้ง PPF',
+    keyDifference: 'จุดเด่น: คุ้มค่า เข้าใจง่าย และเริ่มต้นดูแลสีรถได้เป็นระบบ',
+    protectionLevel: 'ระดับการปกป้อง: Essential daily protection',
+    packageSuggestion: 'แพ็กเกจที่เหมาะ: จุดเสี่ยงด้านหน้า หรือเริ่มต้นบางชิ้นตามการใช้งาน',
+    decisionLabel: 'Entry Smart Choice',
     primaryCta: 'สอบถามราคา',
     secondaryCta: 'ดูรายละเอียด',
   },
@@ -171,6 +198,11 @@ export const PUBLIC_PRODUCT_GROUPS: readonly PublicProductGroup[] = [
     headline: 'NEXS PRIME',
     thaiDescription: 'รุ่นหลักของ NEXS สำหรับลูกค้าที่ต้องการความสมดุลระหว่างความใส การปกป้อง และความคุ้มค่า',
     recommendedUseCase: 'เหมาะกับลูกค้าที่ต้องการตัวเลือกหลักสำหรับรถใช้งานและรถพรีเมียม',
+    suitableFor: 'เหมาะสำหรับรถใช้งานประจำวัน รถใหม่ และเจ้าของรถที่ต้องการสมดุล',
+    keyDifference: 'จุดเด่น: รุ่นหลักที่บาลานซ์ความคุ้มค่า ระยะรับประกัน และภาพลักษณ์พรีเมียม',
+    protectionLevel: 'ระดับการปกป้อง: Balanced premium protection',
+    packageSuggestion: 'แพ็กเกจที่เหมาะ: Full front หรือรอบคันตามงบประมาณและรูปแบบใช้งาน',
+    decisionLabel: 'Best Value Core',
     primaryCta: 'สอบถามราคา',
     secondaryCta: 'ดูรายละเอียด',
   },
@@ -186,6 +218,11 @@ export const PUBLIC_PRODUCT_GROUPS: readonly PublicProductGroup[] = [
     headline: 'NEXS PRO',
     thaiDescription: 'ฟิล์มปกป้องสีรถระดับพรีเมียม สำหรับลูกค้าที่ต้องการการปกป้องที่สูงขึ้น',
     recommendedUseCase: 'เหมาะกับลูกค้าที่ต้องการรุ่นพรีเมียมและการดูแลหลังการขายที่ชัดเจน',
+    suitableFor: 'เหมาะสำหรับรถพรีเมียม รถที่ใช้งานบ่อย และลูกค้าที่ต้องการความมั่นใจสูงขึ้น',
+    keyDifference: 'จุดเด่น: รุ่นพรีเมียมหลักของ NEXS พร้อมระยะรับประกัน 8 ปี',
+    protectionLevel: 'ระดับการปกป้อง: Premium protection',
+    packageSuggestion: 'แพ็กเกจที่เหมาะ: Full front, รอบคัน หรือจุดเสี่ยงสูงสำหรับรถพรีเมียม',
+    decisionLabel: 'Premium Pick',
     primaryCta: 'สอบถามราคา',
     secondaryCta: 'ดูรายละเอียด',
   },
@@ -201,6 +238,11 @@ export const PUBLIC_PRODUCT_GROUPS: readonly PublicProductGroup[] = [
     headline: 'NEXS ULTIMATE',
     thaiDescription: 'ฟิล์มปกป้องสีรถรุ่นสูงสุดของ NEXS สำหรับลูกค้าที่ต้องการตัวเลือกระดับเรือธง',
     recommendedUseCase: 'เหมาะกับลูกค้าที่ต้องการรุ่นสูงสุดของ NEXS พร้อมระยะรับประกันยาวที่สุด',
+    suitableFor: 'เหมาะสำหรับลูกค้าที่ต้องการตัวเลือกระดับเรือธงและระยะรับประกันสูงสุดของไลน์สินค้า',
+    keyDifference: 'จุดเด่น: รุ่นสูงสุดของ NEXS พร้อมการรับประกันสูงสุด 9 ปี',
+    protectionLevel: 'ระดับการปกป้อง: Flagship protection',
+    packageSuggestion: 'แพ็กเกจที่เหมาะ: รอบคัน หรือชุดดูแลเต็มระบบสำหรับรถที่ต้องการภาพลักษณ์สูงสุด',
+    decisionLabel: 'Flagship Choice',
     primaryCta: 'สอบถามราคา',
     secondaryCta: 'ดูรายละเอียด',
   },
@@ -211,14 +253,14 @@ export const SITE_COPY: SiteCopy = {
     eyebrow: 'NEXS Paint Protection Film',
     title: 'NEXS Paint Protection Film',
     thaiTitle: 'ฟิล์มปกป้องสีรถ NEXS',
-    subtitle: 'ปกป้องสีรถให้สวยเหมือนวันแรก พร้อมระบบบัตรรับประกันดิจิทัล ตรวจสอบได้ผ่าน QR Code',
+    subtitle: 'NEXS PPF พร้อม Digital Warranty และบัตรรับประกันดิจิทัล ตรวจสอบได้ผ่าน QR Code พร้อม Serial Verification และ Dealer Installation Support',
     primaryCta: 'ดูสินค้า',
     secondaryCta: 'สอบถามราคา',
     tertiaryCta: 'ตรวจสอบบัตรรับประกัน',
   },
   warranty: {
     title: 'ระบบบัตรรับประกันดิจิทัล',
-    description: 'ตรวจสอบสินค้า รถ และสถานะการรับประกันได้อย่างมั่นใจ',
+    description: 'กรอกหมายเลข Serial Number เพื่อตรวจสอบสถานะบัตรรับประกันดิจิทัล รุ่นสินค้า และข้อมูลการลงทะเบียนที่ Dealer/Admin บันทึกไว้',
   },
   dealerWorkflow: {
     title: 'สำหรับร้านติดตั้งมืออาชีพ',
@@ -301,9 +343,30 @@ export const SITE_COPY: SiteCopy = {
       'บันทึกการดูแลหลังการติดตั้ง',
       'เพิ่มความน่าเชื่อถือให้ร้านติดตั้ง',
     ],
-    primaryCta: 'สมัครตัวแทนจำหน่าย',
+    primaryCta: 'ขอข้อมูล Dealer Program',
     secondaryCta: 'Dealer Login',
   },
+  quickContact: [
+    { label: 'LINE OA', value: 'กำลังอัปเดตช่องทางอย่างเป็นทางการ', status: 'pending official contact' },
+    { label: 'โทร', value: 'กำลังอัปเดตช่องทางอย่างเป็นทางการ', status: 'pending official contact' },
+    { label: 'Facebook', value: 'กำลังอัปเดตช่องทางอย่างเป็นทางการ', status: 'pending official contact' },
+    { label: 'เวลาทำการ', value: 'กำลังอัปเดตช่องทางอย่างเป็นทางการ', status: 'pending official contact' },
+  ],
+  trustProof: [
+    { title: 'Authorized Dealer', body: 'งานติดตั้งและการลงทะเบียนควรดำเนินการผ่านร้านที่ได้รับสิทธิ์ เพื่อให้ข้อมูลสินค้าและบัตรรับประกันตรงกัน' },
+    { title: 'Digital Warranty', body: 'Serial Number และ QR Code ช่วยให้ลูกค้าตรวจสอบสถานะได้หลัง Dealer/Admin ลงทะเบียน' },
+    { title: 'Warranty Coverage', body: 'แสดงระยะรับประกันตามรุ่นสินค้าอย่างชัดเจน โดยไม่เปิดเผยข้อมูลลูกค้าเกินจำเป็น' },
+  ],
+  claimProcess: [
+    { title: 'ส่งคำขอตรวจสอบ', body: 'ลูกค้าหรือ Dealer ส่งรายละเอียดปัญหาและข้อมูล Serial เพื่อให้ทีมที่เกี่ยวข้องตรวจสอบ' },
+    { title: 'ตรวจสอบจากข้อมูลติดตั้ง', body: 'ระบบช่วยอ้างอิงรุ่นสินค้า Dealer วันที่ติดตั้ง และสถานะบัตรรับประกันแบบปลอดภัย' },
+    { title: 'สรุปแนวทางดูแล', body: 'ผลตรวจสอบเป็นการประเมินและประสานงาน ไม่ใช่การอนุมัติเคลมอัตโนมัติ' },
+  ],
+  faq: [
+    { question: 'ลูกค้าลงทะเบียนบัตรรับประกันเองได้ไหม?', answer: 'ไม่ได้ การเปิดใช้งานบัตรรับประกันต้องดำเนินการโดย Dealer/Admin ที่รับผิดชอบงานติดตั้ง' },
+    { question: 'สแกน QR ก่อนลงทะเบียนจะเกิดอะไรขึ้น?', answer: 'ระบบควรแสดงสถานะยังไม่ลงทะเบียนอย่างปลอดภัย ไม่ถือเป็น error และไม่เปิดเผยข้อมูลส่วนตัว' },
+    { question: 'หน้าเว็บแสดงราคาหรือไม่?', answer: 'v1 ไม่แสดงราคาสาธารณะ ลูกค้าสามารถส่งข้อมูลเพื่อให้ทีมงานหรือ Dealer ติดต่อกลับ' },
+  ],
   leadForm: {
     title: 'ติดต่อ NEXS',
     description: 'ส่งข้อมูลเพื่อให้ทีมงาน NEXS ติดต่อกลับ พร้อมคำแนะนำเลือกรุ่นหรือข้อมูลสำหรับสมัครตัวแทนจำหน่าย',

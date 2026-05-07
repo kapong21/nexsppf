@@ -7,7 +7,7 @@ export default function AdminDashboardPage() {
             <p className="eyebrow">Admin Dashboard Skeleton</p>
             <h1>NEXS admin operations preview</h1>
           </div>
-          <p>หน้านี้เป็น static skeleton สำหรับ admin-only workflow ก่อนต่อฐานข้อมูลและ role authorization จริง</p>
+          <p>พื้นที่สำหรับผู้ดูแลระบบในการจัดการ Serial, Warranty, Dealer และคำขอหลังการขาย โดยต้องเข้าสู่ระบบก่อนใช้งาน</p>
         </div>
         <div className="grid three">
           <article className="card">

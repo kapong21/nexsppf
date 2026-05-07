@@ -1,7 +1,7 @@
 # POC Reporting and Guardrails
 
 Last Updated: 2026-05-05T10:39:04.024409+00:00
-Project: nexppf-web
+Project: nexsppf-web
 Owner: Tor S / NEXS admin
 Executor: treee-tech-lead
 

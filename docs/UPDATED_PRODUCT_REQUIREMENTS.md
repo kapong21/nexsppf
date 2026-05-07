@@ -1,4 +1,4 @@
-# Updated Product Requirement Document — nexppf-web
+# Updated Product Requirement Document — nexsppf-web
 
 Last Updated: 2026-05-05T14:53:21+00:00
 Owner: Tor S / NEXS admin

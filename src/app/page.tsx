@@ -221,7 +221,6 @@ function LeadForm() {
         <span>{SITE_COPY.leadForm.pdpaConsentLabel} <a href={SITE_COPY.leadForm.privacyPolicyHref}>Privacy Policy</a></span>
       </label>
       <p className="form-note">ช่องจำเป็น: ชื่อ, เบอร์โทร, จังหวัด, ประเภทผู้ติดต่อ และการยินยอมให้ติดต่อกลับ</p>
-      <p className="form-note">เมื่อเปิดใช้งานฟอร์มจริง ระบบจะตรวจรูปแบบเบอร์โทร แสดงข้อความสำเร็จ และช่วยลดสแปมก่อนส่งข้อมูล</p>
       <button className="button primary" type="button">
         {SITE_COPY.leadForm.submitCta}
       </button>
@@ -233,6 +232,7 @@ function LeadForm() {
 
 export default function HomePage() {
   const hero = getImageSlot('hero_brand_visual');
+  const productLine = getImageSlot('product_line_visual');
   const dealer = getImageSlot('dealer_installation_visual');
   const packaging = getImageSlot('packaging_product_proof_visual');
 
@@ -256,8 +256,14 @@ export default function HomePage() {
               {SITE_COPY.homeHero.tertiaryCta}
             </a>
           </div>
+          <div className="hero-trust-bar" aria-label="NEXS trust points">
+            <span>รับประกันสูงสุด 9 ปี</span>
+            <span>Digital Warranty</span>
+            <span>QR / Serial Verification</span>
+            <span>Dealer Installation Support</span>
+          </div>
         </div>
-        <div className="hero-visual hero-visual-lead">{hero.path && <img src={hero.path} alt={hero.alt} />}</div>
+        <div className={`hero-visual hero-visual-lead ${hero.layoutClass}`}>{hero.path && <img src={hero.path} alt={hero.alt} />}</div>
       </section>
 
       <WhyPpfSection />
@@ -267,10 +273,41 @@ export default function HomePage() {
           <h2>Product Line</h2>
           <p>เลือก NEXS PPF จาก 4 รุ่นหลัก ตามระดับการปกป้อง อายุการรับประกัน และงบประมาณที่เหมาะกับคุณ</p>
         </div>
+        <div className="product-line-visual-band legacy-surface-panel curated-visual-rhythm">
+          <div className={`image-card ${productLine.layoutClass}`}>{productLine.path && <img src={productLine.path} alt={productLine.alt} />}</div>
+          <div className="product-line-copy">
+            <p className="eyebrow">Curated surface visual</p>
+            <h3>ภาพพื้นผิวเพื่อช่วยเล่า Product Line โดยไม่ทำให้การ์ดสินค้าแน่นเกินไป</h3>
+            <p>ภาพนี้ใช้เป็นบรรยากาศประกอบการเลือก Product Line โดยข้อมูลรุ่นสินค้าอ้างอิงจาก BEGIN, PRIME, PRO และ ULTIMATE เป็นหลัก</p>
+          </div>
+        </div>
         <ProductCards />
       </section>
 
       <BrandStorySection />
+
+      <section className="section trust-proof-section">
+        <div className="section-head">
+          <div>
+            <p className="eyebrow">Trust Proof</p>
+            <h2>ความมั่นใจตั้งแต่ก่อนติดตั้งจนถึงหลังการขาย</h2>
+          </div>
+          <p>รวมหลักฐานความน่าเชื่อถือที่ลูกค้าควรเห็นก่อนตัดสินใจ โดยใช้เฉพาะข้อมูลรุ่น ระยะรับประกัน และขั้นตอนบริการที่ยืนยันแล้ว</p>
+        </div>
+        <div className="grid three">
+          {SITE_COPY.trustProof.map((proof) => (
+            <article className="card" key={proof.title}>
+              <h3>{proof.title}</h3>
+              <p>{proof.body}</p>
+            </article>
+          ))}
+        </div>
+        <div className="grid three faq-grid">
+          <article className="card"><h3>FAQ</h3><p>ตอบคำถามสำคัญเรื่องการลงทะเบียน QR และบัตรรับประกันแบบเข้าใจง่าย</p></article>
+          <article className="card"><h3>Warranty Coverage</h3><p>แสดงระยะรับประกันตามรุ่น BEGIN, PRIME, PRO และ ULTIMATE อย่างชัดเจน</p></article>
+          <article className="card"><h3>ขั้นตอนตรวจสอบปัญหา</h3><p>ส่งคำขอตรวจสอบและประสานงานกับ Dealer/Admin โดยไม่ใช่การอนุมัติเคลมอัตโนมัติ</p></article>
+        </div>
+      </section>
 
       <section className="section">
         <div className="grid two">
@@ -300,7 +337,7 @@ export default function HomePage() {
 
       <section className="section" id="dealer">
         <div className="grid two">
-          <div className="image-card image-card-editorial dealer-crop">{dealer.path && <img src={dealer.path} alt={dealer.alt} />}</div>
+          <div className={`image-card image-card-editorial ${dealer.layoutClass}`}>{dealer.path && <img src={dealer.path} alt={dealer.alt} />}</div>
           <div className="card">
             <p className="eyebrow">{SITE_COPY.dealerWorkflow.title}</p>
             <h2 className="dealer-heading">
@@ -333,7 +370,7 @@ export default function HomePage() {
             <p>{SITE_COPY.productProof.description}</p>
             <p>QR Code และ Serial Number ช่วยให้ลูกค้าตรวจสอบสถานะสินค้าและบัตรรับประกันได้อย่างชัดเจน เมื่อ Dealer ลงทะเบียนการติดตั้งแล้ว ลูกค้าจะสามารถสแกนเพื่อดูข้อมูลบัตรรับประกันดิจิทัลได้ทันที</p>
           </div>
-          <div className="image-card image-card-product-proof packaging-crop">{packaging.path && <img src={packaging.path} alt={packaging.alt} />}</div>
+          <div className={`image-card image-card-product-proof ${packaging.layoutClass}`}>{packaging.path && <img src={packaging.path} alt={packaging.alt} />}</div>
         </div>
       </section>
 

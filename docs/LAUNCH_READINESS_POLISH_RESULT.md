@@ -1,4 +1,4 @@
-# Launch Readiness Polish Result — nexppf-web
+# Launch Readiness Polish Result — nexsppf-web
 
 Last Updated: 2026-05-05T17:00:00+00:00
 Status: Local only; not pushed/deployed

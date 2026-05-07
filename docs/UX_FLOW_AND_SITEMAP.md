@@ -1,4 +1,4 @@
-# UX Flows, Sitemap, Page Requirements, and Wireframe Descriptions — nexppf-web
+# UX Flows, Sitemap, Page Requirements, and Wireframe Descriptions — nexsppf-web
 
 Last Updated: 2026-05-05T14:53:21+00:00
 Status: Draft for review before more implementation

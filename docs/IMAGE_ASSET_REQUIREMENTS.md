@@ -1,4 +1,4 @@
-# Image Asset Requirements — nexppf-web
+# Image Asset Requirements — nexsppf-web
 
 Last Updated: 2026-05-05T17:40:59+00:00
 Owner: Tor S / NEXS admin
@@ -7,7 +7,7 @@ Status: Updated after Curated Visual System Direction source-of-truth save
 
 ## 1. Purpose
 
-nexppf-web may use selected image assets from nexslabs.com only when they are NEXS-owned assets and the brand owner confirms usage rights.
+nexsppf-web may use selected image assets from nexslabs.com only when they are NEXS-owned assets and the brand owner confirms usage rights.
 
 The image system must support the Apple-inspired light premium direction:
 
@@ -20,7 +20,7 @@ The image system must support the Apple-inspired light premium direction:
 ## 2. Hard Rules
 
 1. Images may be reused only when they are NEXS assets and NEXS has rights to use them.
-2. Do not lift public claims/copy from nexslabs.com into nexppf-web.
+2. Do not lift public claims/copy from nexslabs.com into nexsppf-web.
 3. Do not use images in a way that implies unapproved claims.
 4. Do not use operational warranty/maintenance/inspection photos as public marketing images by default.
 5. Product page must show 4 public product groups: BEGIN, PRIME, PRO, ULTIMATE.

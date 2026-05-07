@@ -11,6 +11,10 @@ export type RiskyImageAsset = {
 };
 
 export type ImageReadiness = 'public-ready' | 'placeholder' | 'hold';
+export type ImageAspectRatio = '16/10' | '4/3' | '3/2' | '1/1' | 'auto';
+export type ImageObjectPosition = 'center' | 'center top' | 'center bottom' | 'left center' | 'right center';
+export type ImagePlacement = 'hero' | 'section' | 'card' | 'inline' | 'background' | 'reserved';
+export type ImagePriority = 'high' | 'medium' | 'low' | 'reserved';
 
 export type ImageSlotKey =
   | 'hero_brand_visual'
@@ -36,6 +40,11 @@ export type ImageSlot = {
   readonly visualPurpose: string;
   readonly claimRisk: string;
   readonly readiness: ImageReadiness;
+  readonly aspectRatio: ImageAspectRatio;
+  readonly objectPosition: ImageObjectPosition;
+  readonly layoutClass: string;
+  readonly placement: ImagePlacement;
+  readonly priority: ImagePriority;
   readonly usage: string;
   readonly replacementNote: string;
 };
@@ -65,13 +74,13 @@ export const APPROVED_IMAGE_ASSETS: readonly ApprovedImageAsset[] = [
     path: '/images/matte-bmw-full.jpg',
     source: 'nexslabs',
     usage: ['product_mood', 'vehicle_detail_supporting_image'],
-    caution: 'Use only as mood/detail visual. Do not imply all public product groups are matte film.',
+    caution: 'Use only as supporting surface visual. Do not imply all public product groups are matte film.',
   },
   {
     path: '/images/matte-bmw-closeup.jpg',
     source: 'nexslabs',
     usage: ['film_surface_mood', 'vehicle_detail_supporting_image'],
-    caution: 'Use only as mood/detail visual. Do not imply matte-only product scope.',
+    caution: 'Use only as supporting surface visual. Do not imply matte-only product scope.',
   },
 ] as const;
 
@@ -97,6 +106,11 @@ export const IMAGE_SLOTS: Readonly<Record<ImageSlotKey, ImageSlot>> = {
     visualPurpose: 'Lead the page visually and communicate premium vehicle protection before the user reads details.',
     claimRisk: 'Low if used as brand mood only with no performance or supplier captions.',
     readiness: 'public-ready',
+    aspectRatio: '16/10',
+    objectPosition: 'right center',
+    layoutClass: 'image-layout-hero image-aspect-16-10 image-object-right-center',
+    placement: 'hero',
+    priority: 'high',
     usage: 'Home, Warranty, and Product overview hero image.',
     replacementNote: 'Replace with approved nexppf-specific premium hero image when ready.',
   },
@@ -110,7 +124,12 @@ export const IMAGE_SLOTS: Readonly<Record<ImageSlotKey, ImageSlot>> = {
     visualPurpose: 'Give product tiles a premium material mood without adding a photo to every SKU card.',
     claimRisk: 'Medium. Do not imply matte-only product scope or add performance claims.',
     readiness: 'public-ready',
-    usage: 'Product line mood/detail image.',
+    aspectRatio: '16/10',
+    objectPosition: 'center',
+    layoutClass: 'image-layout-editorial image-aspect-16-10 image-object-center',
+    placement: 'section',
+    priority: 'medium',
+    usage: 'Product line supporting surface image.',
     replacementNote: 'Replace with approved neutral PPF surface visual when available.',
   },
   begin_product_visual: {
@@ -123,6 +142,11 @@ export const IMAGE_SLOTS: Readonly<Record<ImageSlotKey, ImageSlot>> = {
     visualPurpose: 'Keep BEGIN clean and accessible while preserving product-card consistency.',
     claimRisk: 'Low. No image-specific claim risk because the slot is graphical.',
     readiness: 'placeholder',
+    aspectRatio: 'auto',
+    objectPosition: 'center',
+    layoutClass: 'image-layout-reserved',
+    placement: 'reserved',
+    priority: 'reserved',
     usage: 'BEGIN product card visual slot.',
     replacementNote: 'Use product card color system until exact BEGIN product image is approved.',
   },
@@ -136,6 +160,11 @@ export const IMAGE_SLOTS: Readonly<Record<ImageSlotKey, ImageSlot>> = {
     visualPurpose: 'Position PRIME as the balanced core product without clutter.',
     claimRisk: 'Low. No image-specific claim risk because the slot is graphical.',
     readiness: 'placeholder',
+    aspectRatio: 'auto',
+    objectPosition: 'center',
+    layoutClass: 'image-layout-reserved',
+    placement: 'reserved',
+    priority: 'reserved',
     usage: 'PRIME product card visual slot.',
     replacementNote: 'Use product card color system until exact PRIME product image is approved.',
   },
@@ -149,6 +178,11 @@ export const IMAGE_SLOTS: Readonly<Record<ImageSlotKey, ImageSlot>> = {
     visualPurpose: 'Make PRO visually distinct as the public premium product group.',
     claimRisk: 'Low. No image-specific claim risk because the slot is graphical.',
     readiness: 'placeholder',
+    aspectRatio: 'auto',
+    objectPosition: 'center',
+    layoutClass: 'image-layout-reserved',
+    placement: 'reserved',
+    priority: 'reserved',
     usage: 'PRO product card visual slot.',
     replacementNote: 'Use product card color system until exact PRO product image is approved.',
   },
@@ -162,6 +196,11 @@ export const IMAGE_SLOTS: Readonly<Record<ImageSlotKey, ImageSlot>> = {
     visualPurpose: 'Signal flagship product identity without adding unapproved claims.',
     claimRisk: 'Low. No image-specific claim risk because the slot is graphical.',
     readiness: 'placeholder',
+    aspectRatio: 'auto',
+    objectPosition: 'center',
+    layoutClass: 'image-layout-reserved',
+    placement: 'reserved',
+    priority: 'reserved',
     usage: 'ULTIMATE product card visual slot.',
     replacementNote: 'Use product card color system until exact ULTIMATE product image is approved.',
   },
@@ -175,6 +214,11 @@ export const IMAGE_SLOTS: Readonly<Record<ImageSlotKey, ImageSlot>> = {
     visualPurpose: 'Support the QR verification story as product proof, not as a random box image.',
     claimRisk: 'Medium. Avoid visible unapproved packaging text or imply only ULTIMATE has warranty.',
     readiness: 'public-ready',
+    aspectRatio: '4/3',
+    objectPosition: 'center',
+    layoutClass: 'image-layout-product-proof image-aspect-4-3 image-object-center',
+    placement: 'hero',
+    priority: 'medium',
     usage: 'Warranty, QR explanation, and support visual.',
     replacementNote: 'Replace with approved QR/Digital Warranty Card mockup when available.',
   },
@@ -188,6 +232,11 @@ export const IMAGE_SLOTS: Readonly<Record<ImageSlotKey, ImageSlot>> = {
     visualPurpose: 'Make warranty feel like premium support status similar to AppleCare-style product support.',
     claimRisk: 'Low if customer data remains masked and no sensitive fields are shown.',
     readiness: 'public-ready',
+    aspectRatio: 'auto',
+    objectPosition: 'center',
+    layoutClass: 'image-layout-ui-mockup',
+    placement: 'inline',
+    priority: 'medium',
     usage: 'Digital Warranty Card visual mockup.',
     replacementNote: 'Replace with real approved UI screenshot only after PDPA and data masking review.',
   },
@@ -201,6 +250,11 @@ export const IMAGE_SLOTS: Readonly<Record<ImageSlotKey, ImageSlot>> = {
     visualPurpose: 'Show professional installation craft and support dealer recruitment.',
     claimRisk: 'Low if copy stays about dealer workflow and does not expand service scope.',
     readiness: 'public-ready',
+    aspectRatio: '4/3',
+    objectPosition: 'center',
+    layoutClass: 'image-layout-editorial image-aspect-4-3 image-object-center dealer-crop',
+    placement: 'section',
+    priority: 'medium',
     usage: 'Dealer workflow, warranty registration, installation, and after-sales sections.',
     replacementNote: 'Replace with approved real dealer workflow image when ready.',
   },
@@ -214,6 +268,11 @@ export const IMAGE_SLOTS: Readonly<Record<ImageSlotKey, ImageSlot>> = {
     visualPurpose: 'Connect physical product packaging with QR verification and digital warranty trust.',
     claimRisk: 'Medium. Avoid readable risky claim text and avoid implying only one tier has QR/warranty.',
     readiness: 'public-ready',
+    aspectRatio: '1/1',
+    objectPosition: 'center',
+    layoutClass: 'image-layout-product-proof image-aspect-square image-object-center packaging-crop',
+    placement: 'section',
+    priority: 'medium',
     usage: 'Packaging and product proof section.',
     replacementNote: 'Use approved neutral packaging/sticker asset when available.',
   },
@@ -227,6 +286,11 @@ export const IMAGE_SLOTS: Readonly<Record<ImageSlotKey, ImageSlot>> = {
     visualPurpose: 'Support the after-sales story while real maintenance-specific assets are pending.',
     claimRisk: 'Low if used as workflow mood only.',
     readiness: 'public-ready',
+    aspectRatio: '4/3',
+    objectPosition: 'center',
+    layoutClass: 'image-layout-editorial image-aspect-4-3 image-object-center',
+    placement: 'section',
+    priority: 'low',
     usage: 'Maintenance and after-sales placeholder image.',
     replacementNote: 'Replace with approved maintenance-specific visual when available.',
   },
@@ -240,6 +304,11 @@ export const IMAGE_SLOTS: Readonly<Record<ImageSlotKey, ImageSlot>> = {
     visualPurpose: 'Give the contact form a premium brand context without distracting from the fields.',
     claimRisk: 'Medium. Use only as visual mood and do not add matte-only product claims.',
     readiness: 'public-ready',
+    aspectRatio: '3/2',
+    objectPosition: 'center',
+    layoutClass: 'image-layout-editorial image-aspect-3-2 image-object-center',
+    placement: 'section',
+    priority: 'low',
     usage: 'Contact lead support visual.',
     replacementNote: 'Replace with approved neutral brand/contact visual when available.',
   },
