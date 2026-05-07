@@ -12,10 +12,14 @@ command -v docker >/dev/null
 command -v git >/dev/null
 sudo -n true >/dev/null
 
-echo "[2/12] Verify port ${APP_PORT} is free"
+echo "[2/12] Verify port ${APP_PORT} is free or already owned by nexsppf-web"
 if sudo ss -ltnp | grep -E ":${APP_PORT}\b"; then
-  echo "ERROR: port ${APP_PORT} is already in use" >&2
-  exit 1
+  if sudo docker ps --filter name='^/nexsppf-web$' --format '{{.Names}} {{.Ports}}' | grep -q "127.0.0.1:${APP_PORT}->3000/tcp"; then
+    echo "Port ${APP_PORT} is already used by existing nexsppf-web container; proceeding with in-place update."
+  else
+    echo "ERROR: port ${APP_PORT} is already in use by another process/container" >&2
+    exit 1
+  fi
 fi
 
 echo "[3/12] Prepare app directory"
@@ -123,7 +127,18 @@ sudo docker compose ps
 sudo docker logs --tail=100 nexsppf-web
 
 echo "[8/12] Verify local app"
-curl -fsSI "http://127.0.0.1:${APP_PORT}/" | sed -n '1,20p'
+for attempt in {1..30}; do
+  if curl -fsSI "http://127.0.0.1:${APP_PORT}/" >/tmp/nexsppf-local-health.headers; then
+    sed -n '1,20p' /tmp/nexsppf-local-health.headers
+    break
+  fi
+  if [ "$attempt" -eq 30 ]; then
+    echo "ERROR: local app did not become healthy on port ${APP_PORT}" >&2
+    sudo docker logs --tail=200 nexsppf-web >&2 || true
+    exit 1
+  fi
+  sleep 2
+done
 
 echo "[9/12] Add Traefik dynamic route only for nexsppf"
 sudo tee "$TRAEFIK_DYNAMIC" >/dev/null <<'EOF'
