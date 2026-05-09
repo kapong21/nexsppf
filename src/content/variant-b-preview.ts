@@ -19,6 +19,14 @@ export type VariantBProductCard = {
 
 export const VARIANT_B_PAGES: readonly VariantBPage[] = [
   {
+    path: '/preview',
+    title: 'NEXS Paint Protection Film',
+    eyebrow: 'Variant B Public Preview',
+    description: 'ดีไซน์ใหม่แบบ light premium สำหรับดูภาพรวมเว็บไซต์บน path preview ก่อนเลือกใช้งานจริง',
+    variant: 'B',
+    productionReady: false,
+  },
+  {
     path: '/preview-redesign',
     title: 'NEXS Paint Protection Film',
     eyebrow: 'Variant B Preview',

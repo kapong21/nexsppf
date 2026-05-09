@@ -10,11 +10,11 @@ import {
 type VariantBPageKey = 'home' | 'products' | 'warranty' | 'dealer' | 'contact';
 
 const pageByKey: Record<VariantBPageKey, (typeof VARIANT_B_PAGES)[number]> = {
-  home: VARIANT_B_PAGES[0],
-  products: VARIANT_B_PAGES[1],
-  warranty: VARIANT_B_PAGES[2],
-  dealer: VARIANT_B_PAGES[3],
-  contact: VARIANT_B_PAGES[4],
+  home: VARIANT_B_PAGES[1],
+  products: VARIANT_B_PAGES[2],
+  warranty: VARIANT_B_PAGES[3],
+  dealer: VARIANT_B_PAGES[4],
+  contact: VARIANT_B_PAGES[5],
 };
 
 function Header() {

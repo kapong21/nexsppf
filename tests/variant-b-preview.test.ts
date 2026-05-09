@@ -13,6 +13,7 @@ const repoFile = (path: string) => readFileSync(path, 'utf8');
 describe('Variant B preview design contract', () => {
   it('defines isolated preview routes for all approved public pages', () => {
     expect(VARIANT_B_PAGES.map((page) => page.path)).toEqual([
+      '/preview',
       '/preview-redesign',
       '/preview-redesign/products',
       '/preview-redesign/warranty',
@@ -51,6 +52,7 @@ describe('Variant B preview design contract', () => {
   });
 
   it('creates preview page files without changing existing production route files', () => {
+    const previewAlias = repoFile('src/app/preview/page.tsx');
     const previewShell = repoFile('src/app/preview-redesign/variant-b-preview.tsx');
     const homePage = repoFile('src/app/preview-redesign/page.tsx');
     const productsPage = repoFile('src/app/preview-redesign/products/page.tsx');
@@ -58,7 +60,7 @@ describe('Variant B preview design contract', () => {
     const dealerPage = repoFile('src/app/preview-redesign/dealer/page.tsx');
     const contactPage = repoFile('src/app/preview-redesign/contact/page.tsx');
 
-    for (const file of [previewShell, homePage, productsPage, warrantyPage, dealerPage, contactPage]) {
+    for (const file of [previewAlias, previewShell, homePage, productsPage, warrantyPage, dealerPage, contactPage]) {
       expect(file).toContain('Variant B');
       expect(file).not.toContain('PrototypeNav');
       expect(file).not.toContain('TweaksPanel');
