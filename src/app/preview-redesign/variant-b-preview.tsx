@@ -75,17 +75,18 @@ function QrGlyph({ size = 96 }: { size?: number }) {
 function Header() {
   return (
     <header className="variant-b-header">
-      <a className="variant-b-brand-link" href="/preview-redesign" aria-label="NEXS PPF Variant B home">
+      <a className="variant-b-brand-link" href="/" aria-label="NEXS PPF Variant B home">
         <BrandMark />
       </a>
       <nav className="variant-b-nav" aria-label="Variant B preview navigation">
-        {VARIANT_B_NAV_ITEMS.map((item) => (
-          <a href={item.href} key={item.href}>{item.label}</a>
-        ))}
+        {VARIANT_B_NAV_ITEMS.map((item) => {
+          const cleanHref = item.href.replace(/^\/preview-redesign/, '') || '/';
+          return <a href={cleanHref} key={item.href}>{item.label}</a>;
+        })}
       </nav>
       <div className="variant-b-header-cta">
         <a className="variant-b-small-cta" href="/login">Dealer Login</a>
-        <a className="variant-b-primary-cta" href="/preview-redesign/contact">สอบถามราคา</a>
+        <a className="variant-b-primary-cta" href="/contact">สอบถามราคา</a>
       </div>
     </header>
   );
@@ -99,9 +100,9 @@ function Footer() {
         <p>Variant B preview สำหรับตรวจ design เท่านั้น ยังไม่ใช่ production flow</p>
       </div>
       <div className="variant-b-footer-links">
-        <a href="/preview-redesign/warranty">บัตรรับประกัน</a>
-        <a href="/preview-redesign/dealer">ตัวแทนจำหน่าย</a>
-        <a href="/preview-redesign/contact">ติดต่อเรา</a>
+        <a href="/warranty">บัตรรับประกัน</a>
+        <a href="/dealer">ตัวแทนจำหน่าย</a>
+        <a href="/contact">ติดต่อเรา</a>
       </div>
     </footer>
   );
@@ -145,8 +146,8 @@ function ProductCards() {
             <h3>{product.headline}</h3>
             <p>{product.body}</p>
             <div className="variant-b-card-actions">
-              <a href="/preview-redesign/contact">สอบถามราคา</a>
-              <a href="/preview-redesign/products">ดูรายละเอียด</a>
+              <a href="/contact">สอบถามราคา</a>
+              <a href="/products">ดูรายละเอียด</a>
             </div>
           </div>
         </article>
@@ -300,9 +301,9 @@ function HomePage() {
             NEXS Paint Protection Film คือฟิล์มปกป้องสีรถระดับพรีเมียม พร้อมบัตรรับประกันดิจิทัลที่ตรวจสอบได้ผ่าน QR Code ทุกครั้งที่ต้องการ
           </p>
           <div className="variant-b-actions">
-            <a className="variant-b-button primary" href="/preview-redesign/products">ดูสินค้า</a>
-            <a className="variant-b-button secondary" href="/preview-redesign/contact">สอบถามราคา</a>
-            <a className="variant-b-button text" href="/preview-redesign/warranty">ตรวจสอบบัตรรับประกัน</a>
+            <a className="variant-b-button primary" href="/products">ดูสินค้า</a>
+            <a className="variant-b-button secondary" href="/contact">สอบถามราคา</a>
+            <a className="variant-b-button text" href="/warranty">ตรวจสอบบัตรรับประกัน</a>
           </div>
         </div>
         <HeroStage />
@@ -331,7 +332,7 @@ function HomePage() {
             <p className="variant-b-eyebrow">The Line</p>
             <h2>สี่ระดับการดูแล เลือกได้ตามการใช้งาน</h2>
           </div>
-          <a className="variant-b-button secondary" href="/preview-redesign/products">เปรียบเทียบทุกรุ่น</a>
+          <a className="variant-b-button secondary" href="/products">เปรียบเทียบทุกรุ่น</a>
         </div>
         <ProductCards />
       </section>
@@ -346,7 +347,7 @@ function HomePage() {
             {VARIANT_B_WARRANTY_STEPS.map((step) => <li key={step}>{step}</li>)}
           </ol>
           <div className="variant-b-actions">
-            <a className="variant-b-button primary" href="/preview-redesign/warranty">เปิดหน้าตรวจสอบ</a>
+            <a className="variant-b-button primary" href="/warranty">เปิดหน้าตรวจสอบ</a>
             <a className="variant-b-button secondary" href="/support/inspection">ขอตรวจสอบปัญหา</a>
           </div>
         </div>
@@ -362,7 +363,7 @@ function HomePage() {
             {VARIANT_B_DEALER_BENEFITS.map((benefit) => <li key={benefit}>{benefit}</li>)}
           </ul>
           <div className="variant-b-actions">
-            <a className="variant-b-button primary" href="/preview-redesign/contact">สมัครตัวแทนจำหน่าย</a>
+            <a className="variant-b-button primary" href="/contact">สมัครตัวแทนจำหน่าย</a>
             <a className="variant-b-button secondary" href="/login">Dealer Login</a>
           </div>
         </div>
@@ -429,7 +430,7 @@ function DealerPage() {
           {VARIANT_B_DEALER_BENEFITS.map((benefit) => <li key={benefit}>{benefit}</li>)}
         </ul>
         <div className="variant-b-actions">
-          <a className="variant-b-button primary" href="/preview-redesign/contact">สมัครตัวแทนจำหน่าย</a>
+          <a className="variant-b-button primary" href="/contact">สมัครตัวแทนจำหน่าย</a>
           <a className="variant-b-button secondary" href="/login">Dealer Login</a>
         </div>
       </div>
