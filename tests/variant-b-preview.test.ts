@@ -67,4 +67,18 @@ describe('Variant B preview design contract', () => {
       expect(file).not.toContain('unpkg.com');
     }
   });
+
+  it('ports the latest Claude HTML landing-page sections into the home preview', () => {
+    const previewShell = repoFile('src/app/preview-redesign/variant-b-preview.tsx');
+    const previewStyles = repoFile('src/app/globals.css');
+
+    expect(previewShell).toContain('EDITORIAL HERO IMAGE');
+    expect(previewShell).toContain('Why NEXS');
+    expect(previewShell).toContain('Proof of Authenticity');
+    expect(previewShell).toContain('QR Code และ Serial Number ที่ตรวจสอบได้');
+    expect(previewShell).toContain('ContactLeadSection');
+    expect(previewShell).toContain('ส่งข้อมูลให้ทีมงานติดต่อกลับ');
+    expect(previewStyles).toContain('variant-b-placeholder-visual');
+    expect(previewStyles).toContain('variant-b-stat-strip');
+  });
 });

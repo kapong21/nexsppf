@@ -99,22 +99,115 @@ function WarrantyCardMock() {
         <div><dt>Dealer</dt><dd>NEXS Authorized · Bangkok</dd></div>
         <div><dt>Phone</dt><dd>081-xxx-1234</dd></div>
         <div><dt>Plate</dt><dd>1กก ··3456</dd></div>
+        <div><dt>Install Date</dt><dd>12 มี.ค. 2026</dd></div>
+        <div><dt>Expiry Date</dt><dd>12 มี.ค. 2034</dd></div>
       </dl>
-      <p>ข้อมูลตัวอย่างถูก mask เพื่อแสดงแนวทาง PDPA-safe</p>
+      <p>ตัวอย่างบัตรรับประกันดิจิทัล แสดงข้อมูลแบบ PDPA-safe</p>
     </aside>
+  );
+}
+
+function PlaceholderVisual({ label, tone = 'dark' }: { label: string; tone?: 'dark' | 'light' }) {
+  return (
+    <div className={`variant-b-placeholder-visual ${tone}`} aria-label={label}>
+      <span>{label}</span>
+    </div>
+  );
+}
+
+function StatStrip() {
+  return (
+    <div className="variant-b-stat-strip" aria-label="Variant B preview highlights">
+      <div><span>รับประกันสูงสุด</span><strong>9 ปี</strong></div>
+      <div><span>รุ่นหลัก</span><strong>4 รุ่น</strong></div>
+      <div><span>ตรวจสอบได้</span><strong>QR · Serial</strong></div>
+      <div><span>เครือข่าย</span><strong>Authorized Dealer</strong></div>
+    </div>
+  );
+}
+
+function WhyNexsSection() {
+  const points = [
+    ['ออกแบบให้เลือกรุ่นง่าย', 'สี่รุ่นชัดเจน ไม่ต้องอ่าน spec ยาว เลือกได้จากระดับการใช้งานและระยะรับประกัน'],
+    ['ปกป้องโดยไม่ลดทอนความสวย', 'ดีไซน์การสื่อสารให้เน้นความสวยของรถและความมั่นใจหลังติดตั้ง'],
+    ['ระบบดูแลหลังติดตั้ง', 'นัดตรวจสอบฟิล์มหลังติดตั้ง พร้อมประวัติการดูแลผ่านบัตรรับประกันดิจิทัล'],
+    ['เครือข่ายตัวแทนจำหน่ายที่ตรวจสอบได้', 'ทุกใบรับประกันออกโดย dealer ที่ได้รับการแต่งตั้งจาก NEXS'],
+  ] as const;
+
+  return (
+    <section className="variant-b-split-panel why-nexs">
+      <div>
+        <p className="variant-b-eyebrow">Why NEXS</p>
+        <h2>เข้าใจผิวรถจากการใช้งานจริง</h2>
+        <div className="variant-b-numbered-list">
+          {points.map(([title, body], index) => (
+            <article key={title}>
+              <span>0{index + 1}</span>
+              <div><h3>{title}</h3><p>{body}</p></div>
+            </article>
+          ))}
+        </div>
+      </div>
+      <PlaceholderVisual label="Editorial · install detail / surface" />
+    </section>
+  );
+}
+
+function QrProofSection() {
+  return (
+    <section className="variant-b-split-panel proof">
+      <div>
+        <p className="variant-b-eyebrow">Proof of Authenticity</p>
+        <h2>QR Code และ Serial Number ที่ตรวจสอบได้</h2>
+        <p>
+          QR Code และ Serial บนบรรจุภัณฑ์ NEXS ช่วยให้ลูกค้าตรวจสอบสถานะสินค้าและบัตรรับประกันได้อย่างชัดเจน เมื่อ Dealer ลงทะเบียนการติดตั้งแล้ว ลูกค้าจะสามารถสแกนเพื่อดูข้อมูลบัตรรับประกันดิจิทัลได้ทันที
+        </p>
+      </div>
+      <div className="variant-b-proof-card">
+        <span>Serial Number</span>
+        <strong>PRO-1196MXY0401178Q</strong>
+        <div className="variant-b-proof-status">Status Active · ลงทะเบียนแล้ว</div>
+        <dl>
+          <div><dt>NEXS PRO</dt><dd>รับประกัน 8 ปี</dd></div>
+          <div><dt>NEXS Authorized</dt><dd>Bangkok</dd></div>
+        </dl>
+      </div>
+    </section>
+  );
+}
+
+function ContactLeadSection() {
+  return (
+    <section className="variant-b-split-panel contact-page html-home-contact">
+      <div>
+        <p className="variant-b-eyebrow">Get in touch</p>
+        <h2>สอบถามราคาและคำแนะนำเลือกรุ่น</h2>
+        <p>กรอกข้อมูลสั้น ๆ ทีมงาน NEXS หรือตัวแทนจำหน่ายในพื้นที่จะติดต่อกลับ</p>
+      </div>
+      <form className="variant-b-lead-form">
+        <label>ชื่อ–นามสกุล<input placeholder="ชื่อของคุณ" /></label>
+        <label>เบอร์โทร<input placeholder="08x-xxx-xxxx" /></label>
+        <label>LINE ID (ถ้ามี)<input placeholder="@nexs..." /></label>
+        <label>จังหวัด<input placeholder="กรุงเทพฯ" /></label>
+        <label>รุ่นรถ<input placeholder="ยี่ห้อ / รุ่น / ปี" /></label>
+        <label>รุ่นที่สนใจ<select defaultValue="PRIME"><option>BEGIN</option><option>PRIME</option><option>PRO</option><option>ULTIMATE</option><option>ขอคำแนะนำเลือกรุ่น</option></select></label>
+        <label className="wide">ข้อความเพิ่มเติม (ไม่บังคับ)<textarea placeholder="รายละเอียดเพิ่มเติม" /></label>
+        <label className="variant-b-checkbox wide"><input type="checkbox" /> ยินยอมให้ NEXS เก็บและใช้ข้อมูลการติดต่อเพื่อจุดประสงค์การให้บริการตาม Privacy Policy</label>
+        <button type="button">ส่งข้อมูลให้ทีมงานติดต่อกลับ</button>
+      </form>
+    </section>
   );
 }
 
 function HomePage() {
   return (
     <>
-      <section className="variant-b-hero">
+      <section className="variant-b-hero html-latest-hero">
         <div className="variant-b-hero-copy">
-          <p className="variant-b-eyebrow">NEXS · Variant B</p>
-          <h1>ปกป้องสีรถ ให้สวยเหมือนวันแรก</h1>
+          <p className="variant-b-eyebrow">NEXS · 2026 Collection</p>
+          <h1>ปกป้องสีรถ ให้สวยเหมือนวันแรก.</h1>
           <p>
-            NEXS Paint Protection Film พร้อมระบบบัตรรับประกันดิจิทัลที่ตรวจสอบได้ผ่าน QR Code
-            ดีไซน์ใหม่นี้เน้นภาพลักษณ์ premium, clean และอ่านง่ายขึ้นทั้ง desktop/mobile
+            NEXS Paint Protection Film คือฟิล์มปกป้องสีรถระดับพรีเมียม พร้อมบัตรรับประกันดิจิทัลที่ตรวจสอบได้ผ่าน QR Code ทุกครั้งที่ต้องการ
           </p>
           <div className="variant-b-actions">
             <a className="variant-b-button primary" href="/preview-redesign/products">ดูสินค้า</a>
@@ -122,14 +215,9 @@ function HomePage() {
             <a className="variant-b-button text" href="/preview-redesign/warranty">ตรวจสอบบัตรรับประกัน</a>
           </div>
         </div>
-        <div className="variant-b-hero-visual">
-          <img src="/images/hero-porsche.jpg" alt="NEXS PPF premium vehicle mood" />
-          <div className="variant-b-hero-card">
-            <span>รับประกันสูงสุด 9 ปี</span>
-            <strong>QR · Serial · Digital Warranty</strong>
-          </div>
-        </div>
+        <PlaceholderVisual label="EDITORIAL HERO IMAGE — premium vehicle, low key lighting" />
       </section>
+      <StatStrip />
 
       <section className="variant-b-section">
         <div className="variant-b-section-head">
@@ -158,6 +246,8 @@ function HomePage() {
         <ProductCards />
       </section>
 
+      <WhyNexsSection />
+
       <section className="variant-b-split-panel">
         <div>
           <p className="variant-b-eyebrow">Digital Warranty</p>
@@ -174,7 +264,7 @@ function HomePage() {
       </section>
 
       <section className="variant-b-split-panel dealer">
-        <img src="/images/installer-hood.jpg" alt="NEXS installer workflow" />
+        <PlaceholderVisual label="Install detail · hands · film · vehicle" />
         <div>
           <p className="variant-b-eyebrow">For Dealers</p>
           <h2>ร่วมเป็นตัวแทนจำหน่าย NEXS PPF</h2>
@@ -187,6 +277,9 @@ function HomePage() {
           </div>
         </div>
       </section>
+
+      <QrProofSection />
+      <ContactLeadSection />
     </>
   );
 }
