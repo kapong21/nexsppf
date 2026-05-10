@@ -17,7 +17,7 @@ const pageByKey: Record<VariantBPageKey, (typeof VARIANT_B_PAGES)[number]> = {
   contact: VARIANT_B_PAGES[5],
 };
 
-function BrandMark({ tone = 'dark' }: { tone?: 'dark' | 'light' }) {
+export function BrandMark({ tone = 'dark' }: { tone?: 'dark' | 'light' }) {
   return (
     <span className={`variant-b-brand ${tone === 'light' ? 'on-dark' : ''}`}>
       <span className="variant-b-mark" aria-hidden>
@@ -28,7 +28,7 @@ function BrandMark({ tone = 'dark' }: { tone?: 'dark' | 'light' }) {
   );
 }
 
-function Pill({
+export function Pill({
   children,
   tone = 'neutral',
 }: {
@@ -43,7 +43,7 @@ function Pill({
   );
 }
 
-function QrGlyph({ size = 96 }: { size?: number }) {
+export function QrGlyph({ size = 96 }: { size?: number }) {
   const cells = [
     '1110111', '1010001', '1011101', '1010001', '1110111',
     '0000000', '1011010', '1100101', '1010110', '1101001',
