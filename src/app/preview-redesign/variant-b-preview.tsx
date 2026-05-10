@@ -17,12 +17,66 @@ const pageByKey: Record<VariantBPageKey, (typeof VARIANT_B_PAGES)[number]> = {
   contact: VARIANT_B_PAGES[5],
 };
 
+function BrandMark({ tone = 'dark' }: { tone?: 'dark' | 'light' }) {
+  return (
+    <span className={`variant-b-brand ${tone === 'light' ? 'on-dark' : ''}`}>
+      <span className="variant-b-mark" aria-hidden>
+        N
+      </span>
+      <span>NEXS</span>
+    </span>
+  );
+}
+
+function Pill({
+  children,
+  tone = 'neutral',
+}: {
+  children: React.ReactNode;
+  tone?: 'neutral' | 'active' | 'warn' | 'error' | 'ultra';
+}) {
+  return (
+    <span className={`variant-b-pill tone-${tone}`}>
+      <span className="variant-b-pill-dot" aria-hidden />
+      {children}
+    </span>
+  );
+}
+
+function QrGlyph({ size = 96 }: { size?: number }) {
+  const cells = [
+    '1110111', '1010001', '1011101', '1010001', '1110111',
+    '0000000', '1011010', '1100101', '1010110', '1101001',
+    '1110010', '1011101', '0010011', '1011010', '1110100',
+  ];
+  return (
+    <svg width={size} height={size} viewBox="0 0 15 15" shapeRendering="crispEdges" aria-hidden>
+      <rect width="15" height="15" fill="white" />
+      {cells.flatMap((row, y) =>
+        row
+          .split('')
+          .map((c, x) => (c === '1' ? <rect key={`${x}-${y}`} x={x} y={y} width="1" height="1" fill="#1D1D1F" /> : null)),
+      )}
+      {[
+        [0, 0],
+        [8, 0],
+        [0, 8],
+      ].map(([fx, fy], i) => (
+        <g key={i}>
+          <rect x={fx} y={fy} width="7" height="7" fill="white" />
+          <rect x={fx} y={fy} width="7" height="7" fill="none" stroke="#1D1D1F" strokeWidth="1" />
+          <rect x={fx + 2} y={fy + 2} width="3" height="3" fill="#1D1D1F" />
+        </g>
+      ))}
+    </svg>
+  );
+}
+
 function Header() {
   return (
     <header className="variant-b-header">
-      <a className="variant-b-brand" href="/preview-redesign" aria-label="NEXS PPF Variant B home">
-        <img src="/nexs-logo.png" alt="NEXS" />
-        <span>NEXS PPF</span>
+      <a className="variant-b-brand-link" href="/preview-redesign" aria-label="NEXS PPF Variant B home">
+        <BrandMark />
       </a>
       <nav className="variant-b-nav" aria-label="Variant B preview navigation">
         {VARIANT_B_NAV_ITEMS.map((item) => (
@@ -58,22 +112,39 @@ function PreviewNotice() {
   );
 }
 
+function HeroStage() {
+  return (
+    <div className="variant-b-hero-stage" aria-label="Premium vehicle hero placeholder">
+      <span className="variant-b-hero-stage-label">EDITORIAL HERO IMAGE — premium vehicle, low key lighting</span>
+      <span className="variant-b-hero-stage-tag bottom-left">NEXS PRO · INSTALLED</span>
+      <span className="variant-b-hero-stage-tag bottom-right">001 / 04</span>
+    </div>
+  );
+}
+
 function ProductCards() {
   return (
     <div className="variant-b-product-grid">
       {VARIANT_B_PRODUCT_CARDS.map((product) => (
         <article className={`variant-b-product-card accent-${product.accent}`} key={product.name}>
-          <div className="variant-b-product-topline">
-            <span>{product.badge}</span>
-            <span>Model {product.modelCode}</span>
+          <div className="variant-b-product-cover">
+            <Pill tone={product.name === 'ULTIMATE' ? 'ultra' : 'neutral'}>{product.badge}</Pill>
+            <div className="variant-b-product-cover-text">
+              <span className="variant-b-product-mark">NEXS</span>
+              <span className="variant-b-product-name">{product.name}</span>
+            </div>
           </div>
-          <h3>NEXS {product.name}</h3>
-          <p className="variant-b-product-years">รับประกัน {product.warrantyYears} ปี</p>
-          <p>{product.headline}</p>
-          <p>{product.body}</p>
-          <div className="variant-b-card-actions">
-            <a href="/preview-redesign/contact">สอบถามราคา</a>
-            <a href="/preview-redesign/products">ดูรายละเอียด</a>
+          <div className="variant-b-product-body">
+            <div className="variant-b-product-topline">
+              <span>Model {product.modelCode}</span>
+              <span>รับประกัน {product.warrantyYears} ปี</span>
+            </div>
+            <h3>{product.headline}</h3>
+            <p>{product.body}</p>
+            <div className="variant-b-card-actions">
+              <a href="/preview-redesign/contact">สอบถามราคา</a>
+              <a href="/preview-redesign/products">ดูรายละเอียด</a>
+            </div>
           </div>
         </article>
       ))}
@@ -85,23 +156,30 @@ function WarrantyCardMock() {
   return (
     <aside className="variant-b-warranty-phone" aria-label="Variant B Digital Warranty mockup">
       <div className="variant-b-phone-bar">
-        <img src="/nexs-logo.png" alt="NEXS" />
-        <span>Digital Warranty</span>
+        <BrandMark tone="light" />
+        <Pill tone="active">Active</Pill>
       </div>
-      <div className="variant-b-status-row">
-        <span>Active</span>
-        <span>QR</span>
+      <div className="variant-b-warranty-headline">
+        <div>
+          <p className="variant-b-warranty-product">NEXS PRO</p>
+          <p className="variant-b-warranty-years">รับประกัน 8 ปี</p>
+        </div>
+        <div className="variant-b-warranty-qr" aria-hidden>
+          <QrGlyph size={72} />
+        </div>
       </div>
-      <h3>NEXS PRO</h3>
       <dl>
         <div><dt>Serial</dt><dd>PRO-1196MXY0401178Q</dd></div>
         <div><dt>Vehicle</dt><dd>Sedan · Pearl White</dd></div>
         <div><dt>Dealer</dt><dd>NEXS Authorized · Bangkok</dd></div>
-        <div><dt>Phone</dt><dd>081-xxx-1234</dd></div>
         <div><dt>Plate</dt><dd>1กก ··3456</dd></div>
         <div><dt>Install Date</dt><dd>12 มี.ค. 2026</dd></div>
         <div><dt>Expiry Date</dt><dd>12 มี.ค. 2034</dd></div>
       </dl>
+      <div className="variant-b-warranty-foot">
+        <span>ID · 178Q</span>
+        <span>VERIFIED · NEXSPPF.COM</span>
+      </div>
       <p>ตัวอย่างบัตรรับประกันดิจิทัล แสดงข้อมูลแบบ PDPA-safe</p>
     </aside>
   );
@@ -164,13 +242,22 @@ function QrProofSection() {
         </p>
       </div>
       <div className="variant-b-proof-card">
-        <span>Serial Number</span>
-        <strong>PRO-1196MXY0401178Q</strong>
-        <div className="variant-b-proof-status">Status Active · ลงทะเบียนแล้ว</div>
-        <dl>
-          <div><dt>NEXS PRO</dt><dd>รับประกัน 8 ปี</dd></div>
-          <div><dt>NEXS Authorized</dt><dd>Bangkok</dd></div>
-        </dl>
+        <div className="variant-b-proof-card-row">
+          <div className="variant-b-proof-qr" aria-hidden>
+            <QrGlyph size={120} />
+          </div>
+          <div className="variant-b-proof-card-info">
+            <span>Serial Number</span>
+            <strong>PRO-1196MXY0401178Q</strong>
+            <div className="variant-b-proof-status">
+              <Pill tone="active">Active · ลงทะเบียนแล้ว</Pill>
+            </div>
+            <dl>
+              <div><dt>NEXS PRO</dt><dd>รับประกัน 8 ปี</dd></div>
+              <div><dt>NEXS Authorized</dt><dd>Bangkok</dd></div>
+            </dl>
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -204,8 +291,8 @@ function HomePage() {
     <>
       <section className="variant-b-hero html-latest-hero">
         <div className="variant-b-hero-copy">
-          <p className="variant-b-eyebrow">NEXS · 2026 Collection</p>
-          <h1>ปกป้องสีรถ ให้สวยเหมือนวันแรก.</h1>
+          <Pill>NEXS · 2026 Collection</Pill>
+          <h1>ปกป้องสีรถ<br />ให้สวยเหมือนวันแรก<span className="variant-b-hero-period">.</span></h1>
           <p>
             NEXS Paint Protection Film คือฟิล์มปกป้องสีรถระดับพรีเมียม พร้อมบัตรรับประกันดิจิทัลที่ตรวจสอบได้ผ่าน QR Code ทุกครั้งที่ต้องการ
           </p>
@@ -215,7 +302,7 @@ function HomePage() {
             <a className="variant-b-button text" href="/preview-redesign/warranty">ตรวจสอบบัตรรับประกัน</a>
           </div>
         </div>
-        <PlaceholderVisual label="EDITORIAL HERO IMAGE — premium vehicle, low key lighting" />
+        <HeroStage />
       </section>
       <StatStrip />
 
