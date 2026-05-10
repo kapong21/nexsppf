@@ -1553,6 +1553,67 @@ h3 {
   margin-top: 1.6rem;
 }
 
+/* Home hero override — Claude Design uses STACKED layout: pill → huge heading →
+   lede → buttons → full-width hero stage below. The base .variant-b-hero is
+   2-col which crops the heading; force single column for html-latest-hero only. */
+.variant-b-shell .variant-b-hero.html-latest-hero {
+  grid-template-columns: 1fr;
+  gap: 0;
+  padding-top: clamp(3rem, 6vw, 6rem);
+  padding-bottom: clamp(3rem, 5vw, 4.5rem);
+}
+.variant-b-shell .variant-b-hero.html-latest-hero .variant-b-hero-copy {
+  max-width: 100%;
+}
+.variant-b-shell .variant-b-hero.html-latest-hero h1 {
+  font-size: clamp(2.5rem, 8.5vw, 8.4rem);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+  margin: 0;
+}
+.variant-b-shell .variant-b-hero.html-latest-hero p:not(.variant-b-eyebrow) {
+  margin-top: 1.75rem;
+  font-size: clamp(1.05rem, 1.4vw, 1.3rem);
+  max-width: 640px;
+}
+.variant-b-shell .variant-b-hero.html-latest-hero .variant-b-actions {
+  margin-top: 2.25rem;
+}
+.variant-b-shell .variant-b-hero.html-latest-hero .variant-b-hero-stage {
+  margin-top: 4rem;
+  aspect-ratio: 16 / 8;
+  min-height: 0;
+}
+
+/* Header primary CTA "สอบถามราคา" alongside Dealer Login */
+.variant-b-header-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.variant-b-primary-cta {
+  background: var(--vb-text);
+  color: white;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  padding: 0.55rem 1.05rem;
+  white-space: nowrap;
+  transition: background .15s, transform .15s;
+}
+.variant-b-primary-cta:hover { background: #000; transform: translateY(-1px); }
+.variant-b-shell .variant-b-small-cta {
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+}
+
+@media (max-width: 880px) {
+  .variant-b-header-cta .variant-b-small-cta { display: none; }
+}
+
 /* Product cards — full gradient cover + body, replacing the old 5px stripe */
 .variant-b-shell .variant-b-product-card {
   padding: 0;

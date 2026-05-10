@@ -83,7 +83,10 @@ function Header() {
           <a href={item.href} key={item.href}>{item.label}</a>
         ))}
       </nav>
-      <a className="variant-b-small-cta" href="/login">Dealer Login</a>
+      <div className="variant-b-header-cta">
+        <a className="variant-b-small-cta" href="/login">Dealer Login</a>
+        <a className="variant-b-primary-cta" href="/preview-redesign/contact">สอบถามราคา</a>
+      </div>
     </header>
   );
 }
