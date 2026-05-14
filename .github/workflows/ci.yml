@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches: [main, 'treee/**']
+  pull_request:
+    branches: [main]
+
+jobs:
+  ci:
+    name: Install / Lint / Typecheck / Test / Content / Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID || 'ci-placeholder' }}
+      NEXT_PUBLIC_SANITY_DATASET: production
+      NEXT_PUBLIC_BASE_URL: http://localhost:3000
+      NEXT_TELEMETRY_DISABLED: '1'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Tests
+        run: npm run test
+
+      - name: Content guardrail
+        run: npm run check:content
+
+      - name: Build
+        run: npm run build

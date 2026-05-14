@@ -1,4 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@200;300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-nexs-white: #ffffff;
+  --color-nexs-silver: #d8dde3;
+  --color-nexs-light-gray: #f5f5f7;
+  --color-nexs-black: #1d1d1f;
+  --color-nexs-muted: #6e6e73;
+  --color-nexs-line: #d2d2d7;
+  --color-nexs-red: #d93a3a;
+  --color-nexs-panel: #fbfbfd;
+}
 
 :root {
   --bg: #ffffff;

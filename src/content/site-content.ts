@@ -163,6 +163,9 @@ export const FORBIDDEN_PUBLIC_CLAIM_TERMS = [
   'ป้องกันรังสี uv สูงสุด',
   'ไม่เหลืองง่าย',
   'ไล่น้ำดี',
+  'Shine and Shield',
+  'shine and shield',
+  'Shine & Shield',
 ] as const;
 
 export const PUBLIC_PRODUCT_GROUPS: readonly PublicProductGroup[] = [
