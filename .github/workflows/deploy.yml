@@ -1,0 +1,51 @@
+name: Deploy nexsppf-web
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: nexsppf-production-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy on self-hosted VPS runner
+    runs-on: self-hosted
+    timeout-minutes: 30
+    env:
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify host deploy prerequisites
+        run: |
+          set -euo pipefail
+          command -v git
+          command -v docker
+          sudo -n true
+          test -f deploy/host-deploy-nexsppf.sh
+          bash -n deploy/host-deploy-nexsppf.sh
+
+      - name: Deploy nexsppf-web only
+        run: |
+          set -euo pipefail
+          bash deploy/host-deploy-nexsppf.sh
+
+      - name: Verify live routes
+        run: |
+          set -euo pipefail
+          for url in \
+            "https://nexsppf.com/" \
+            "https://nexsppf.com/products" \
+            "https://nexsppf.com/warranty" \
+            "https://nexsppf.com/r/PRO-1196MXY0401178Q" \
+            "https://nexsppf.com/about-nexs" \
+            "https://nexsppf.com/clear-ppf" \
+            "https://nexsppf.com/compare" \
+            "https://nexsppf.com/faq"; do
+            echo "-- ${url} --"
+            curl -fsSI -L --max-time 30 -A 'Mozilla/5.0' "${url}" | sed -n '1,20p'
+          done
