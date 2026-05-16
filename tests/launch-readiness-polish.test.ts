@@ -38,7 +38,7 @@ describe('launch readiness polish public contract', () => {
   it('uses customer-facing product intro and Why NEXS copy', () => {
     const home = readFileSync(join(repoRoot, 'src/app/page.tsx'), 'utf8');
 
-    expect(home).toContain('เลือก NEXS PPF จาก 4 รุ่นหลัก ตามระดับการปกป้อง อายุการรับประกัน และงบประมาณที่เหมาะกับคุณ');
+    expect(home).toContain('ฟิล์มรถยนต์ระดับพรีเมียม 3 กลุ่ม 12 ทางเลือก');
     expect(SITE_COPY.whyNexs.description).toBe('มั่นใจได้ด้วยระบบลงทะเบียนสินค้า ตรวจสอบสถานะรับประกัน และติดตามประวัติการดูแลหลังติดตั้ง');
   });
 
@@ -47,7 +47,7 @@ describe('launch readiness polish public contract', () => {
     for (const product of PUBLIC_PRODUCT_GROUPS) {
       expect(product.warrantyLabel).toBe(`รับประกัน ${product.warrantyYears} ปี`);
       expect(product.benefits.length).toBeGreaterThanOrEqual(2);
-      expect(product.primaryCta).toBe('สอบถามราคา');
+      expect(product.primaryCta).toBe('Book Consultation');
       expect(product.secondaryCta).toBe('ดูรายละเอียด');
     }
   });
@@ -68,9 +68,9 @@ describe('launch readiness polish public contract', () => {
     const home = readFileSync(join(repoRoot, 'src/app/page.tsx'), 'utf8');
 
     expect(home).toContain('NEXS Digital Warranty');
-    expect(home).toContain('ตัวอย่างข้อมูล');
+    expect(home).toContain('Active');
     expect(home).toContain('ติดตั้งกับตัวแทนจำหน่าย');
-    expect(home).toContain('Dealer ลงทะเบียน Serial และข้อมูลรถ');
+    expect(home).toContain('Dealer ลงทะเบียน Serial');
     expect(home).toContain('ลูกค้าสแกน QR Code');
     expect(home).toContain('ดู Digital Warranty Card และประวัติการดูแลได้');
   });

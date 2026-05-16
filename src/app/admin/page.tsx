@@ -174,8 +174,8 @@ function AdminPolicy() {
   return (
     <div className="variant-b-admin-grid">
       <div className="variant-b-admin-card">
-        <h3>Public Pricing Policy</h3>
-        <p>กำหนดว่าจะแสดงราคาบนเว็บ public หรือไม่</p>
+        <h3>Public Visibility Policy</h3>
+        <p>กำหนดการเปิดเผยข้อมูลเชิงพาณิชย์บนเว็บ public</p>
         <div className="variant-b-admin-actions" style={{ justifyContent: 'flex-start' }}>
           <Pill tone="active">Hide pricing · Active</Pill>
         </div>

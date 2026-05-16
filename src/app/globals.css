@@ -107,6 +107,31 @@ img {
   color: var(--text);
 }
 
+.site-footer {
+  background: var(--bg-soft);
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  display: grid;
+  gap: 1rem;
+  padding: 2rem clamp(1rem, 5vw, 4rem);
+}
+
+.site-footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.1rem;
+}
+
+.site-footer-nav a {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.site-footer-copy {
+  color: var(--muted);
+  margin: 0;
+}
+
 .nav-login {
   border: 1px solid var(--line);
   border-radius: 999px;
@@ -1598,7 +1623,7 @@ h3 {
   min-height: 0;
 }
 
-/* Header primary CTA "สอบถามราคา" alongside Dealer Login */
+/* Header primary CTA alongside Dealer Login */
 .variant-b-header-cta {
   display: inline-flex;
   align-items: center;
@@ -2537,3 +2562,461 @@ h3 {
 .variant-b-warranty-state-actions a.secondary { background: var(--vb-card); color: var(--vb-text); border: 1px solid var(--vb-line); }
 
 
+
+/* Final NEXS source-of-truth marketing system */
+.brand-lockup {
+  gap: 0.9rem;
+}
+
+.brand-symbol {
+  align-items: center;
+  background: #111111;
+  border-radius: 14px;
+  color: #fff;
+  display: inline-flex;
+  font-size: 0.78rem;
+  height: 42px;
+  justify-content: center;
+  letter-spacing: 0.12em;
+  padding: 0 0.75rem;
+}
+
+.brand-copy {
+  display: grid;
+  gap: 0.1rem;
+  line-height: 1;
+}
+
+.brand-copy small {
+  color: var(--muted);
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+}
+
+.nexs-hero {
+  align-items: center;
+  background:
+    radial-gradient(circle at 82% 18%, rgba(215, 25, 32, 0.07), transparent 24%),
+    linear-gradient(180deg, #ffffff 0%, #f7f7f5 100%);
+  display: grid;
+  gap: clamp(2rem, 5vw, 5rem);
+  grid-template-columns: minmax(0, 0.92fr) minmax(360px, 1.08fr);
+  min-height: calc(100vh - 76px);
+  padding: clamp(4rem, 8vw, 8rem) clamp(1.25rem, 5vw, 5rem);
+}
+
+.nexs-hero-copy h1 {
+  color: #111111;
+  font-size: clamp(3.2rem, 7.4vw, 7.6rem);
+  letter-spacing: -0.075em;
+  max-width: 980px;
+}
+
+.nexs-hero-copy h2 {
+  color: #111111;
+  font-size: clamp(1.65rem, 3.6vw, 3.65rem);
+  letter-spacing: -0.045em;
+  margin-top: 1rem;
+  max-width: 900px;
+}
+
+.nexs-stat-strip {
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem 1.2rem;
+  margin-top: 2.5rem;
+  padding-top: 1.2rem;
+}
+
+.nexs-stat-strip span {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.nexs-visual-stage {
+  aspect-ratio: 1.08;
+  background: linear-gradient(145deg, #ffffff, #ecebe8);
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  border-radius: clamp(32px, 5vw, 58px);
+  box-shadow: 0 40px 110px rgba(17, 17, 17, 0.10);
+  overflow: hidden;
+  position: relative;
+}
+
+.nexs-visual-stage::before {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.95), transparent 64%);
+  content: '';
+  height: 80%;
+  left: 8%;
+  position: absolute;
+  top: 2%;
+  width: 90%;
+}
+
+.studio-floor {
+  background: radial-gradient(ellipse at center, rgba(17, 17, 17, 0.18), transparent 64%);
+  bottom: 11%;
+  height: 18%;
+  left: 8%;
+  position: absolute;
+  width: 84%;
+}
+
+.light-bar {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 99px;
+  box-shadow: 0 0 38px rgba(255, 255, 255, 0.9);
+  height: 70%;
+  position: absolute;
+  top: 8%;
+  width: 5px;
+}
+
+.light-bar.one { left: 18%; }
+.light-bar.two { right: 18%; }
+
+.vehicle-silhouette {
+  bottom: 22%;
+  height: 45%;
+  left: 7%;
+  position: absolute;
+  width: 86%;
+}
+
+.vehicle-silhouette .body {
+  background: linear-gradient(135deg, #ffffff, #bfc3c7 44%, #ffffff 72%);
+  border: 1px solid rgba(17, 17, 17, 0.06);
+  border-radius: 52% 48% 30% 30% / 52% 52% 28% 28%;
+  bottom: 12%;
+  box-shadow: inset 0 12px 30px rgba(255, 255, 255, 0.7), 0 28px 55px rgba(17, 17, 17, 0.18);
+  height: 48%;
+  left: 2%;
+  position: absolute;
+  width: 96%;
+}
+
+.vehicle-silhouette .roof {
+  background: linear-gradient(145deg, #fdfdfd, #cfd3d7);
+  border-radius: 65% 65% 20% 20%;
+  height: 42%;
+  left: 25%;
+  position: absolute;
+  top: 6%;
+  width: 50%;
+}
+
+.vehicle-silhouette .wheel {
+  background: radial-gradient(circle, #202226 0 22%, #bfc3c7 23% 35%, #111 36% 100%);
+  border-radius: 50%;
+  bottom: 0;
+  height: 23%;
+  position: absolute;
+  width: 15%;
+}
+
+.vehicle-silhouette .wheel.left { left: 18%; }
+.vehicle-silhouette .wheel.right { right: 18%; }
+
+.red-detail {
+  background: #d71920;
+  border-radius: 99px;
+  bottom: 34%;
+  box-shadow: 0 0 28px rgba(215, 25, 32, 0.25);
+  height: 8px;
+  position: absolute;
+  right: 20%;
+  width: 90px;
+}
+
+.nexs-visual-stage.matte .vehicle-silhouette .body,
+.nexs-visual-stage.matte .vehicle-silhouette .roof {
+  background: linear-gradient(145deg, #d5d5d2, #71757a);
+}
+
+.nexs-visual-stage.color .vehicle-silhouette .body,
+.nexs-visual-stage.color .vehicle-silhouette .roof {
+  background: linear-gradient(135deg, #ffffff 0%, #d71920 32%, #1f5f92 62%, #203c32 100%);
+}
+
+.nexs-visual-stage.carbon {
+  background: linear-gradient(145deg, #ffffff, #e7e7e5 45%, #0e0e0f 46%, #232326);
+}
+
+.nexs-visual-stage.dealer .vehicle-silhouette .body,
+.nexs-visual-stage.dealer .vehicle-silhouette .roof {
+  background: linear-gradient(135deg, #f4f4f2, #aeb4b9 55%, #ffffff);
+}
+
+.section-tight {
+  padding-bottom: clamp(4rem, 8vw, 7rem);
+  padding-top: clamp(4rem, 8vw, 7rem);
+}
+
+.category-system-grid,
+.premium-pillar-grid,
+.tier-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.category-system-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.category-system-card,
+.premium-pillar,
+.tier-card,
+.faq-row,
+.warranty-glass-card,
+.lead-panel {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(17, 17, 17, 0.09);
+  border-radius: 30px;
+  box-shadow: 0 18px 55px rgba(17, 17, 17, 0.06);
+}
+
+.category-system-card {
+  color: #111;
+  min-height: 280px;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.category-system-card::after {
+  border-radius: 999px;
+  bottom: -42px;
+  content: '';
+  height: 150px;
+  position: absolute;
+  right: -36px;
+  width: 220px;
+}
+
+.category-system-card.clear::after { background: linear-gradient(135deg, #ffffff, #bfc3c7); }
+.category-system-card.matte::after { background: linear-gradient(135deg, #d5d5d2, #56595d); }
+.category-system-card.color::after { background: linear-gradient(135deg, #d71920, #1f5f92, #203c32); }
+
+.category-system-card span,
+.product-badge {
+  color: #d71920;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.category-system-card h3 {
+  font-size: clamp(2rem, 4vw, 3.8rem);
+  letter-spacing: -0.06em;
+  margin-top: 1rem;
+}
+
+.category-system-card p,
+.category-system-card small {
+  color: var(--muted);
+  display: block;
+  line-height: 1.6;
+  margin-top: 1rem;
+  max-width: 82%;
+}
+
+.premium-pillar-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.premium-pillar {
+  min-height: 220px;
+  padding: 1.35rem;
+}
+
+.premium-pillar span {
+  background: #d71920;
+  border-radius: 99px;
+  display: block;
+  height: 6px;
+  margin-bottom: 2rem;
+  width: 34px;
+}
+
+.premium-pillar h3,
+.tier-card h3,
+.faq-row h3 {
+  letter-spacing: -0.035em;
+}
+
+.premium-pillar p,
+.tier-card p,
+.faq-row p,
+.lead-panel p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.split-feature {
+  align-items: center;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.72fr);
+}
+
+.flow-steps.refined {
+  display: grid;
+  gap: 0.65rem;
+  margin-top: 1.5rem;
+}
+
+.flow-steps.refined span {
+  background: #f7f7f5;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: #111;
+  padding: 0.75rem 1rem;
+}
+
+.warranty-glass-card {
+  background: linear-gradient(145deg, #111111, #242427);
+  color: #fff;
+  min-height: 390px;
+  padding: 1.5rem;
+}
+
+.warranty-glass-card h3 {
+  color: #7ee38e;
+  font-size: 4rem;
+  margin: 1rem 0;
+}
+
+.warranty-glass-card dl,
+.tier-card dl {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.warranty-glass-card div,
+.tier-card dl div {
+  border-top: 1px solid rgba(255,255,255,0.14);
+  display: flex;
+  justify-content: space-between;
+  padding-top: 0.7rem;
+}
+
+.warranty-glass-card dt,
+.tier-card dt {
+  color: #9a9a9a;
+}
+
+.warranty-glass-card dd,
+.tier-card dd {
+  margin: 0;
+  text-align: right;
+}
+
+.faq-list-preview {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.faq-list-preview.full {
+  max-width: 980px;
+}
+
+.faq-row {
+  padding: 1.35rem;
+}
+
+.lead-panel {
+  align-items: center;
+  background: linear-gradient(135deg, #ffffff, #f7f7f5);
+  display: flex;
+  justify-content: space-between;
+  padding: clamp(1.4rem, 4vw, 2.4rem);
+}
+
+.tier-grid.count-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.tier-grid.count-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.tier-grid.count-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+
+.tier-card {
+  padding: 1.15rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.tier-card::before {
+  background: linear-gradient(90deg, #bfc3c7, transparent);
+  content: '';
+  display: block;
+  height: 6px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.tier-card.matte::before { background: linear-gradient(90deg, #777b80, transparent); }
+.tier-card.color::before { background: linear-gradient(90deg, #d71920, #1f5f92, transparent); }
+
+.tier-card dl div {
+  border-color: rgba(17, 17, 17, 0.08);
+}
+
+.tier-note {
+  min-height: 84px;
+}
+
+.final-table table {
+  min-width: 980px;
+}
+
+@media (max-width: 980px) {
+  .nexs-hero,
+  .split-feature {
+    grid-template-columns: 1fr;
+  }
+
+  .category-system-grid,
+  .premium-pillar-grid,
+  .tier-grid.count-3,
+  .tier-grid.count-4,
+  .tier-grid.count-5 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .lead-panel {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .brand-copy small {
+    max-width: 220px;
+  }
+
+  .nexs-hero {
+    min-height: auto;
+    padding-top: 3rem;
+  }
+
+  .nexs-hero-copy h1 {
+    font-size: clamp(2.55rem, 13vw, 4rem);
+  }
+
+  .category-system-grid,
+  .premium-pillar-grid,
+  .tier-grid.count-3,
+  .tier-grid.count-4,
+  .tier-grid.count-5 {
+    grid-template-columns: 1fr;
+  }
+}

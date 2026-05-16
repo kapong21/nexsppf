@@ -68,18 +68,18 @@ describe('premium public site correction contract', () => {
     const home = readRepoFile('src/app/page.tsx');
 
     expect(SITE_COPY.homeHero.primaryCta).toBe('ดูสินค้า');
-    expect(SITE_COPY.homeHero.secondaryCta).toBe('สอบถามราคา');
+    expect(SITE_COPY.homeHero.secondaryCta).toBe('Book Consultation');
     expect(SITE_COPY.homeHero.tertiaryCta).toBe('ตรวจสอบบัตรรับประกัน');
     expect(SITE_COPY.homeHero.subtitle).toContain('Digital Warranty');
     expect(SITE_COPY.homeHero.subtitle).toContain('บัตรรับประกันดิจิทัล');
     expect(SITE_COPY.homeHero.subtitle).toContain('ตรวจสอบได้ผ่าน QR Code');
     expect(SITE_COPY.homeHero.subtitle).toContain('Serial');
 
-    expect(home).toContain('hero-trust-bar');
-    expect(home).toContain('รับประกันสูงสุด 9 ปี');
+    expect(home).toContain('THINK NEW. THINK NEXS.');
+    expect(home).toContain('Engineered to Be Invisible. Better Than Day One.');
+    expect(home).toContain('Lifetime up to 10 Years');
     expect(home).toContain('Digital Warranty');
-    expect(home).toContain('QR / Serial Verification');
-    expect(home).toContain('Dealer Installation Support');
+    expect(home).toContain('12 Film Options');
   });
 
   it('adds decision-support fields and product-specific CTAs for all public products', () => {
@@ -100,23 +100,20 @@ describe('premium public site correction contract', () => {
       expect(productDecision.protectionLevel, `${product.name} needs protectionLevel`).toMatch(/ระดับการปกป้อง/);
       expect(productDecision.packageSuggestion, `${product.name} needs packageSuggestion`).toMatch(/แพ็กเกจที่เหมาะ/);
       expect(productDecision.decisionLabel, `${product.name} needs decisionLabel`).toBeTruthy();
-      expect(productDecision.primaryCta).toBe('สอบถามราคา');
+      expect(productDecision.primaryCta).toBe('Book Consultation');
     }
   });
 
   it('renders product decision support and a 4-tier comparison table on the products page', () => {
     const productsPage = readRepoFile('src/app/products/page.tsx');
 
-    expect(productsPage).toContain('product-comparison-table');
-    expect(productsPage).toContain('<table');
-    expect(productsPage).toContain('เหมาะสำหรับ');
-    expect(productsPage).toContain('ระดับการปกป้อง');
-    expect(productsPage).toContain('แพ็กเกจที่เหมาะ');
-    expect(productsPage).toContain('product.primaryCta');
-    expect(productsPage).toContain('product.warrantyLabel');
+    expect(productsPage).toContain('ComparisonMatrix');
+    expect(productsPage).toContain('CategoryOverview');
+    expect(productsPage).toContain('Film Systems');
+    expect(productsPage).toContain('Compare All');
 
     for (const product of PUBLIC_PRODUCT_GROUPS) {
-      expect(product.primaryCta).toBe('สอบถามราคา');
+      expect(product.primaryCta).toBe('Book Consultation');
       expect(product.warrantyLabel).toMatch(/รับประกัน \d ปี/);
     }
   });
@@ -148,17 +145,13 @@ describe('premium public site correction contract', () => {
     const dealerPage = readRepoFile('src/app/dealer/page.tsx');
     const warrantyPage = readRepoFile('src/app/warranty/page.tsx');
 
-    expect(home).toContain('trust-proof-section');
+    expect(home).toContain('FAQ Preview');
     expect(SITE_COPY.trustProof.map((proof) => proof.title)).toContain('Authorized Dealer');
     expect(SITE_COPY.trustProof.map((proof) => proof.title)).toContain('Warranty Coverage');
     expect(SITE_COPY.faq.length).toBeGreaterThanOrEqual(3);
     expect(SITE_COPY.claimProcess.map((step) => step.title).join(' ')).toContain('ตรวจสอบ');
 
-    expect(dealerPage).toContain('Dealer Program');
-    expect(dealerPage).toContain('Authorized Dealer');
-    expect(dealerPage).toContain('Digital Warranty');
-    expect(dealerPage).toContain('ความน่าเชื่อถือของร้าน');
-    expect(dealerPage).toContain('ขอข้อมูล Dealer Program');
+    expect(dealerPage).toContain('../for-dealers/page');
 
     expect(warrantyPage).toContain('inspection-process');
     expect(warrantyPage).toContain('ส่งคำขอตรวจสอบ');

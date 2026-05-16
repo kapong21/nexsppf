@@ -63,14 +63,13 @@ describe('Legacy Image Layout Integration Pass', () => {
     const dealer = readRepoFile('src/app/dealer/page.tsx');
     const warranty = readRepoFile('src/app/warranty/page.tsx');
 
-    expect(home).toContain("getImageSlot('product_line_visual')");
-    expect(home).toContain('legacy-surface-panel');
-    expect(products).toContain("getImageSlot('product_line_visual')");
-    expect(products).toContain('product-line-visual-band');
+    expect(home).toContain('MarketingHero');
+    expect(home).toContain('CategoryOverview');
+    expect(products).toContain('ComparisonMatrix');
+    expect(products).toContain('CategoryOverview');
     expect(contact).toContain("getImageSlot('contact_lead_visual')");
     expect(contact).toContain('contact-visual-panel');
-    expect(dealer).toContain("getImageSlot('dealer_installation_visual')");
-    expect(dealer).toContain('dealer-visual-panel');
+    expect(dealer).toContain('../for-dealers/page');
     expect(warranty).toContain('visual.layoutClass');
   });
 

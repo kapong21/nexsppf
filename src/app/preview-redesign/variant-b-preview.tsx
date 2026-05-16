@@ -86,7 +86,7 @@ function Header() {
       </nav>
       <div className="variant-b-header-cta">
         <a className="variant-b-small-cta" href="/login">Dealer Login</a>
-        <a className="variant-b-primary-cta" href="/contact">สอบถามราคา</a>
+        <a className="variant-b-primary-cta" href="/contact">Book Consultation</a>
       </div>
     </header>
   );
@@ -146,7 +146,7 @@ function ProductCards() {
             <h3>{product.headline}</h3>
             <p>{product.body}</p>
             <div className="variant-b-card-actions">
-              <a href="/contact">สอบถามราคา</a>
+              <a href="/contact">Book Consultation</a>
               <a href="/products">ดูรายละเอียด</a>
             </div>
           </div>
@@ -272,7 +272,7 @@ function ContactLeadSection() {
     <section className="variant-b-split-panel contact-page html-home-contact">
       <div>
         <p className="variant-b-eyebrow">Get in touch</p>
-        <h2>สอบถามราคาและคำแนะนำเลือกรุ่น</h2>
+        <h2>Book Consultationและคำแนะนำเลือกรุ่น</h2>
         <p>กรอกข้อมูลสั้น ๆ ทีมงาน NEXS หรือตัวแทนจำหน่ายในพื้นที่จะติดต่อกลับ</p>
       </div>
       <form className="variant-b-lead-form">
@@ -302,7 +302,7 @@ function HomePage() {
           </p>
           <div className="variant-b-actions">
             <a className="variant-b-button primary" href="/products">ดูสินค้า</a>
-            <a className="variant-b-button secondary" href="/contact">สอบถามราคา</a>
+            <a className="variant-b-button secondary" href="/contact">Book Consultation</a>
             <a className="variant-b-button text" href="/warranty">ตรวจสอบบัตรรับประกัน</a>
           </div>
         </div>
@@ -381,7 +381,7 @@ function ProductsPage() {
       <section className="variant-b-page-hero">
         <p className="variant-b-eyebrow">Product Line</p>
         <h1>เลือก NEXS PPF ให้เหมาะกับรถของคุณ</h1>
-        <p>เปรียบเทียบ 4 รุ่นหลักด้วยข้อมูลสั้น ชัด และเน้นการตัดสินใจ โดยไม่แสดงราคา public</p>
+        <p>เปรียบเทียบ 4 รุ่นหลักด้วยข้อมูลสั้น ชัด และเน้นการตัดสินใจ</p>
       </section>
       <ProductCards />
       <section className="variant-b-section compact">
@@ -450,7 +450,7 @@ function ContactPage() {
     <section className="variant-b-split-panel contact-page">
       <div>
         <p className="variant-b-eyebrow">Contact</p>
-        <h1>สอบถามราคาและคำแนะนำเลือกรุ่น</h1>
+        <h1>Book Consultationและคำแนะนำเลือกรุ่น</h1>
         <p>กรอกข้อมูลสั้น ๆ ทีมงาน NEXS หรือตัวแทนจำหน่ายในพื้นที่จะติดต่อกลับ</p>
         <div className="variant-b-contact-proof">
           <span>ลูกค้าสนใจติดตั้ง</span>
@@ -465,7 +465,7 @@ function ContactPage() {
         <label>จังหวัด<input placeholder="จังหวัดที่ต้องการรับบริการ" /></label>
         <label>รุ่นรถ<input placeholder="เช่น Porsche 911 / Tesla" /></label>
         <label>รุ่นที่สนใจ<select defaultValue="PRIME"><option>BEGIN</option><option>PRIME</option><option>PRO</option><option>ULTIMATE</option></select></label>
-        <label className="wide">ข้อความ<textarea placeholder="สอบถามราคา ขอคำแนะนำเลือกรุ่น หรือสมัครตัวแทนจำหน่าย" /></label>
+        <label className="wide">ข้อความ<textarea placeholder="Book Consultation ขอคำแนะนำเลือกรุ่น หรือสมัครตัวแทนจำหน่าย" /></label>
         <label className="variant-b-checkbox wide"><input type="checkbox" /> ยินยอมให้ติดต่อกลับตาม Privacy Policy</label>
         <button type="button">ส่งข้อมูลให้ทีมงานติดต่อกลับ</button>
       </form>

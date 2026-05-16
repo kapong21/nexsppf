@@ -47,11 +47,11 @@ describe('curated visual system pass', () => {
   });
 
   it('renders curated visual sections on homepage before product and warranty decisions', () => {
-    expect(homeSource).toContain('id="why-ppf"');
-    expect(homeSource).toContain('className="curated-section why-ppf-section"');
-    expect(homeSource).toContain('className="curated-section brand-story-section"');
-    expect(homeSource.indexOf('id="why-ppf"')).toBeLessThan(homeSource.indexOf('id="products"'));
-    expect(homeSource.indexOf('className="curated-section brand-story-section"')).toBeLessThan(homeSource.indexOf('Digital Warranty System'));
+    expect(homeSource).toContain('MarketingHero');
+    expect(homeSource).toContain('CategoryOverview');
+    expect(homeSource).toContain('premium-pillar-grid');
+    expect(homeSource).toContain('Digital Warranty');
+    expect(homeSource.indexOf('CategoryOverview')).toBeLessThan(homeSource.indexOf('Digital Warranty'));
   });
 
   it('keeps curated sections visually designed with composable CSS instead of poster image dumps', () => {

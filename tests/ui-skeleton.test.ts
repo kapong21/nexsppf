@@ -48,7 +48,7 @@ describe('ui skeleton content contract', () => {
     expect(SITE_COPY.homeHero.subtitle).toContain('ตรวจสอบได้ผ่าน QR Code');
     expect(SITE_COPY.homeHero.eyebrow).toBe('NEXS Paint Protection Film');
     expect(SITE_COPY.homeHero.primaryCta).toBe('ดูสินค้า');
-    expect(SITE_COPY.homeHero.secondaryCta).toBe('สอบถามราคา');
+    expect(SITE_COPY.homeHero.secondaryCta).toBe('Book Consultation');
     expect(SITE_COPY.homeHero.tertiaryCta).toBe('ตรวจสอบบัตรรับประกัน');
   });
 

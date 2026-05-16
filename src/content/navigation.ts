@@ -5,17 +5,25 @@ export type NavItem = {
 };
 
 export const PRIMARY_NAV_ITEMS: readonly NavItem[] = [
-  { label: 'Products', href: '/products' },
-  { label: 'Warranty', href: '/warranty' },
-  { label: 'Dealer', href: '/dealer' },
+  { label: 'Film Systems', href: '/products' },
+  { label: 'Clear', href: '/clear-ppf' },
+  { label: 'Matte', href: '/matte-ppf' },
+  { label: 'Color', href: '/color-ppf' },
+  { label: 'Compare', href: '/compare' },
+  { label: 'Dealers', href: '/for-dealers' },
   { label: 'Contact', href: '/contact' },
   { label: 'Dealer Login', href: '/login', isSecondary: true },
 ] as const;
 
 export const FOOTER_NAV_ITEMS: readonly NavItem[] = [
+  { label: 'Clear PPF', href: '/clear-ppf' },
+  { label: 'Matte PPF', href: '/matte-ppf' },
+  { label: 'Color PPF', href: '/color-ppf' },
+  { label: 'Compare', href: '/compare' },
+  { label: 'FAQ', href: '/faq' },
+  { label: 'บัตรรับประกัน', href: '/warranty' },
+  { label: 'ตัวแทนจำหน่าย', href: '/for-dealers' },
   { label: 'ติดต่อเรา', href: '/contact' },
-  { label: 'รับประกัน', href: '/warranty' },
-  { label: 'ตัวแทนจำหน่าย', href: '/dealer' },
   { label: 'Privacy Policy', href: '/privacy' },
   { label: 'Warranty Policy', href: '/warranty-policy' },
   { label: 'Dealer Login', href: '/login' },

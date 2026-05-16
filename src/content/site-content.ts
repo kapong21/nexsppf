@@ -186,7 +186,7 @@ export const PUBLIC_PRODUCT_GROUPS: readonly PublicProductGroup[] = [
     protectionLevel: 'ระดับการปกป้อง: Essential daily protection',
     packageSuggestion: 'แพ็กเกจที่เหมาะ: จุดเสี่ยงด้านหน้า หรือเริ่มต้นบางชิ้นตามการใช้งาน',
     decisionLabel: 'Entry Smart Choice',
-    primaryCta: 'สอบถามราคา',
+    primaryCta: 'Book Consultation',
     secondaryCta: 'ดูรายละเอียด',
   },
   {
@@ -206,7 +206,7 @@ export const PUBLIC_PRODUCT_GROUPS: readonly PublicProductGroup[] = [
     protectionLevel: 'ระดับการปกป้อง: Balanced premium protection',
     packageSuggestion: 'แพ็กเกจที่เหมาะ: Full front หรือรอบคันตามงบประมาณและรูปแบบใช้งาน',
     decisionLabel: 'Best Value Core',
-    primaryCta: 'สอบถามราคา',
+    primaryCta: 'Book Consultation',
     secondaryCta: 'ดูรายละเอียด',
   },
   {
@@ -226,7 +226,7 @@ export const PUBLIC_PRODUCT_GROUPS: readonly PublicProductGroup[] = [
     protectionLevel: 'ระดับการปกป้อง: Premium protection',
     packageSuggestion: 'แพ็กเกจที่เหมาะ: Full front, รอบคัน หรือจุดเสี่ยงสูงสำหรับรถพรีเมียม',
     decisionLabel: 'Premium Pick',
-    primaryCta: 'สอบถามราคา',
+    primaryCta: 'Book Consultation',
     secondaryCta: 'ดูรายละเอียด',
   },
   {
@@ -246,7 +246,7 @@ export const PUBLIC_PRODUCT_GROUPS: readonly PublicProductGroup[] = [
     protectionLevel: 'ระดับการปกป้อง: Flagship protection',
     packageSuggestion: 'แพ็กเกจที่เหมาะ: รอบคัน หรือชุดดูแลเต็มระบบสำหรับรถที่ต้องการภาพลักษณ์สูงสุด',
     decisionLabel: 'Flagship Choice',
-    primaryCta: 'สอบถามราคา',
+    primaryCta: 'Book Consultation',
     secondaryCta: 'ดูรายละเอียด',
   },
 ] as const;
@@ -258,7 +258,7 @@ export const SITE_COPY: SiteCopy = {
     thaiTitle: 'ฟิล์มปกป้องสีรถ NEXS',
     subtitle: 'NEXS PPF พร้อม Digital Warranty และบัตรรับประกันดิจิทัล ตรวจสอบได้ผ่าน QR Code พร้อม Serial Verification และ Dealer Installation Support',
     primaryCta: 'ดูสินค้า',
-    secondaryCta: 'สอบถามราคา',
+    secondaryCta: 'Book Consultation',
     tertiaryCta: 'ตรวจสอบบัตรรับประกัน',
   },
   warranty: {
@@ -368,7 +368,7 @@ export const SITE_COPY: SiteCopy = {
   faq: [
     { question: 'ลูกค้าลงทะเบียนบัตรรับประกันเองได้ไหม?', answer: 'ไม่ได้ การเปิดใช้งานบัตรรับประกันต้องดำเนินการโดย Dealer/Admin ที่รับผิดชอบงานติดตั้ง' },
     { question: 'สแกน QR ก่อนลงทะเบียนจะเกิดอะไรขึ้น?', answer: 'ระบบควรแสดงสถานะยังไม่ลงทะเบียนอย่างปลอดภัย ไม่ถือเป็น error และไม่เปิดเผยข้อมูลส่วนตัว' },
-    { question: 'หน้าเว็บแสดงราคาหรือไม่?', answer: 'v1 ไม่แสดงราคาสาธารณะ ลูกค้าสามารถส่งข้อมูลเพื่อให้ทีมงานหรือ Dealer ติดต่อกลับ' },
+    { question: 'ต้องติดต่อทีมงานอย่างไร?', answer: 'ลูกค้าสามารถส่งข้อมูลเพื่อให้ทีมงานหรือ Dealer ติดต่อกลับพร้อมคำแนะนำที่เหมาะกับรถและรุ่นฟิล์ม' },
   ],
   leadForm: {
     title: 'ติดต่อ NEXS',

@@ -48,7 +48,7 @@ describe('Variant B preview design contract', () => {
     const publicText = collectVariantBPublicText();
     expect(findForbiddenPublicClaimTerms(publicText)).toEqual([]);
     expect(publicText).not.toMatch(/฿|บาท|dealer price|factory cost|margin|discount|promotion/i);
-    expect(publicText).toContain('สอบถามราคา');
+    expect(publicText).toContain('Book Consultation');
   });
 
   it('creates preview page files without changing existing production route files', () => {

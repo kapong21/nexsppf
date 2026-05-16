@@ -41,7 +41,7 @@ describe('site content policy', () => {
       expect(product.recommendedUseCase.length).toBeGreaterThan(10);
       expect(product.benefits.length).toBeGreaterThanOrEqual(2);
       expect(product.warrantyLabel).toBe(`รับประกัน ${product.warrantyYears} ปี`);
-      expect(product.primaryCta).toBe('สอบถามราคา');
+      expect(product.primaryCta).toBe('Book Consultation');
       expect(product.secondaryCta).toBe('ดูรายละเอียด');
     }
   });
