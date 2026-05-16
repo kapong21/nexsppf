@@ -1,12 +1,92 @@
 import { getImageSlot } from '@/content/image-assets';
-import { PUBLIC_PRODUCT_GROUPS, SITE_COPY } from '@/content/site-content';
+import { SITE_COPY } from '@/content/site-content';
+
+const PRODUCT_INTEREST_OPTIONS = [
+  'Not sure / Need recommendation',
+  'Clear PPF',
+  'Matte PPF',
+  'Color PPF',
+  'Ultimate Carbon Fiber',
+  'Dealer / Installer inquiry',
+  'Digital Warranty inquiry',
+] as const;
 
 export default function ContactPage() {
   const visual = getImageSlot('contact_lead_visual');
+
   return (
-    <main className="site-shell">
-      <section className="hero contact-visual-panel"><div className="hero-copy"><p className="eyebrow">Contact / Lead</p><h1>{SITE_COPY.leadForm.title}</h1><p className="lead">{SITE_COPY.leadForm.description}</p><div className="quick-contact-grid">{SITE_COPY.quickContact.map((item) => <article className="quick-contact-card" key={item.label}><strong>{item.label}</strong><span>{item.value}</span></article>)}</div></div><div className={`hero-visual ${visual.layoutClass}`}>{visual.path && <img src={visual.path} alt={visual.alt} />}</div></section>
-      <section className="section"><div className="grid two"><article className="card"><h2>ส่งข้อมูลให้ NEXS ติดต่อกลับ</h2><p>รองรับทั้งลูกค้าที่สนใจติดตั้ง ร้านค้าที่ต้องการสมัครตัวแทนจำหน่าย และผู้ที่ต้องการสอบถามเรื่องบัตรรับประกัน</p><p>ทีมงาน NEXS จะใช้ข้อมูลนี้เพื่อติดต่อกลับ ให้คำแนะนำ และประสานตัวแทนจำหน่ายที่เหมาะสม</p></article><div className="form-shell compact"><label htmlFor="contact-name">ชื่อ <span className="required-mark">*</span></label><input id="contact-name" placeholder="ชื่อผู้ติดต่อ" /><label htmlFor="contact-phone">เบอร์โทร <span className="required-mark">*</span></label><input id="contact-phone" placeholder="เช่น 081-xxx-1234" /><label htmlFor="contact-line">LINE ID ถ้ามี</label><input id="contact-line" placeholder="LINE ID สำหรับติดต่อกลับ" /><label htmlFor="contact-province">จังหวัด <span className="required-mark">*</span></label><input id="contact-province" placeholder="จังหวัด" /><label htmlFor="contact-car">รุ่นรถ ถ้ามี</label><input id="contact-car" placeholder="เช่น Porsche 911 / Tesla" /><label htmlFor="contact-product">รุ่นที่สนใจ</label><select id="contact-product">{PUBLIC_PRODUCT_GROUPS.map((product) => <option key={product.name}>{product.name}</option>)}</select><label htmlFor="contact-type">ประเภทผู้ติดต่อ <span className="required-mark">*</span></label><select id="contact-type">{SITE_COPY.leadForm.customerTypes.map((type) => <option key={type}>{type}</option>)}</select><label htmlFor="contact-message">ข้อความ</label><textarea id="contact-message" placeholder="ขอคำแนะนำเลือกรุ่น นัดปรึกษา หรือสมัครตัวแทนจำหน่าย" /><label className="checkbox-row" htmlFor="contact-pdpa"><input id="contact-pdpa" type="checkbox" /><span>{SITE_COPY.leadForm.pdpaConsentLabel} <a href={SITE_COPY.leadForm.privacyPolicyHref}>Privacy Policy</a></span></label><p className="form-note">ช่องจำเป็น: ชื่อ, เบอร์โทร, จังหวัด, ประเภทผู้ติดต่อ และการยินยอมให้ติดต่อกลับ</p><p className="form-note">ข้อมูลนี้ใช้สำหรับติดต่อกลับและประสานช่องทางที่เหมาะสม ยังไม่เปิดเผยข้อมูลลูกค้าต่อ public page</p><button className="button primary" type="button">{SITE_COPY.leadForm.submitCta}</button><p className="form-success" hidden>{SITE_COPY.leadForm.successMessage}</p><p className="form-error" hidden>{SITE_COPY.leadForm.errorMessage}</p></div></div></section>
-    </main>
+    <>
+      <section className="nexs-hero premium-hero contact-hero">
+        <div className="nexs-hero-copy">
+          <p className="eyebrow red-dot">Contact NEXS</p>
+          <h1>Let NEXS guide the right film system.</h1>
+          <h2>ติดต่อทีมงาน NEXS เพื่อเลือกระบบฟิล์มที่เหมาะกับรถของคุณ</h2>
+          <p className="lead">ช่องทางหลักทั้งหมดใช้ handle เดียวกัน: nexsppf เพื่อให้ลูกค้า ร้านติดตั้ง และผู้สนใจ Digital Warranty ติดต่อได้ง่ายขึ้น</p>
+          <div className="quick-contact-grid premium-contact-grid">
+            {SITE_COPY.quickContact.map((item) => (
+              <article className="quick-contact-card" key={item.label}>
+                <strong>{item.label}</strong>
+                <span>{item.value}</span>
+              </article>
+            ))}
+          </div>
+        </div>
+        <div className="nexs-visual-stage dealer contact-visual-panel contact-card-visual" aria-label={visual.alt}>
+          <div className="render-label">AI RENDER PLACEHOLDER</div>
+          <div className="contact-device-card">
+            <span>NEXS</span>
+            <strong>nexsppf</strong>
+            <small>LINE · Facebook · Instagram · TikTok · YouTube</small>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-tight premium-section contact-form-section">
+        <div className="section-head centered-head">
+          <div>
+            <p className="eyebrow red-dot">Lead Form</p>
+            <h2>Tell us what surface you want to protect.</h2>
+          </div>
+          <p>แบบฟอร์มนี้เป็น public-safe lead capture สำหรับติดต่อกลับและแนะนำรุ่น ไม่แสดงข้อมูลเชิงพาณิชย์ภายใน</p>
+        </div>
+        <div className="form-shell premium-form-shell">
+          <label htmlFor="contact-name">Name <span className="required-mark">*</span></label>
+          <input id="contact-name" placeholder="Your name" />
+
+          <label htmlFor="contact-phone">Phone <span className="required-mark">*</span></label>
+          <input id="contact-phone" placeholder="08x-xxx-xxxx" />
+
+          <label htmlFor="contact-line">LINE ID</label>
+          <input id="contact-line" placeholder="nexsppf or your LINE ID" />
+
+          <label htmlFor="contact-province">Province <span className="required-mark">*</span></label>
+          <input id="contact-province" placeholder="Province" />
+
+          <label htmlFor="contact-car">Vehicle model</label>
+          <input id="contact-car" placeholder="Porsche 911 / Tesla Model Y / etc." />
+
+          <label htmlFor="contact-product">Product interest</label>
+          <select id="contact-product">
+            {PRODUCT_INTEREST_OPTIONS.map((option) => <option key={option}>{option}</option>)}
+          </select>
+
+          <label htmlFor="contact-type">Contact type <span className="required-mark">*</span></label>
+          <select id="contact-type">
+            {SITE_COPY.leadForm.customerTypes.map((type) => <option key={type}>{type}</option>)}
+          </select>
+
+          <label htmlFor="contact-message">Message</label>
+          <textarea id="contact-message" placeholder="Tell us about your vehicle, preferred finish, city, or dealer inquiry" />
+
+          <label className="checkbox-row" htmlFor="contact-pdpa">
+            <input id="contact-pdpa" type="checkbox" />
+            <span>{SITE_COPY.leadForm.pdpaConsentLabel} <a href={SITE_COPY.leadForm.privacyPolicyHref}>Privacy Policy</a></span>
+          </label>
+
+          <p className="form-note">Required: name, phone, province, contact type, and contact consent.</p>
+          <button className="button primary" type="button">{SITE_COPY.leadForm.submitCta}</button>
+        </div>
+      </section>
+    </>
   );
 }

@@ -80,7 +80,7 @@ export type SiteCopy = {
     readonly secondaryCta: string;
   };
   readonly quickContact: readonly {
-    readonly label: 'LINE OA' | 'โทร' | 'Facebook' | 'เวลาทำการ';
+    readonly label: 'LINE' | 'Facebook' | 'Instagram' | 'TikTok' | 'YouTube';
     readonly value: string;
     readonly status: string;
   }[];
@@ -350,10 +350,11 @@ export const SITE_COPY: SiteCopy = {
     secondaryCta: 'Dealer Login',
   },
   quickContact: [
-    { label: 'LINE OA', value: 'กำลังอัปเดตช่องทางอย่างเป็นทางการ', status: 'pending official contact' },
-    { label: 'โทร', value: 'กำลังอัปเดตช่องทางอย่างเป็นทางการ', status: 'pending official contact' },
-    { label: 'Facebook', value: 'กำลังอัปเดตช่องทางอย่างเป็นทางการ', status: 'pending official contact' },
-    { label: 'เวลาทำการ', value: 'กำลังอัปเดตช่องทางอย่างเป็นทางการ', status: 'pending official contact' },
+    { label: 'LINE', value: 'nexsppf', status: 'official contact handle' },
+    { label: 'Facebook', value: 'nexsppf', status: 'official contact handle' },
+    { label: 'Instagram', value: '@nexsppf', status: 'official contact handle' },
+    { label: 'TikTok', value: '@nexsppf', status: 'official contact handle' },
+    { label: 'YouTube', value: '@nexsppf', status: 'official contact handle' },
   ],
   trustProof: [
     { title: 'Authorized Dealer', body: 'งานติดตั้งและการลงทะเบียนควรดำเนินการผ่านร้านที่ได้รับสิทธิ์ เพื่อให้ข้อมูลสินค้าและบัตรรับประกันตรงกัน' },

@@ -136,8 +136,8 @@ describe('premium public site correction contract', () => {
     }).quickContact;
 
     expect(contactPage).toContain('quick-contact-grid');
-    expect(quickContact?.map((item) => item.label)).toEqual(['LINE OA', 'โทร', 'Facebook', 'เวลาทำการ']);
-    expect(quickContact?.every((item) => item.value.includes('กำลังอัปเดตช่องทางอย่างเป็นทางการ'))).toBe(true);
+    expect(quickContact?.map((item) => item.label)).toEqual(['LINE', 'Facebook', 'Instagram', 'TikTok', 'YouTube']);
+    expect(quickContact?.map((item) => item.value)).toEqual(['nexsppf', 'nexsppf', '@nexsppf', '@nexsppf', '@nexsppf']);
   });
 
   it('adds dealer trust proof, dealer program CTA, safe inspection process, and FAQ sections', () => {

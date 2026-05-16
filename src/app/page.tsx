@@ -1,5 +1,4 @@
-import { CategoryOverview, LeadPanel, MarketingHero } from '@/components/marketing/NexsMarketing';
-import { FAQ_ITEMS } from '@/content/final-product-content';
+import { CategoryOverview, FaqBlock, LeadPanel, MarketingHero } from '@/components/marketing/NexsMarketing';
 
 const pillars = [
   ['Precision Surface Engineering', 'วิศวกรรมพื้นผิวรถที่แม่นยำทุกชั้น'],
@@ -40,7 +39,7 @@ export default function HomePage() {
             <p className="eyebrow">NEXS Standard</p>
             <h2>A Higher Standard for Invisible Surfaces.</h2>
           </div>
-          <p>การปกป้องที่ดีไม่ควรแลกกับความสวยของผิวรถ เว็บไซต์นี้จึงเริ่มจากภาพที่สว่าง เรียบ สะอาด และเลือกข้อมูลที่ลูกค้าต้องใช้จริง</p>
+          <p>ผิวรถที่สมบูรณ์แบบเริ่มจากรายละเอียดที่มองแทบไม่เห็น NEXS จึงออกแบบทุกหน้าให้สว่าง สะอาด อ่านง่าย และเน้นข้อมูลที่ลูกค้าใช้ตัดสินใจจริง</p>
         </div>
         <div className="premium-pillar-grid">
           {pillars.map(([title, body]) => (
@@ -76,22 +75,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section section-tight">
-        <div className="section-head">
+      <section className="section section-tight premium-section">
+        <div className="section-head centered-head">
           <div>
-            <p className="eyebrow">FAQ Preview</p>
+            <p className="eyebrow red-dot">FAQ Preview</p>
             <h2>คำถามที่ต้องตอบให้ชัดก่อนลูกค้าตัดสินใจ</h2>
           </div>
         </div>
-        <div className="faq-list-preview">
-          {FAQ_ITEMS.slice(0, 3).map((item) => (
-            <article className="faq-row" key={item.question}>
-              <h3>{item.question}</h3>
-              <p>{item.answer}</p>
-            </article>
-          ))}
-        </div>
       </section>
+      <FaqBlock limit={3} />
 
       <LeadPanel title="Ready to think new?" />
     </>

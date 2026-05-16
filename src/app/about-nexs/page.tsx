@@ -13,7 +13,7 @@ export default function AboutNexsPage() {
       <MarketingHero
         eyebrow="About NEXS"
         title="A Higher Standard for Invisible Surfaces."
-        thaiTitle="การปกป้องที่ดี ไม่ควรแลกกับความสวยของผิวรถ"
+        thaiTitle="ผิวรถที่สมบูรณ์แบบเริ่มจากรายละเอียดที่มองแทบไม่เห็น"
         subcopy="NEXS จัดวางสินค้า ภาพลักษณ์ และระบบรับประกันให้ลูกค้าเข้าใจง่ายตั้งแต่ก่อนติดตั้งจนถึงหลังการขาย"
         primaryHref="/products"
         primaryLabel="Explore Products"

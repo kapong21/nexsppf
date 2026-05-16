@@ -51,9 +51,9 @@ export const FILM_CATEGORIES: readonly FilmCategory[] = [
     heroSubcopy: 'คง texture ดั้งเดิมของผิวด้าน พร้อมเพิ่มการปกป้องและความมั่นใจในการใช้งานระยะยาว',
     ctas: ['Book Consultation', 'Find Installer'],
     options: [
-      { name: 'Matte Prime', category: 'matte', position: 'Best Balance / Smooth Matte', thickness: '7.5 mil', peelingSupport: 'รับประกันลอก 4 ปี', productWarranty: 'Product warranty 7 ปี', lifetime: 'Lifetime 8 ปี', note: 'โครงสินค้าอ้างอิง Clear Prime จนกว่าจะล็อกข้อมูลฟิล์มด้านจริง', badge: 'Matte Core' },
-      { name: 'Matte Pro', category: 'matte', position: 'Premium Matte Protection', thickness: '8.5 mil', peelingSupport: 'รับประกันลอก 5 ปี', productWarranty: 'Product warranty 8 ปี', lifetime: 'Lifetime 9 ปี', note: 'โครงสินค้าอ้างอิง Clear Pro จนกว่าจะล็อกข้อมูลฟิล์มด้านจริง', badge: 'Premium Matte' },
-      { name: 'Matte Ultimate', category: 'matte', position: 'Flagship Matte / Top Tier', thickness: '8.5 mil', peelingSupport: 'รับประกันลอก 7 ปี', productWarranty: 'Product warranty 9 ปี', lifetime: 'Lifetime 10 ปี', note: 'โครงสินค้าอ้างอิง Clear Ultimate จนกว่าจะล็อกข้อมูลฟิล์มด้านจริง', badge: 'Flagship Matte' },
+      { name: 'Matte Prime', category: 'matte', position: 'Best Balance / Smooth Matte', thickness: '7.5 mil', peelingSupport: 'รับประกันลอก 4 ปี', productWarranty: 'Product warranty 7 ปี', lifetime: 'Lifetime 8 ปี', note: 'ฟิล์มด้านระดับพรีเมียมสำหรับลูกค้าที่ต้องการผิว matte / satin ที่เรียบเนียน ดูสะอาด และเหมาะกับการใช้งานประจำวัน', badge: 'Matte Core' },
+      { name: 'Matte Pro', category: 'matte', position: 'Premium Matte Protection', thickness: '8.5 mil', peelingSupport: 'รับประกันลอก 5 ปี', productWarranty: 'Product warranty 8 ปี', lifetime: 'Lifetime 9 ปี', note: 'ฟิล์มด้านระดับสูงสำหรับรถที่ต้องการความพรีเมียมมากขึ้น ทั้งด้านภาพลักษณ์ ความเรียบเนียน และความมั่นใจในการใช้งาน', badge: 'Premium Matte' },
+      { name: 'Matte Ultimate', category: 'matte', position: 'Flagship Matte / Top Tier', thickness: '8.5 mil', peelingSupport: 'รับประกันลอก 7 ปี', productWarranty: 'Product warranty 9 ปี', lifetime: 'Lifetime 10 ปี', note: 'ตัวเลือก flagship สำหรับผิว matte / satin ที่ต้องการความสมบูรณ์แบบสูงสุดของไลน์ฟิล์มด้าน NEXS', badge: 'Flagship Matte' },
     ],
   },
   {
@@ -70,7 +70,7 @@ export const FILM_CATEGORIES: readonly FilmCategory[] = [
       { name: 'Color Prime', category: 'color', position: 'Entry TPU Color', thickness: '7.5 mil', peelingSupport: 'รับประกันลอก 3 ปี', productWarranty: 'Warranty 4 ปี', lifetime: 'Lifetime ประมาณ 5 ปี', note: 'สี TPU รุ่นเริ่มต้นสำหรับลูกค้าที่ต้องการความยืดหยุ่นและภาพลักษณ์พรีเมียมขึ้น', badge: 'TPU Color' },
       { name: 'Color Pro', category: 'color', position: 'Main Color / Standard', thickness: '7.5 mil', peelingSupport: 'รับประกันลอก 4 ปี', productWarranty: 'Warranty 5 ปี', lifetime: 'Lifetime ประมาณ 6 ปี', note: 'ฟิล์มสีรุ่นหลักสำหรับขายจริงและใช้เป็นตัวเลือกมาตรฐานของไลน์สี', badge: 'Main Color' },
       { name: 'Color Ultimate', category: 'color', position: 'Premium Color / International', thickness: '8.5 mil', peelingSupport: 'รับประกันลอก 5 ปี', productWarranty: 'Warranty 6 ปี', lifetime: 'Lifetime ประมาณ 10 ปี', note: 'ตัวเลือกฟิล์มสีเกรดสูงขึ้นสำหรับรถที่ต้องการภาพลักษณ์โดดเด่น', badge: 'Premium Color' },
-      { name: 'Ultimate Carbon Fiber', category: 'color', position: 'Special Finish', thickness: '8.5 mil / รอ final spec', peelingSupport: 'ตามเงื่อนไขรุ่นพิเศษ', productWarranty: 'ตามเงื่อนไขรุ่นพิเศษ', lifetime: 'ตามเงื่อนไขรุ่นพิเศษ', note: 'ลาย Carbon Fiber สำหรับลูกค้าที่ต้องการ finish พิเศษและภาพลักษณ์ performance', badge: 'Carbon Fiber' },
+      { name: 'Ultimate Carbon Fiber', category: 'color', position: 'Special Finish', thickness: '8.5 mil / special finish' , peelingSupport: 'ตามเงื่อนไขรุ่นพิเศษ', productWarranty: 'ตามเงื่อนไขรุ่นพิเศษ', lifetime: 'ตามเงื่อนไขรุ่นพิเศษ', note: 'ลาย Carbon Fiber สำหรับลูกค้าที่ต้องการ finish พิเศษและภาพลักษณ์ performance', badge: 'Carbon Fiber' },
     ],
   },
 ] as const;
@@ -80,7 +80,7 @@ export const FAQ_ITEMS = [
   { question: 'Lifetime ต่างจาก Warranty อย่างไร?', answer: 'Lifetime คือช่วงอายุการใช้งานโดยประมาณของฟิล์มภายใต้การดูแลที่เหมาะสม ไม่ใช่ระยะเวลารับประกันสินค้า' },
   { question: 'รับประกันลอกคืออะไร?', answer: 'รับประกันลอกคือการดูแลปัญหาการลอกตามเงื่อนไขการติดตั้ง แยกจาก Product Warranty และขึ้นอยู่กับรุ่นสินค้าและร้านติดตั้ง' },
   { question: 'Color Begin เป็น TPU หรือไม่?', answer: 'Color Begin เป็นรุ่น PET Color Film ส่วน Color Prime, Color Pro และ Color Ultimate เป็น TPU Color Film' },
-  { question: 'Matte PPF มีข้อมูลจริงหรือยัง?', answer: 'โครง Matte PPF ยืนยันเป็น Matte Prime / Matte Pro / Matte Ultimate สำหรับหน้าเว็บ โดย spec ชั่วคราวอ้างอิง Clear Prime / Pro / Ultimate จนกว่าจะล็อกข้อมูลฟิล์มด้านจริง' },
+  { question: 'Matte PPF เหมาะกับรถแบบไหน?', answer: 'เหมาะกับรถที่ต้องการผิว matte / satin ที่เรียบเนียน ดูสะอาด และยังต้องการระบบฟิล์ม PPF ในโทนภาพลักษณ์พรีเมียม' },
   { question: 'ควรเลือกรุ่นไหน?', answer: 'กรุณาติดต่อทีมงานหรือ installer เพื่อรับคำแนะนำตามรุ่นรถ ลักษณะการใช้งาน และรูปแบบการติดตั้ง' },
 ] as const;
 
