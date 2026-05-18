@@ -8,6 +8,9 @@ const REQUIRED_SCHEMA_NAMES = [
   'hero',
   'productCategory',
   'productOption',
+  // Spec v5.2 additions: comparison rows + installer directory
+  'productSpec',
+  'installerLocation',
   'imageAsset',
   'faq',
   'resourcePost',

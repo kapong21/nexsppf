@@ -65,7 +65,15 @@ describe('premium public site correction contract', () => {
   });
 
   it('promotes NEXS differentiators in the homepage hero and trust bar', () => {
-    const home = readRepoFile('src/app/page.tsx');
+    // Content that the homepage renders may live in dedicated content modules.
+    // Combine the page source with those modules so the assertions stay valid
+    // when strings are extracted into typed constants (spec v5.2 refactor).
+    const home = [
+      'src/app/page.tsx',
+      'src/content/spec-v52.ts',
+    ]
+      .map(readRepoFile)
+      .join('\n');
 
     expect(SITE_COPY.homeHero.primaryCta).toBe('ดูสินค้า');
     expect(SITE_COPY.homeHero.secondaryCta).toBe('Book Consultation');

@@ -1,5 +1,8 @@
 import { LeadPanel, MarketingHero, ProductTierGrid } from '@/components/marketing/NexsMarketing';
 import { getFilmCategory } from '@/content/final-product-content';
+import { SEO_MATTE } from '@/data/seo';
+
+export const metadata = SEO_MATTE;
 
 export default function MattePpfPage() {
   const category = getFilmCategory('matte');

@@ -33,6 +33,20 @@ export const productOption = defineType({
     defineField({ name: 'badge', title: 'Badge', type: 'string' }),
     defineField({ name: 'order', title: 'Display Order', type: 'number' }),
     defineField({ name: 'isActive', title: 'Active', type: 'boolean', initialValue: true }),
+    defineField({
+      name: 'publicSpecs',
+      title: 'Public Specs (comparison rows)',
+      description:
+        'Spec v5.2 — rendered in ComparisonMatrix and product detail pages. ' +
+        'NO PRICE FIELDS allowed (audit-enforced).',
+      type: 'object',
+      fields: [
+        defineField({ name: 'gloss', title: 'Gloss Level', type: 'string' }),
+        defineField({ name: 'selfHealing', title: 'Self-Healing', type: 'string' }),
+        defineField({ name: 'yellowing', title: 'Yellowing Resistance', type: 'string' }),
+        defineField({ name: 'idealUser', title: 'Ideal User', type: 'string' }),
+      ],
+    }),
   ],
   preview: {
     select: { title: 'name', subtitle: 'sku' },

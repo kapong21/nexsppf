@@ -109,3 +109,51 @@ export const scanLogs = pgTable('scan_logs', {
 }, (table) => [
   index('scan_logs_serial_code_idx').on(table.serialCode),
 ]);
+
+// Public lead submissions — Contact / Quote / Find Installer forms.
+// Routes to nexsppf channel per Sprint 0 Decision Lock v5.2.
+export const leads = pgTable('leads', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  formType: text('form_type').notNull(),
+  name: text('name'),
+  phone: text('phone'),
+  line: text('line'),
+  email: text('email'),
+  province: text('province'),
+  vehicle: text('vehicle'),
+  productInterest: text('product_interest'),
+  contactType: text('contact_type'),
+  message: text('message'),
+  sourcePage: text('source_page'),
+  status: text('status').notNull().default('new'),
+  consentAt: timestamp('consent_at', { withTimezone: true }),
+  createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+  updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
+}, (table) => [
+  index('leads_form_type_idx').on(table.formType),
+  index('leads_status_idx').on(table.status),
+  index('leads_created_at_idx').on(table.createdAt),
+]);
+
+// B2B dealer applications — For Dealers page.
+export const dealerApplications = pgTable('dealer_applications', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  businessName: text('business_name').notNull(),
+  ownerName: text('owner_name'),
+  phone: text('phone').notNull(),
+  line: text('line'),
+  email: text('email'),
+  province: text('province').notNull(),
+  experience: text('experience'),
+  currentServices: text('current_services'),
+  notes: text('notes'),
+  status: text('status').notNull().default('new'),
+  reviewedBy: uuid('reviewed_by').references(() => users.id),
+  consentAt: timestamp('consent_at', { withTimezone: true }),
+  createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+  updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
+}, (table) => [
+  index('dealer_applications_status_idx').on(table.status),
+  index('dealer_applications_province_idx').on(table.province),
+  index('dealer_applications_created_at_idx').on(table.createdAt),
+]);

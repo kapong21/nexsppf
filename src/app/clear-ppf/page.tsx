@@ -1,5 +1,8 @@
 import { LeadPanel, MarketingHero, ProductTierGrid } from '@/components/marketing/NexsMarketing';
 import { getFilmCategory } from '@/content/final-product-content';
+import { SEO_CLEAR } from '@/data/seo';
+
+export const metadata = SEO_CLEAR;
 
 export default function ClearPpfPage() {
   const category = getFilmCategory('clear');

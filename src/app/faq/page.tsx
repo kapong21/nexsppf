@@ -1,4 +1,8 @@
 import { FaqBlock, LeadPanel, MarketingHero } from '@/components/marketing/NexsMarketing';
+import { FAQ_ITEMS } from '@/content/final-product-content';
+import { SEO_FAQ, faqSchemaLD } from '@/data/seo';
+
+export const metadata = SEO_FAQ;
 
 export default function FaqPage() {
   return (
@@ -15,6 +19,12 @@ export default function FaqPage() {
         tone="clear"
       />
       <FaqBlock />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqSchemaLD(FAQ_ITEMS)),
+        }}
+      />
       <LeadPanel title="ยังมีคำถามเพิ่มเติม?" />
     </>
   );

@@ -1,4 +1,7 @@
 import { ComparisonMatrix, LeadPanel, MarketingHero } from '@/components/marketing/NexsMarketing';
+import { SEO_COMPARE } from '@/data/seo';
+
+export const metadata = SEO_COMPARE;
 
 export default function ComparePage() {
   return (

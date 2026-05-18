@@ -1,38 +1,43 @@
 import { LeadPanel, MarketingHero } from '@/components/marketing/NexsMarketing';
+import { DEALER_BENEFITS } from '@/content/spec-v52';
+import { SEO_DEALERS } from '@/data/seo';
 
-const benefits = [
-  'ลงทะเบียนบัตรรับประกันให้ลูกค้า',
-  'ตรวจสอบ Serial / QR Code',
-  'ดูประวัติงานติดตั้งของร้าน',
-  'บันทึกการดูแลหลังการติดตั้ง',
-  'เพิ่มความน่าเชื่อถือให้ร้านติดตั้ง',
-] as const;
+export const metadata = SEO_DEALERS;
 
 export default function ForDealersPage() {
   return (
     <>
       <MarketingHero
-        eyebrow="For Dealers"
-        title="Build Trust with NEXS"
-        thaiTitle="สำหรับตัวแทนจำหน่ายและร้านติดตั้ง"
-        subcopy="เข้าร่วมระบบ NEXS เพื่อยกระดับงานติดตั้ง การลงทะเบียน Digital Warranty และบริการหลังการขายที่ตรวจสอบได้"
+        eyebrow="Built for Professional Installers"
+        title="Built for Installers. Designed for Growth."
+        thaiTitle="พาร์ทเนอร์ที่ร้านติดตั้งวางใจ เลือกง่าย ขายง่าย"
+        subcopy="NEXS พร้อมสนับสนุนร้านติดตั้งด้วยระบบสินค้าที่ชัดเจน สื่อการขายที่พร้อมใช้งาน การอบรมมาตรฐาน และเครื่องมือที่ช่วยให้การแนะนำลูกค้าเป็นเรื่องง่ายขึ้น"
         primaryHref="/contact"
-        primaryLabel="Apply as Dealer"
+        primaryLabel="Become a Dealer"
         secondaryHref="/login"
         secondaryLabel="Dealer Login"
         tone="dealer"
       />
+
       <section className="section section-tight">
+        <div className="section-head">
+          <div>
+            <p className="eyebrow">Dealer Benefits</p>
+            <h2>ทำไมร้านติดตั้งเลือกร่วมกับ NEXS</h2>
+          </div>
+        </div>
         <div className="premium-pillar-grid">
-          {benefits.map((benefit) => (
-            <article className="premium-pillar" key={benefit}>
-              <span />
-              <h3>{benefit}</h3>
-              <p>ออกแบบเพื่อให้ร้านติดตั้งมี workflow ที่ชัดเจน และลูกค้าตรวจสอบข้อมูลหลังติดตั้งได้ง่ายขึ้น</p>
+          {DEALER_BENEFITS.map((benefit, idx) => (
+            <article className="premium-pillar" key={benefit.title}>
+              <span aria-hidden>{`0${idx + 1}`}</span>
+              <h3>{benefit.title}</h3>
+              <p className="muted">{benefit.thai}</p>
+              <p>{benefit.copy}</p>
             </article>
           ))}
         </div>
       </section>
+
       <LeadPanel title="สมัครเป็นตัวแทนจำหน่าย NEXS" />
     </>
   );

@@ -1,5 +1,8 @@
 import { getImageSlot } from '@/content/image-assets';
 import { SITE_COPY } from '@/content/site-content';
+import { SEO_WARRANTY } from '@/data/seo';
+
+export const metadata = SEO_WARRANTY;
 
 export default function WarrantyPage() {
   const visual = getImageSlot('warranty_qr_visual');

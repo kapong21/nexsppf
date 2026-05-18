@@ -1,11 +1,5 @@
 import { CategoryOverview, FaqBlock, LeadPanel, MarketingHero } from '@/components/marketing/NexsMarketing';
-
-const pillars = [
-  ['Precision Surface Engineering', 'วิศวกรรมพื้นผิวรถที่แม่นยำทุกชั้น'],
-  ['Advanced Film Technology', 'ออกแบบระบบฟิล์มให้สอดคล้องกับการใช้งานจริง'],
-  ['Premium Finish Quality', 'ความใส เงา และเรียบเนียนระดับพรีเมียม'],
-  ['Complete Film System', 'ระบบฟิล์มครบทุกความต้องการ เพื่อการปกป้องและสไตล์ที่ลงตัว'],
-] as const;
+import { HOMEPAGE_PILLARS, HOME_STATS, HOME_STATS_THAI_TAGLINE } from '@/content/spec-v52';
 
 export default function HomePage() {
   return (
@@ -27,9 +21,10 @@ export default function HomePage() {
       <section className="section section-tight">
         <div className="nexs-stat-strip hero-trust-bar">
           <span>ENGINEERED FOR PERFECT SURFACES</span>
-          <span>12 Film Options</span>
-          <span>Lifetime up to 10 Years</span>
-          <span>ฟิล์มรถยนต์ระดับพรีเมียม 3 กลุ่ม 12 ทางเลือก</span>
+          {HOME_STATS.map((stat) => (
+            <span key={stat.key}>{stat.value}</span>
+          ))}
+          <span>{HOME_STATS_THAI_TAGLINE}</span>
         </div>
       </section>
 
@@ -42,11 +37,11 @@ export default function HomePage() {
           <p>ผิวรถที่สมบูรณ์แบบเริ่มจากรายละเอียดที่มองแทบไม่เห็น NEXS จึงออกแบบทุกหน้าให้สว่าง สะอาด อ่านง่าย และเน้นข้อมูลที่ลูกค้าใช้ตัดสินใจจริง</p>
         </div>
         <div className="premium-pillar-grid">
-          {pillars.map(([title, body]) => (
-            <article className="premium-pillar" key={title}>
+          {HOMEPAGE_PILLARS.map((pillar) => (
+            <article className="premium-pillar" key={pillar.title}>
               <span />
-              <h3>{title}</h3>
-              <p>{body}</p>
+              <h3>{pillar.title}</h3>
+              <p>{pillar.thai}</p>
             </article>
           ))}
         </div>

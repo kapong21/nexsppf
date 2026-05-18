@@ -36,9 +36,17 @@ describe('launch readiness polish public contract', () => {
   });
 
   it('uses customer-facing product intro and Why NEXS copy', () => {
-    const home = readFileSync(join(repoRoot, 'src/app/page.tsx'), 'utf8');
+    // Thai tagline is now exported from src/content/spec-v52.ts and rendered
+    // in the homepage stat strip. Combine sources so the assertion survives
+    // the spec v5.2 content extraction refactor.
+    const homeBundle = [
+      'src/app/page.tsx',
+      'src/content/spec-v52.ts',
+    ]
+      .map((path) => readFileSync(join(repoRoot, path), 'utf8'))
+      .join('\n');
 
-    expect(home).toContain('ฟิล์มรถยนต์ระดับพรีเมียม 3 กลุ่ม 12 ทางเลือก');
+    expect(homeBundle).toContain('ฟิล์มรถยนต์ระดับพรีเมียม 3 กลุ่ม 12 ทางเลือก');
     expect(SITE_COPY.whyNexs.description).toBe('มั่นใจได้ด้วยระบบลงทะเบียนสินค้า ตรวจสอบสถานะรับประกัน และติดตามประวัติการดูแลหลังติดตั้ง');
   });
 

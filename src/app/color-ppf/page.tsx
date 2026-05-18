@@ -1,5 +1,8 @@
 import { LeadPanel, MarketingHero, ProductTierGrid } from '@/components/marketing/NexsMarketing';
 import { getFilmCategory } from '@/content/final-product-content';
+import { SEO_COLOR } from '@/data/seo';
+
+export const metadata = SEO_COLOR;
 
 export default function ColorPpfPage() {
   const category = getFilmCategory('color');
