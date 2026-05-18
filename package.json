@@ -1,0 +1,22 @@
+{
+  "name": "nexs-ppf",
+  "private": true,
+  "version": "0.2.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "audit:no-price": "echo 'Audit: public pricing strings' && (! grep -rn 'สอบถามราคา\\|บาท\\|฿' src --include='*.jsx' --include='*.js' | grep -v 'src/data/brand.js')",
+    "audit:no-shineandshield": "echo 'Audit: rejected positioning copy' && (! grep -rn 'Shine and Shield\\|Protect Without Sacrificing' src --include='*.jsx' --include='*.js')",
+    "audit": "npm run audit:no-price && npm run audit:no-shineandshield && echo '✓ All audits passed'"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^5.4.10"
+  }
+}

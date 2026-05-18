@@ -1,0 +1,27 @@
+:root {
+  --nexs-canvas: #FFFFFF;
+  --nexs-canvas-soft: #F7F7F5;
+  --nexs-surface-warm: #ECEBE8;
+  --nexs-surface-cool: #F2F3F4;
+  --nexs-ink: #111111;
+  --nexs-ink-muted: #5F6368;
+  --nexs-border: #DADADA;
+  --nexs-metal: #BFC3C7;
+  --nexs-red: #D71920;
+  --nexs-red-dark: #A91319;
+  --nexs-dark-panel: #0E0E0F;
+  --nexs-radius-sm: 12px;
+  --nexs-radius-md: 18px;
+  --nexs-radius-lg: 28px;
+  --nexs-max-width: 1200px;
+  --nexs-space-1: 4px;
+  --nexs-space-2: 8px;
+  --nexs-space-3: 12px;
+  --nexs-space-4: 16px;
+  --nexs-space-5: 24px;
+  --nexs-space-6: 32px;
+  --nexs-space-7: 48px;
+  --nexs-space-8: 64px;
+  --nexs-space-9: 96px;
+  --nexs-space-10: 128px;
+}

@@ -1,0 +1,17 @@
+node_modules
+dist
+.DS_Store
+*.local
+.vite
+.vercel
+.env
+.env.local
+.env.production
+
+# Large reference docs / source xlsx — exclude from repo
+NEXS PPF.html
+NEXS PPF.html.zip
+NexsPPF/
+NexsPPF.zip
+NEXS_PPF_Pricing.xlsx
+.~lock.*

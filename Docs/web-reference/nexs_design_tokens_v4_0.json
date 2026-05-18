@@ -1,0 +1,91 @@
+{
+  "version": "v4.0",
+  "brand": {
+    "name": "NEXS",
+    "descriptor": "ENGINEERED FOR PERFECT SURFACES",
+    "campaign": "Think New. Think NEXS.",
+    "hero": "Engineered to Be Invisible. Better Than Day One.",
+    "thaiHero": "ยิ่งมองไม่เห็นฟิล์ม ยิ่งเห็นความสมบูรณ์แบบ",
+    "quote": "A Higher Standard for Invisible Surfaces."
+  },
+  "colors": {
+    "canvas": "#FFFFFF",
+    "canvasSoft": "#F7F7F5",
+    "surfaceWarm": "#ECEBE8",
+    "surfaceCool": "#F2F3F4",
+    "ink": "#111111",
+    "inkMuted": "#5F6368",
+    "inkSoft": "#8A8F96",
+    "border": "#DADADA",
+    "metal": "#BFC3C7",
+    "accentRed": "#D71920",
+    "accentRedDark": "#A91319",
+    "darkPanel": "#0E0E0F"
+  },
+  "typography": {
+    "english": "Inter or system sans; SF Pro as visual reference only",
+    "thai": "Noto Sans Thai or IBM Plex Sans Thai",
+    "h1Desktop": {
+      "size": 72,
+      "lineHeight": 76,
+      "weight": 600
+    },
+    "h1Mobile": {
+      "size": 40,
+      "lineHeight": 44,
+      "weight": 600
+    },
+    "h2Desktop": {
+      "size": 48,
+      "lineHeight": 54,
+      "weight": 600
+    },
+    "body": {
+      "size": 16,
+      "lineHeight": 28,
+      "weight": 400
+    },
+    "caption": {
+      "size": 12,
+      "lineHeight": 18,
+      "weight": 500,
+      "letterSpacing": 0.4
+    }
+  },
+  "layout": {
+    "desktopFrame": 1440,
+    "tabletFrame": 768,
+    "mobileFrame": 390,
+    "desktopMaxWidth": 1200,
+    "desktopColumns": 12,
+    "tabletColumns": 6,
+    "mobileColumns": 4,
+    "desktopMargin": 72,
+    "tabletMargin": 32,
+    "mobileMargin": 20
+  },
+  "spacing": [
+    4,
+    8,
+    12,
+    16,
+    24,
+    32,
+    48,
+    64,
+    96,
+    128
+  ],
+  "radius": {
+    "small": 12,
+    "medium": 18,
+    "large": 28,
+    "pill": 999
+  },
+  "rules": [
+    "No public pricing anywhere on web or in visual assets.",
+    "White/soft grey Apple-inspired canvas is the default; avoid full black homepage.",
+    "Use black panels only for quote blocks, carbon detail, or high-contrast product moments.",
+    "Accent red must be restrained: CTA, active states, micro lines, and selected highlights only."
+  ]
+}
