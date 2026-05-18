@@ -126,6 +126,8 @@ export const leads = pgTable('leads', {
   message: text('message'),
   sourcePage: text('source_page'),
   status: text('status').notNull().default('new'),
+  ipAddress: text('ip_address'),
+  userAgent: text('user_agent'),
   consentAt: timestamp('consent_at', { withTimezone: true }),
   createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
   updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
@@ -133,6 +135,7 @@ export const leads = pgTable('leads', {
   index('leads_form_type_idx').on(table.formType),
   index('leads_status_idx').on(table.status),
   index('leads_created_at_idx').on(table.createdAt),
+  index('leads_ip_address_idx').on(table.ipAddress),
 ]);
 
 // B2B dealer applications — For Dealers page.
@@ -149,6 +152,8 @@ export const dealerApplications = pgTable('dealer_applications', {
   notes: text('notes'),
   status: text('status').notNull().default('new'),
   reviewedBy: uuid('reviewed_by').references(() => users.id),
+  ipAddress: text('ip_address'),
+  userAgent: text('user_agent'),
   consentAt: timestamp('consent_at', { withTimezone: true }),
   createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
   updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
@@ -156,4 +161,5 @@ export const dealerApplications = pgTable('dealer_applications', {
   index('dealer_applications_status_idx').on(table.status),
   index('dealer_applications_province_idx').on(table.province),
   index('dealer_applications_created_at_idx').on(table.createdAt),
+  index('dealer_applications_ip_address_idx').on(table.ipAddress),
 ]);

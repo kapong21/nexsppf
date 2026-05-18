@@ -52,6 +52,12 @@ export function ContactLeadForm() {
 
   return (
     <form action={onSubmit} className="form-shell premium-form-shell" noValidate>
+      {/* Honeypot — invisible to humans, irresistible to bots. Server Action
+          treats any non-empty value as spam and silently discards. */}
+      <div aria-hidden="true" style={{ position: 'absolute', left: '-10000px', width: '1px', height: '1px', overflow: 'hidden' }}>
+        <label htmlFor="contact-website">Website</label>
+        <input id="contact-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
       <label htmlFor="contact-name">Name <span className="required-mark">*</span></label>
       <input id="contact-name" name="name" placeholder="Your name" required />
 

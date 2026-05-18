@@ -29,6 +29,8 @@ export const drizzleLeadRepository: LeadRepository = {
         contactType: input.contactType,
         message: input.message,
         sourcePage: input.sourcePage,
+        ipAddress: input.ipAddress,
+        userAgent: input.userAgent,
         consentAt: new Date(),
       })
       .returning({
@@ -61,6 +63,8 @@ export const drizzleDealerApplicationRepository: DealerApplicationRepository = {
         experience: input.experience,
         currentServices: input.currentServices,
         notes: input.notes,
+        ipAddress: input.ipAddress,
+        userAgent: input.userAgent,
         consentAt: new Date(),
       })
       .returning({

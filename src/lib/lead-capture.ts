@@ -23,6 +23,8 @@ export type LeadInput = {
   contactType?: string;
   message?: string;
   sourcePage?: string;
+  ipAddress?: string;
+  userAgent?: string;
   consent: true;
 };
 
@@ -47,6 +49,8 @@ export type DealerApplicationInput = {
   experience?: string;
   currentServices?: string;
   notes?: string;
+  ipAddress?: string;
+  userAgent?: string;
   consent: true;
 };
 
@@ -67,7 +71,11 @@ export class InvalidLeadError extends Error {
   }
 }
 
-const PHONE_RE = /^[0-9+\-\s()]{6,30}$/;
+// Format-only screen — leaves digit-count check to `isValidPhone`. This way
+// the regex stays permissive about Thai conventions ("081-234-5678",
+// "+66 81 234 5678", "(02) 123-4567") while obvious garbage like
+// "no thanks" still fails.
+const PHONE_FORMAT_RE = /^\+?[0-9\-\s()]{8,20}$/;
 const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 const VALID_FORM_TYPES: readonly LeadFormType[] = [
   'contact',
@@ -76,6 +84,21 @@ const VALID_FORM_TYPES: readonly LeadFormType[] = [
   'warranty_support',
   'inspection_request',
 ];
+
+function countDigits(s: string): number {
+  let n = 0;
+  for (let i = 0; i < s.length; i++) {
+    const c = s.charCodeAt(i);
+    if (c >= 48 && c <= 57) n++;
+  }
+  return n;
+}
+
+export function isValidPhone(s: string): boolean {
+  if (!PHONE_FORMAT_RE.test(s)) return false;
+  const digits = countDigits(s);
+  return digits >= 9 && digits <= 15;
+}
 
 function trimOrUndef(v: string | undefined | null): string | undefined {
   if (v == null) return undefined;
@@ -101,7 +124,7 @@ export function validateLeadInput(raw: Partial<LeadInput>): LeadInput {
   if (!phone && !email) {
     errors.phone = 'phone_or_email_required';
   }
-  if (phone && !PHONE_RE.test(phone)) {
+  if (phone && !isValidPhone(phone)) {
     errors.phone = 'invalid_phone';
   }
   if (email && !EMAIL_RE.test(email)) {
@@ -122,6 +145,8 @@ export function validateLeadInput(raw: Partial<LeadInput>): LeadInput {
     contactType: trimOrUndef(raw.contactType),
     message: trimOrUndef(raw.message),
     sourcePage: trimOrUndef(raw.sourcePage),
+    ipAddress: trimOrUndef(raw.ipAddress),
+    userAgent: trimOrUndef(raw.userAgent),
     consent: true,
   };
 }
@@ -143,7 +168,7 @@ export function validateDealerApplication(raw: Partial<DealerApplicationInput>):
 
   if (!businessName) errors.businessName = 'required';
   if (!phone) errors.phone = 'required';
-  else if (!PHONE_RE.test(phone)) errors.phone = 'invalid_phone';
+  else if (!isValidPhone(phone)) errors.phone = 'invalid_phone';
   if (!province) errors.province = 'required';
   if (email && !EMAIL_RE.test(email)) errors.email = 'invalid_email';
   if (raw.consent !== true) errors.consent = 'pdpa_consent_required';
@@ -161,6 +186,8 @@ export function validateDealerApplication(raw: Partial<DealerApplicationInput>):
     experience: trimOrUndef(raw.experience),
     currentServices: trimOrUndef(raw.currentServices),
     notes: trimOrUndef(raw.notes),
+    ipAddress: trimOrUndef(raw.ipAddress),
+    userAgent: trimOrUndef(raw.userAgent),
     consent: true,
   };
 }

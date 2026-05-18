@@ -27,7 +27,15 @@ function ensureDatabaseUrl(): string {
 
 export function getPool(): Pool {
   if (!_pool) {
-    _pool = new Pool({ connectionString: ensureDatabaseUrl() });
+    // Fluid Compute / long-lived Node processes reuse this pool across
+    // requests. Caps prevent a traffic spike from exhausting Postgres
+    // connections; idle timeout reclaims sockets the pool no longer needs.
+    _pool = new Pool({
+      connectionString: ensureDatabaseUrl(),
+      max: Number(process.env.DATABASE_POOL_MAX ?? 10),
+      idleTimeoutMillis: 30_000,
+      connectionTimeoutMillis: 10_000,
+    });
   }
   return _pool;
 }
