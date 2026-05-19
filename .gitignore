@@ -1,5 +1,7 @@
 node_modules
 dist
+.next
+out
 .DS_Store
 *.local
 .vite
@@ -7,6 +9,8 @@ dist
 .env
 .env.local
 .env.production
+*.tsbuildinfo
+next-env.d.ts.bak
 
 # Large reference docs / source xlsx — exclude from repo
 NEXS PPF.html
