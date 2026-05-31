@@ -145,7 +145,7 @@ sudo tee "$TRAEFIK_DYNAMIC" >/dev/null <<'EOF'
 http:
   routers:
     nexsppf-web:
-      rule: "Host(`nexsppf.com`) || Host(`www.nexsppf.com`)"
+      rule: "Host(`nexsppf.com`) || Host(`www.nexsppf.com`) || Host(`russia.nexsppf.com`) || Host(`usa.nexsppf.com`)"
       entryPoints:
         - websecure
       tls:
@@ -171,7 +171,9 @@ for url in \
   "https://www.nexsppf.com/products" \
   "https://www.nexsppf.com/warranty" \
   "https://www.nexsppf.com/r/PRO-1196MXY0401178Q" \
-  "https://nexsppf.com/"; do
+  "https://nexsppf.com/" \
+  "https://russia.nexsppf.com/" \
+  "https://usa.nexsppf.com/"; do
   echo "-- $url --"
   curl -I -L --max-time 30 -A 'Mozilla/5.0' "$url" | sed -n '1,25p'
   echo
