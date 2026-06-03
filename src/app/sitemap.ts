@@ -23,8 +23,10 @@ const STATIC_PATHS: ReadonlyArray<{
   { path: '/contact', priority: 0.7, changeFrequency: 'monthly' },
 
   // Dealer / sales
+  // NOTE: /dealer is an alias of /for-dealers and is disallowed in robots.ts
+  // (grouped with dealer/admin consoles), so it is intentionally NOT listed
+  // here — /for-dealers is the canonical, indexable URL.
   { path: '/for-dealers', priority: 0.7, changeFrequency: 'monthly' },
-  { path: '/dealer', priority: 0.6, changeFrequency: 'monthly' },
 
   // Warranty (public lookup form — not the [serial] detail)
   { path: '/warranty', priority: 0.6, changeFrequency: 'monthly' },
